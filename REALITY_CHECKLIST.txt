@@ -1,4 +1,3 @@
-# Reality Checklist
 - [x] F1 — GSAP-driven hero letters reveal with staggered animation (VERIFIED)
 - [x] F2 — Scroll progress indicator updates via progressRef (VERIFIED)
 - [x] F3 — IntersectionObserver toggles section visibility thresholds (VERIFIED)
