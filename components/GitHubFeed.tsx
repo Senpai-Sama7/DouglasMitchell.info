@@ -52,7 +52,7 @@ export async function GitHubFeed() {
                 <span className="github-name">{repo.name}</span>
                 {repo.description ? <span className="github-description">{repo.description}</span> : null}
                 <span className="github-meta">
-                  Updated {new Date(repo.pushed_at).toLocaleDateString()} • ⭐ {repo.stargazers_count}
+                  Updated {new Date(repo.pushed_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })} • ⭐ {repo.stargazers_count}
                 </span>
               </Link>
             </li>
