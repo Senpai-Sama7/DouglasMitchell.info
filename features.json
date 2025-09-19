@@ -1,0 +1,32 @@
+[
+  {
+    "id": "F1",
+    "feature": "Hero proclaims the Halcyon Logistics identity and outlines multi-format content.",
+    "command": "rg \"Halcyon Logistics\" app/page.tsx",
+    "expected_signal": "Matches display the Halcyon Logistics label and supporting references in the hero card."
+  },
+  {
+    "id": "F2",
+    "feature": "Topic showcase enables switching between logistics, design systems, and media focuses.",
+    "command": "rg \"Field Operations\" components/TopicShowcase.tsx",
+    "expected_signal": "The Field Operations label appears within the interactive topic dataset."
+  },
+  {
+    "id": "F3",
+    "feature": "Signal controller presents a range slider for tuning immersion level feedback.",
+    "command": "rg \"type=\\\"range\\\"\" components/SignalController.tsx",
+    "expected_signal": "The command surfaces the range input definition used for the immersion control."
+  },
+  {
+    "id": "F4",
+    "feature": "Dispatch #014 audio log is highlighted among latest posts.",
+    "command": "rg \"Dispatch #014\" app/page.tsx",
+    "expected_signal": "Output shows the Dispatch #014 entry inside the posts data block."
+  },
+  {
+    "id": "F5",
+    "feature": "Subscribe section includes the Join manifest call-to-action.",
+    "command": "rg \"Join manifest\" app/page.tsx",
+    "expected_signal": "Result contains the Join manifest button label within the subscription form."
+  }
+]

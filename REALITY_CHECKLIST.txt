@@ -1,0 +1,6 @@
+# Reality Checklist
+- [x] F1 — Hero announces Halcyon Logistics identity with multi-format promise (VERIFIED)
+- [x] F2 — Topic showcase toggles between logistics themes (VERIFIED)
+- [x] F3 — Signal controller slider exposes immersion states (VERIFIED)
+- [x] F4 — Dispatch #014 listed among featured posts (VERIFIED)
+- [x] F5 — Subscription call-to-action offers “Join manifest” (VERIFIED)
