@@ -1,0 +1,32 @@
+[
+  {
+    "id": "F1",
+    "feature": "Hero names Halcyon Logistics Dispatch with initialization readout.",
+    "command": "rg \"Halcyon Logistics Dispatch\" content/site-data.ts",
+    "expected_signal": "Output lists the Halcyon Logistics Dispatch title defined for the hero and metadata."
+  },
+  {
+    "id": "F2",
+    "feature": "Bento grid includes the smartphone operations mock tile.",
+    "command": "rg \"Smartphone interface\" content/site-data.ts",
+    "expected_signal": "Command finds the device mock description referencing the smartphone interface."
+  },
+  {
+    "id": "F3",
+    "feature": "Dispatch roster highlights the Night Shift audio log entry.",
+    "command": "rg \"Night Shift Audio Log\" content/site-data.ts",
+    "expected_signal": "Result shows the dispatch title for the Night Shift Audio Log release."
+  },
+  {
+    "id": "F4",
+    "feature": "Topic showcase renders accessible tablist controls.",
+    "command": "rg \"role=\\\"tablist\\\"\" components/TopicShowcase.tsx",
+    "expected_signal": "Component source includes a div with role=\"tablist\" labelling the topic filters."
+  },
+  {
+    "id": "F5",
+    "feature": "Subscribe form provides the Join manifest CTA.",
+    "command": "rg \"Join manifest\" app/page.tsx",
+    "expected_signal": "Search output contains the Join manifest button label within the subscribe form."
+  }
+]
