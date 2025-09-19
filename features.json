@@ -1,0 +1,32 @@
+[
+  {
+    "id": "F1",
+    "feature": "Hero letters animate with GSAP staggered timeline.",
+    "command": "rg -n \"hero-letter\" app/page.tsx",
+    "expected_signal": "Output lists hero-letter markup and GSAP query registration."
+  },
+  {
+    "id": "F2",
+    "feature": "Sticky navigation renders a scroll progress indicator tied to progressRef.",
+    "command": "rg -n \"nav-progress\" app/page.tsx",
+    "expected_signal": "Matches show the progress container and ref-linked bar."
+  },
+  {
+    "id": "F3",
+    "feature": "Sections and text reveals are controlled by IntersectionObserver thresholds.",
+    "command": "rg -n \"IntersectionObserver\" app/page.tsx",
+    "expected_signal": "Results surface both observers responsible for section and text activation."
+  },
+  {
+    "id": "F4",
+    "feature": "Architecture constellation draws animated node connections via SVG paths.",
+    "command": "rg -n \"network-line\" app/page.tsx",
+    "expected_signal": "Command prints the network-line paths used for the constellation graphic."
+  },
+  {
+    "id": "F5",
+    "feature": "FAQ accordion panels animate height transitions in global styles.",
+    "command": "rg -n \"faq-panel\" app/globals.css",
+    "expected_signal": "Output enumerates the CSS rules controlling accordion panel animation."
+  }
+]
