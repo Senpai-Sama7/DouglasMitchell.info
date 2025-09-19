@@ -5,7 +5,15 @@ export async function POST(request: NextRequest) {
   const secret = process.env.REVALIDATE_SECRET
   const body = await request.json().catch(() => ({})) as { path?: string; token?: string }
 
-  if (!secret || body.token !== secret) {
+  if (!secret || !body.token) {
+    return NextResponse.json({ status: 'UNVERIFIED', reason: 'Invalid or missing token' }, { status: 401 })
+  }
+
+  const { timingSafeEqual } = await import('crypto');
+  const tokenBuffer = Buffer.from(body.token);
+  const secretBuffer = Buffer.from(secret);
+
+  if (tokenBuffer.length !== secretBuffer.length || !timingSafeEqual(tokenBuffer, secretBuffer)) {
     return NextResponse.json({ status: 'UNVERIFIED', reason: 'Invalid or missing token' }, { status: 401 })
   }
 
