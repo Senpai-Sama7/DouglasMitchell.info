@@ -5,8 +5,14 @@ export async function POST(request: NextRequest) {
   const secret = process.env.REVALIDATE_SECRET
   const body = await request.json().catch(() => ({})) as { path?: string; token?: string }
 
-  if (!secret || body.token !== secret) {
-    return NextResponse.json({ status: 'UNVERIFIED', reason: 'Invalid or missing token' }, { status: 401 })
+  if (!secret || !body.token) {
+    return NextResponse.json({ status: 'UNVERIFIED', reason: 'Invalid or missing token' }, { status: 401 });
+  }
+
+  const areEqual = secret.length === body.token.length && secret === body.token;
+
+  if (!areEqual) {
+    return NextResponse.json({ status: 'UNVERIFIED', reason: 'Invalid or missing token' }, { status: 401 });
   }
 
   const path = body.path ?? '/'
