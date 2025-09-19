@@ -364,12 +364,17 @@ export const llmBundle = {
     outcomes: project.outcomes,
     links: project.assets
   })),
-  roles: roles.map(role => ({
-    organization: role.organization,
-    title: role.organization,
-    dates: role.dates,
-    bullets: role.bullets
-  })),
+  roles: roles.map(role => {
+    const parts = role.organization.split(', ');
+    const title = parts.length > 1 ? parts[0] : role.organization;
+    const organization = parts.length > 1 ? parts.slice(1).join(', ') : 'Self-directed';
+    return {
+      organization,
+      title,
+      dates: role.dates,
+      bullets: role.bullets
+    };
+  }),
   posts: writingCategories.map(entry => ({
     category: entry.category,
     description: entry.description,
