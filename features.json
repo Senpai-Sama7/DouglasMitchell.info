@@ -1,32 +1,32 @@
 [
   {
     "id": "F1",
-    "feature": "Hero proclaims the Halcyon Logistics identity and outlines multi-format content.",
-    "command": "rg \"Halcyon Logistics\" app/page.tsx",
-    "expected_signal": "Matches display the Halcyon Logistics label and supporting references in the hero card."
+    "feature": "Hero letters animate with GSAP staggered timeline.",
+    "command": "rg -n \"hero-letter\" app/page.tsx",
+    "expected_signal": "Output lists hero-letter markup and GSAP query registration."
   },
   {
     "id": "F2",
-    "feature": "Topic showcase enables switching between logistics, design systems, and media focuses.",
-    "command": "rg \"Field Operations\" components/TopicShowcase.tsx",
-    "expected_signal": "The Field Operations label appears within the interactive topic dataset."
+    "feature": "Sticky navigation renders a scroll progress indicator tied to progressRef.",
+    "command": "rg -n \"nav-progress\" app/page.tsx",
+    "expected_signal": "Matches show the progress container and ref-linked bar."
   },
   {
     "id": "F3",
-    "feature": "Signal controller presents a range slider for tuning immersion level feedback.",
-    "command": "rg \"type=\\\"range\\\"\" components/SignalController.tsx",
-    "expected_signal": "The command surfaces the range input definition used for the immersion control."
+    "feature": "Sections and text reveals are controlled by IntersectionObserver thresholds.",
+    "command": "rg -n \"IntersectionObserver\" app/page.tsx",
+    "expected_signal": "Results surface both observers responsible for section and text activation."
   },
   {
     "id": "F4",
-    "feature": "Dispatch #014 audio log is highlighted among latest posts.",
-    "command": "rg \"Dispatch #014\" app/page.tsx",
-    "expected_signal": "Output shows the Dispatch #014 entry inside the posts data block."
+    "feature": "Architecture constellation draws animated node connections via SVG paths.",
+    "command": "rg -n \"network-line\" app/page.tsx",
+    "expected_signal": "Command prints the network-line paths used for the constellation graphic."
   },
   {
     "id": "F5",
-    "feature": "Subscribe section includes the Join manifest call-to-action.",
-    "command": "rg \"Join manifest\" app/page.tsx",
-    "expected_signal": "Result contains the Join manifest button label within the subscription form."
+    "feature": "FAQ accordion panels animate height transitions in global styles.",
+    "command": "rg -n \"faq-panel\" app/globals.css",
+    "expected_signal": "Output enumerates the CSS rules controlling accordion panel animation."
   }
 ]

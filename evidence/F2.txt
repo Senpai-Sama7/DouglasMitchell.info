@@ -1,1 +1,3 @@
-    label: 'Field Operations',
+$ rg -n "nav-progress" app/page.tsx
+360:        <div className="nav-progress" aria-hidden="true">
+361:          <div className="nav-progress-bar" ref={progressRef} />

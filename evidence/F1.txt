@@ -1,2 +1,3 @@
-              Halcyon Logistics
-                <p className="font-semibold text-slate-50">Halcyon Logistics branding set</p>
+$ rg -n "hero-letter" app/page.tsx
+137:        <span key={`${character}-${index}`} className="hero-letter" aria-hidden="true">
+250:      const letters = gsap.utils.toArray<HTMLElement>('.hero-letter')

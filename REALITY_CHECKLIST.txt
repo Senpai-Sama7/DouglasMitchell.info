@@ -1,6 +1,5 @@
-# Reality Checklist
-- [x] F1 — Hero announces Halcyon Logistics identity with multi-format promise (VERIFIED)
-- [x] F2 — Topic showcase toggles between logistics themes (VERIFIED)
-- [x] F3 — Signal controller slider exposes immersion states (VERIFIED)
-- [x] F4 — Dispatch #014 listed among featured posts (VERIFIED)
-- [x] F5 — Subscription call-to-action offers “Join manifest” (VERIFIED)
+- [x] F1 — GSAP-driven hero letters reveal with staggered animation (VERIFIED)
+- [x] F2 — Scroll progress indicator updates via progressRef (VERIFIED)
+- [x] F3 — IntersectionObserver toggles section visibility thresholds (VERIFIED)
+- [x] F4 — Architecture constellation renders animated node network (VERIFIED)
+- [x] F5 — FAQ accordion exposes smooth height transitions (VERIFIED)

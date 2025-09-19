@@ -1,1 +1,3 @@
-          type="range"
+$ rg -n "IntersectionObserver" app/page.tsx
+151:    const sectionObserver = new IntersectionObserver(
+166:    const textObserver = new IntersectionObserver(

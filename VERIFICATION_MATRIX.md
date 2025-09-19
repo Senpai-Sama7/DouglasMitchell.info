@@ -1,7 +1,7 @@
-| ID  | Feature | Command | Expected signal | Status | Evidence |
-| --- | ------- | ------- | --------------- | ------ | -------- |
-| F1 | Hero proclaims the Halcyon Logistics identity and outlines multi-format content. | `rg "Halcyon Logistics" app/page.tsx` | Matches display the Halcyon Logistics label and supporting references in the hero card. | VERIFIED | [F1](evidence/F1.txt) |
-| F2 | Topic showcase enables switching between logistics, design systems, and media focuses. | `rg "Field Operations" components/TopicShowcase.tsx` | The Field Operations label appears within the interactive topic dataset. | VERIFIED | [F2](evidence/F2.txt) |
-| F3 | Signal controller presents a range slider for tuning immersion level feedback. | `rg "type=\"range\"" components/SignalController.tsx` | The command surfaces the range input definition used for the immersion control. | VERIFIED | [F3](evidence/F3.txt) |
-| F4 | Dispatch #014 audio log is highlighted among latest posts. | `rg "Dispatch #014" app/page.tsx` | Output shows the Dispatch #014 entry inside the posts data block. | VERIFIED | [F4](evidence/F4.txt) |
-| F5 | Subscribe section includes the Join manifest call-to-action. | `rg "Join manifest" app/page.tsx` | Result contains the Join manifest button label within the subscription form. | VERIFIED | [F5](evidence/F5.txt) |
+| ID | Feature | Command | Expected signal | Status | Evidence |
+| --- | --- | --- | --- | --- | --- |
+| F1 | Hero letters animate with GSAP staggered timeline. | `rg -n "hero-letter" app/page.tsx` | Output lists hero-letter markup and GSAP query registration. | VERIFIED | [F1](evidence/F1.txt) |
+| F2 | Sticky navigation renders a scroll progress indicator tied to progressRef. | `rg -n "nav-progress" app/page.tsx` | Matches show the progress container and ref-linked bar. | VERIFIED | [F2](evidence/F2.txt) |
+| F3 | Sections and text reveals are controlled by IntersectionObserver thresholds. | `rg -n "IntersectionObserver" app/page.tsx` | Results surface both observers responsible for section and text activation. | VERIFIED | [F3](evidence/F3.txt) |
+| F4 | Architecture constellation draws animated node connections via SVG paths. | `rg -n "network-line" app/page.tsx` | Command prints the network-line paths used for the constellation graphic. | VERIFIED | [F4](evidence/F4.txt) |
+| F5 | FAQ accordion panels animate height transitions in global styles. | `rg -n "faq-panel" app/globals.css` | Output enumerates the CSS rules controlling accordion panel animation. | VERIFIED | [F5](evidence/F5.txt) |
