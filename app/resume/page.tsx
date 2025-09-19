@@ -20,8 +20,8 @@ export default function ResumePage() {
             <li key={role.organization}>
               <strong>{role.organization}</strong> · {role.dates}
               <ul className="bridge-list">
-                {role.bullets.map(item => (
-                  <li key={item}>{item}</li>
+                {role.bullets.map((item, index) => (
+                  <li key={index}>{item}</li>
                 ))}
               </ul>
             </li>
