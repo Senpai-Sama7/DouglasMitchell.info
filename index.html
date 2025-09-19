@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Lean Portfolio</title>
+  <meta name="description" content="Ultra-lean, future-proof portfolio. No frameworks. No fluff.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="assets/icon.svg">
+  <link rel="manifest" href="manifest.webmanifest">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header" data-container>
+    <nav class="nav" aria-label="Primary">
+      <a class="brand" href="/">Your Name</a>
+      <button class="nav__toggle" aria-expanded="false" aria-controls="nav-list" id="navToggle">Menu</button>
+      <ul id="nav-list" class="nav__list">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><button id="themeToggle" class="ghost" aria-label="Toggle theme">Theme</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="site-main">
+    <section class="hero" data-container>
+      <h1 class="hero__title">Build less. Ship more.</h1>
+      <p class="lead">Zero frameworks, zero build required. Modern CSS, tiny JS, fully responsive.</p>
+      <div class="hero__cta">
+        <a class="btn" href="#work">See work</a>
+        <a class="btn ghost" href="#contact">Get in touch</a>
+      </div>
+    </section>
+
+    <section id="work" class="work" data-container>
+      <h2>Recent work</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Project One</h3>
+          <p>Short pitch for a real thing. One paragraph, tops.</p>
+          <a class="btn small" href="#">View</a>
+        </article>
+        <article class="card">
+          <h3>Project Two</h3>
+          <p>What you did, why it mattered, measurable impact.</p>
+          <a class="btn small" href="#">View</a>
+        </article>
+        <article class="card">
+          <h3>Project Three</h3>
+          <p>Keep it crisp; link out for details.</p>
+          <a class="btn small" href="#">View</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="about" class="about" data-container>
+      <h2>About</h2>
+      <p>Seasoned engineer shipping durable systems. Opinions: strong, loosely held.</p>
+      <ul class="facts">
+        <li>Performance-first</li>
+        <li>Security-aware</li>
+        <li>Small, reversible commits</li>
+      </ul>
+    </section>
+
+    <section id="contact" class="contact" data-container>
+      <h2>Contact</h2>
+      <form class="contact__form" action="https://formspree.io/f/your-id" method="POST">
+        <div class="grid">
+          <label> Name
+            <input name="name" required>
+          </label>
+          <label> Email
+            <input type="email" name="email" required>
+          </label>
+        </div>
+        <label> Message
+          <textarea name="message" rows="5" required></textarea>
+        </label>
+        <button class="btn" type="submit">Send</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer" data-container>
+    <small>© <span id="year"></span> Your Name — <a href="assets/icon.svg">favicon</a></small>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

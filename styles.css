@@ -1,0 +1,74 @@
+/* Reset-ish */
+:root {
+  --bg: #0b0b0b;
+  --fg: #e7e7e7;
+  --muted: #9aa0a6;
+  --brand: #7dd3fc;
+  --brand-ink: #0b0f12;
+  --card: #101317;
+  --border: #1f2937;
+  --radius: 1.25rem;
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+  --max: 72rem;
+  --space: clamp(1rem, 2vw, 2rem);
+  --step-0: clamp(14px, 0.9vw + 10px, 18px);
+  --step-1: clamp(22px, 2.2vw + 14px, 34px);
+  --step-2: clamp(28px, 3vw + 16px, 48px);
+}
+@media (prefers-color-scheme: light) {
+  :root { --bg:#f8fafc; --fg:#0b0b0b; --card:#ffffff; --border:#e5e7eb; --brand-ink:#081018; }
+}
+* { box-sizing: border-box }
+html, body { margin: 0; padding: 0; background: var(--bg); color: var(--fg); font: 400 var(--step-0)/1.5 system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
+img, svg, video, canvas { max-width: 100%; height: auto }
+a { color: inherit }
+:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px }
+.skip { position: absolute; left: -999px }
+.skip:focus { left: 1rem; top: 1rem; background: var(--card); padding: .5rem 1rem; border-radius: .5rem }
+
+/* Layout */
+[data-container]{ width: min(100% - 2*var(--space), var(--max)); margin-inline: auto; }
+.site-header{ position: sticky; top: 0; backdrop-filter: saturate(1.2) blur(6px); background: color-mix(in srgb, var(--bg) 86%, transparent); border-bottom: 1px solid var(--border); z-index: 10 }
+.nav{ display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: center; padding: .75rem 0 }
+.brand{ font-weight: 800; letter-spacing: .3px }
+.nav__list{ display: flex; gap: .75rem; align-items: center; margin: 0; padding: 0; list-style: none }
+.nav__toggle{ display: none }
+@media (max-width: 720px){
+  .nav{ grid-template-columns: 1fr auto }
+  .nav__toggle{ display:inline-flex; align-items:center; gap:.5rem; background:transparent; color:var(--fg); border:1px solid var(--border); border-radius:.6rem; padding:.4rem .7rem }
+  .nav__list{ position: absolute; right: var(--space); top: calc(100% + .5rem); background: var(--card); border:1px solid var(--border); padding:.5rem; border-radius: .8rem; box-shadow: var(--shadow); display:none; flex-direction: column }
+  .nav[aria-expanded="true"] .nav__list{ display:flex }
+}
+
+.site-main{ display: grid; gap: calc(2*var(--space)); padding-block: calc(1.5*var(--space)) }
+.hero{ padding-block: calc(1.2*var(--space)) }
+.hero__title{ font-size: var(--step-2); font-weight: 900; letter-spacing: -0.02em }
+.lead{ max-width: 60ch; opacity: .85 }
+
+.cards{ display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--space) }
+.card{ grid-column: span 4; background: var(--card); border:1px solid var(--border); border-radius: var(--radius); padding: 1rem; box-shadow: var(--shadow) }
+@container (max-width: 900px){ .card{ grid-column: span 6 } }
+@media (max-width: 720px){ .card{ grid-column: span 12 } }
+
+.facts{ display:grid; grid-template-columns: repeat(3,1fr); gap:.5rem; padding:0; margin:0; list-style:none }
+@media (max-width: 720px){ .facts{ grid-template-columns: 1fr } }
+
+.contact__form .grid{ display:grid; grid-template-columns: repeat(2,1fr); gap:.75rem }
+@media (max-width: 720px){ .contact__form .grid{ grid-template-columns: 1fr } }
+input, textarea{ width:100%; padding:.7rem .8rem; border-radius:.6rem; border:1px solid var(--border); background: color-mix(in srgb, var(--bg) 92%, #0000) ; color:var(--fg) }
+
+.site-footer{ padding-block: calc(1.2*var(--space)); border-top: 1px solid var(--border) }
+
+/* Buttons */
+.btn{ display:inline-flex; align-items:center; gap:.5rem; padding:.7rem 1rem; border-radius:.8rem; border:1px solid color-mix(in srgb, var(--brand) 40%, var(--border)); background: var(--brand); color: var(--brand-ink); font-weight: 700; text-decoration: none }
+.btn.small{ padding:.5rem .7rem; font-weight:600 }
+.btn.ghost{ background: transparent; color: var(--fg) }
+.ghost{ background: transparent; border:1px solid var(--border); color: var(--fg) }
+
+/* Subtle entrance transitions (prefers-reduced-motion respected) */
+@media (prefers-reduced-motion: no-preference){
+  [data-container]{ view-transition-name: section }
+  .card, .hero__title, .lead, .facts li, .contact__form{ opacity: 0; translate: 0 8px; animation: in .6s ease both; }
+  .card:nth-child(2){ animation-delay: .06s } .card:nth-child(3){ animation-delay: .12s }
+  @keyframes in{ to { opacity: 1; translate: 0 0 } }
+}
