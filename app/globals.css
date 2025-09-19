@@ -312,8 +312,8 @@ svg {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #12b886;
-  box-shadow: 0 0 0 6px rgba(18, 184, 134, 0.25);
+  background: var(--color-status-ok);
+  box-shadow: 0 0 0 6px var(--color-status-ok-glow);
   animation: pulse 2s ease-in-out infinite;
 }
 
