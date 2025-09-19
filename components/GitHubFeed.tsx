@@ -38,12 +38,20 @@ async function fetchRepos(): Promise<Repo[]> {
 }
 
 export async function GitHubFeed() {
-  const repos = await fetchRepos()
+  const repos = await fetchRepos() // Assuming fetchRepos is modified to return null on error
+
+  if (repos === null) {
+    return (
+      <div className="github-feed" aria-live="polite">
+        <p className="muted">GitHub data unavailable at the moment. Retry shortly.</p>
+      </div>
+    )
+  }
 
   return (
     <div className="github-feed" aria-live="polite">
       {repos.length === 0 ? (
-        <p className="muted">GitHub data unavailable at the moment. Retry shortly.</p>
+        <p className="muted">No public repositories found.</p>
       ) : (
         <ul>
           {repos.map(repo => (
