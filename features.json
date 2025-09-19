@@ -1,0 +1,32 @@
+[
+  {
+    "id": "F1",
+    "feature": "Hero states systems architect positioning with Conscious Network Hub subtext.",
+    "command": "rg \"Engineering resilient, validated systems\" app/page.tsx",
+    "expected_signal": "Hero headline text appears within the hero section markup."
+  },
+  {
+    "id": "F2",
+    "feature": "KPI strip lists three counters sourced from heroContent stats.",
+    "command": "rg \"heroContent.stats\" -n app/page.tsx",
+    "expected_signal": "Page references heroContent.stats when rendering the KPI counters."
+  },
+  {
+    "id": "F3",
+    "feature": "Projects section enumerates Ultimate AI Agent and Houston Oil Airs initiatives.",
+    "command": "rg \"Houston Oil Airs Enablement\" content/site-data.ts",
+    "expected_signal": "Project dataset includes the Houston Oil Airs initiative alongside other featured work."
+  },
+  {
+    "id": "F4",
+    "feature": "GitHub feed renders latest repositories when API succeeds.",
+    "command": "rg \"https://api.github.com\" components/GitHubFeed.tsx",
+    "expected_signal": "GitHub feed component fetches repository data from the GitHub API."
+  },
+  {
+    "id": "F5",
+    "feature": "/api/bundle endpoint returns the LLM bundle JSON.",
+    "command": "curl -s http://localhost:3000/api/bundle | jq '.person.name'",
+    "expected_signal": "Endpoint responds with JSON payload containing the LLM bundle data."
+  }
+]

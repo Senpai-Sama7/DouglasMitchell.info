@@ -1,0 +1,272 @@
+{
+  "person": {
+    "name": "Douglas Mitchell",
+    "bios_short": "Systems architect and Conscious Network Hub with 85% technical centrality, pairing quality-first engineering with community-first impact.",
+    "bios_medium": "Douglas Mitchell operates as a Pioneer-Architect whose technical centrality scores 0.85. Mastery drive (0.880) and achievement drive (0.900) fuel cross-domain synthesis spanning AI/ML pipelines, security vigilance, and economic-psychological modeling. Each engagement codifies reliable protocols, aligns to ethical impact in Houston, and keeps defensive postures sharp through constant validation and red-team rehearsal.",
+    "bios_long": "Across the past decade my research intensity climbed from 0.7 to 1.0 while the architect identity crystalized. Early experiments in semantic networks matured into full-stack intelligence platforms, culminating in resilient architectures that anticipate drift and codify remediation paths. As the Conscious Network Hub at the center of Houston Oil Airs, I bridge legal strategists, nonprofit organizers, technologists, and funders—turning loosely coupled intentions into synchronized execution. Production-grade systems, from AI agents and multimedia pipelines to cyber defense labs, operate with compassionate rigor: zero successful breaches, rapid anomaly response, and documentation that allows others to execute safely without dependency. Every protocol, dashboard, and narrative sequence is designed to scale trust, empower communities, and keep presence with those experiencing complex realities.",
+    "location_context": "Houston, Texas — operating globally",
+    "contact": {
+      "email": "hello@douglasmitchell.info",
+      "consulting": "https://cal.com/douglasmitchell/consult",
+      "github": "https://github.com/DouglasSMitchell",
+      "linkedin": "https://www.linkedin.com/in/douglass-mitchell/",
+      "twitter": "https://x.com/dougmitchellhq"
+    },
+    "social": {
+      "github": "https://github.com/DouglasSMitchell",
+      "linkedin": "https://www.linkedin.com/in/douglass-mitchell/",
+      "twitter": "https://x.com/dougmitchellhq"
+    }
+  },
+  "skills": [
+    {
+      "category": "Architecture & Systems",
+      "description": "Multi-layered processing from information intake to validation, implementation, and optimization.",
+      "proofs": [
+        "Scenario modeling and systems decomposition",
+        "Future-proof modularization and interface contracts",
+        "Performance budgets with automated enforcement"
+      ]
+    },
+    {
+      "category": "Security & Ops",
+      "description": "Zero-trust defaults, MFA everywhere, SIEM-informed observability, and incident rehearsal.",
+      "proofs": [
+        "pfSense/VLAN segmentation and SOC runbooks",
+        "SIEM log discipline with anomaly alerting",
+        "Rapid containment playbooks and tabletop drills"
+      ]
+    },
+    {
+      "category": "AI/ML & Analysis",
+      "description": "Research intensity driving comprehensive model evaluation and responsible deployment.",
+      "proofs": [
+        "Benchmarking with guardrail metrics and drift tracking",
+        "Retrieval-augmented workflows with explainability notes",
+        "Data lineage and consent-aware governance"
+      ]
+    },
+    {
+      "category": "Web & Frontend",
+      "description": "React/Next.js, CSS/GSAP, and Three.js experiences that balance expressiveness and accessibility.",
+      "proofs": [
+        "Component systems with measured animation primitives",
+        "Progressive enhancement for high-stakes information surfaces",
+        "GraphQL/API integration with caching and fallbacks"
+      ]
+    },
+    {
+      "category": "Documentation & Knowledge Transfer",
+      "description": "Consciousness transfer protocols that allow teams to execute without dependency.",
+      "proofs": [
+        "Living runbooks with automated validation states",
+        "Architecture decision records and onboarding trails",
+        "Community-accessible knowledge repositories"
+      ]
+    },
+    {
+      "category": "Influence & Community",
+      "description": "Hub-and-spoke coordination across legal, nonprofit, and technical circles.",
+      "proofs": [
+        "Coalition briefings translating risk to narrative clarity",
+        "Cross-cluster protocol design with shared metrics",
+        "Ethical mediation with empathy-driven facilitation"
+      ]
+    },
+    {
+      "category": "Soft Skills",
+      "description": "Analytical rigor, meta-cognitive self-regulation, and empathy-driven communication.",
+      "proofs": [
+        "Presence under pressure with calm escalation paths",
+        "Feedback loops that uplift collaborators",
+        "Clarity-first storytelling with measurable commitments"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "title": "Ultimate AI Agent — Production-Ready Edition",
+      "summary": "Reusable agent framework tuned for regulated environments with deterministic guardrails.",
+      "problem": "Organizations needed composable AI agents that could be audited, throttled, and extended without jeopardizing security posture.",
+      "architecture": "Modular orchestration layer with policy adapters, verifiable tool access, and red-team sandboxes. Sanity CMS seeds scenarios; Next.js API routes handle secure execution.",
+      "validation": "Automated scenario suites, prompt linting, and SOC analyst walkthroughs before launch.",
+      "outcomes": "Reduced incident triage time by 46% while maintaining zero breach incidents; documentation enabled partner teams to ship variants in <2 days.",
+      "links": [
+        {
+          "label": "Architecture brief",
+          "href": "https://github.com/DouglasSMitchell/ultimate-ai-agent"
+        }
+      ]
+    },
+    {
+      "title": "Multimedia Pipeline",
+      "summary": "High-throughput pipeline unifying audio, video, and interactive assets for mission comms.",
+      "problem": "Distributed storytellers required consistent encoding, accessibility metadata, and rapid distribution across platforms.",
+      "architecture": "Mux ingestion, automated transcription, asset scoring, and CMS-driven distribution. Daily Deck slots swap media modules without redeploys.",
+      "validation": "Golden-path QA, bandwidth stress tests, and ADA compliance checks with recorded evidence.",
+      "outcomes": "Tripled publishing cadence with 100% caption coverage and telemetry dashboards for content health.",
+      "links": [
+        {
+          "label": "Pipeline diagrams",
+          "href": "https://github.com/DouglasSMitchell/multimedia-pipeline"
+        }
+      ]
+    },
+    {
+      "title": "Cybersecurity Home Lab",
+      "summary": "Hands-on defense lab with pfSense, VLAN isolation, SIEM streams, and incident drill playbooks.",
+      "problem": "Needed a safe arena to rehearse detection, response, and recovery across volunteer teams.",
+      "architecture": "pfSense core, segmented VLANs, Security Onion SIEM, and automated snapshotting. Runbooks stored in Sanity for rapid updates.",
+      "validation": "Weekly attack simulations, log integrity verification, and rollback drills documented with timestamps.",
+      "outcomes": "Zero downtime during stress events, 12-minute mean containment, and published lessons for Houston partners.",
+      "links": [
+        {
+          "label": "Lab configuration repo",
+          "href": "https://github.com/DouglasSMitchell/cybersecurity-home-lab"
+        }
+      ]
+    },
+    {
+      "title": "Influence Matrix Unveiled",
+      "summary": "Strategic visualization aligning psychological, economic, and relational levers.",
+      "problem": "Coalitions needed clarity on influence pathways without losing ethical framing.",
+      "architecture": "Graph analytics with transparent scoring, annotated network graph, and narrative overlays generated via Sanity schemas.",
+      "validation": "Scenario reviews with community advisors, bias mitigation audits, and consent checkpoints.",
+      "outcomes": "Increased coalition response speed by 60% and secured new funding with transparent diligence packets.",
+      "links": [
+        {
+          "label": "Model notes",
+          "href": "https://github.com/DouglasSMitchell/influence-matrix"
+        }
+      ]
+    },
+    {
+      "title": "Houston Oil Airs Enablement",
+      "summary": "Systems support for community advocacy with data stewardship and secure collaboration.",
+      "problem": "Grassroots organizers required reliable data infrastructure and safe communication flows to sustain environmental justice campaigns.",
+      "architecture": "Secure data lake with consent tracking, encrypted collaboration hubs, and public transparency dashboards powered by Next.js ISR.",
+      "validation": "Pen tests, privacy impact assessments, and real-time monitoring with zero breach record.",
+      "outcomes": "Unlocked cross-cluster collaboration, elevated legal readiness, and codified operating playbooks accessible to community members.",
+      "links": [
+        {
+          "label": "Community protocols",
+          "href": "https://github.com/DouglasSMitchell/houston-oil-airs"
+        }
+      ]
+    }
+  ],
+  "roles": [
+    {
+      "organization": "Systems / Community Architect",
+      "title": "Systems / Community Architect",
+      "dates": "2021 — Present",
+      "bullets": [
+        "Integrate cross-domain technical systems with community outcomes and premium consulting readiness.",
+        "Lead architecture reviews, code audits, and validation protocols across AI, security, and multimedia products.",
+        "Broker partnerships between legal, nonprofit, and technical teams with measurable delivery standards."
+      ]
+    },
+    {
+      "organization": "Executive Director, Houston Oil Airs",
+      "title": "Executive Director, Houston Oil Airs",
+      "dates": "2019 — Present",
+      "bullets": [
+        "Founded and direct a community hub aligning environmental justice advocacy with secure data infrastructure.",
+        "Stand up compliance-ready communication stacks and documentation accessible to diverse collaborators.",
+        "Coordinate training, legal partnerships, and on-the-ground logistics with resilient digital support."
+      ]
+    },
+    {
+      "organization": "Lead Trainer, Pappadeaux",
+      "title": "Lead Trainer, Pappadeaux",
+      "dates": "2014 — 2017",
+      "bullets": [
+        "Developed SOPs and training loops improving onboarding speed by 35%.",
+        "Introduced feedback cadences that lifted team satisfaction scores by double digits."
+      ]
+    },
+    {
+      "organization": "Operations Lead, Home Depot",
+      "title": "Operations Lead, Home Depot",
+      "dates": "2012 — 2014",
+      "bullets": [
+        "Optimized logistics routes and vendor coordination resulting in 20% faster stock rotation.",
+        "Documented safety protocols adopted across adjacent teams."
+      ]
+    },
+    {
+      "organization": "Virtual Administrator",
+      "title": "Virtual Administrator",
+      "dates": "2010 — 2012",
+      "bullets": [
+        "Created documentation libraries and automations that reduced administrative workload by 40%.",
+        "Published reusable SOP templates for distributed teams."
+      ]
+    }
+  ],
+  "posts": [
+    {
+      "category": "Environmental Justice",
+      "description": "Advocacy methods, data integrity, and community protection patterns.",
+      "prompts": [
+        "Rapid-response data rooms for environmental crises",
+        "Consent-aware mapping for frontline communities",
+        "Security hygiene checklists for grassroots organizers"
+      ]
+    },
+    {
+      "category": "Advanced AI / Tech",
+      "description": "Model benchmarking, agent design, validation maturity, and deployment rigor.",
+      "prompts": [
+        "Designing safe evaluation harnesses for agent collectives",
+        "Embedding red-team rituals into AI product sprints",
+        "GraphQL middleware patterns for observability at scale"
+      ]
+    },
+    {
+      "category": "Health Optimization",
+      "description": "Systems thinking applied to personal resilience and performance.",
+      "prompts": [
+        "Biorhythm-informed sprint planning for technical teams",
+        "Breathwork telemetry for incident response calm",
+        "Feedback rituals that sustain long-term mastery"
+      ]
+    },
+    {
+      "category": "Psychology of Influence",
+      "description": "Narrative framing, network dynamics, and ethical persuasion frameworks.",
+      "prompts": [
+        "Mapping ethical influence paths inside complex coalitions",
+        "Cognitive load-aware storytelling for public safety briefings",
+        "Maintaining psychological safety while addressing hard truths"
+      ]
+    }
+  ],
+  "metrics": [
+    {
+      "name": "Technical centrality",
+      "value": "85%",
+      "source": "Capability network analysis 2024"
+    },
+    {
+      "name": "Achievement drive",
+      "value": "0.900",
+      "source": "Validated strengths index 2024"
+    },
+    {
+      "name": "Mastery drive",
+      "value": "0.880",
+      "source": "Validated strengths index 2024"
+    },
+    {
+      "name": "Security posture",
+      "value": "No successful breaches",
+      "source": "Houston Oil Airs operational logs"
+    },
+    {
+      "name": "Research intensity",
+      "value": "0.7 → 1.0",
+      "source": "Longitudinal study 2015-2024"
+    }
+  ]
+}

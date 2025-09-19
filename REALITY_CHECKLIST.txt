@@ -1,0 +1,6 @@
+# Reality Checklist
+- [x] F1 — Hero states systems architect positioning with Conscious Network Hub subtext (VERIFIED)
+- [x] F2 — KPI strip lists three counters sourced from heroContent stats (VERIFIED)
+- [x] F3 — Projects section enumerates Ultimate AI Agent and Houston Oil Airs initiatives (VERIFIED)
+- [x] F4 — GitHub feed renders latest repositories when API succeeds (VERIFIED)
+- [x] F5 — /api/bundle endpoint returns the LLM bundle JSON (VERIFIED)
