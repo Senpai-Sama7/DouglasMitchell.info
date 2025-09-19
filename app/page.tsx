@@ -225,7 +225,7 @@ function SubscribeSection() {
             Receive dispatch alerts, behind-the-scenes prototypes, and invitations to collaborative logistics sessions.
           </p>
         </div>
-        <form className="subscribe-form" action={contactChannels.newsletter} method="post">
+        <form className="subscribe-form" action="/api/subscribe" method="post">
           <label htmlFor="email" className="subscribe-form__label">
             Email address
           </label>
