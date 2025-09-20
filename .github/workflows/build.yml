@@ -1,0 +1,15 @@
+# .github/workflows/build.yml (excerpt)
+- uses: actions/setup-node@v4
+  with:
+    node-version: 20
+    cache: 'npm'
+
+- name: Cache Next.js build cache
+  uses: actions/cache@v4
+  with:
+    path: |
+      .next/cache
+    key: next-cache-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}-${{ github.sha }}
+    restore-keys: |
+      next-cache-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}-
+      next-cache-${{ runner.os }}-
