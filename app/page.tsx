@@ -173,6 +173,15 @@ export default function Page() {
               </article>
             ))}
           </div>
+          <div className="axiom-hero__ornaments">
+            <div className="axiom-hero__rings" aria-hidden>
+              <span className="axiom-hero__ring axiom-hero__ring--primary" data-parallax="0.08" />
+              <span className="axiom-hero__ring axiom-hero__ring--secondary" data-parallax="-0.04" />
+            </div>
+            <Link href="#projects" className="axiom-hero__indicator" aria-label="Scroll to projects section">
+              Explore projects
+            </Link>
+          </div>
         </div>
       </section>
 
