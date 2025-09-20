@@ -1,5 +1,6 @@
-- [x] F1 — GSAP-driven hero letters reveal with staggered animation (VERIFIED)
-- [x] F2 — Scroll progress indicator updates via progressRef (VERIFIED)
-- [x] F3 — IntersectionObserver toggles section visibility thresholds (VERIFIED)
-- [x] F4 — Architecture constellation renders animated node network (VERIFIED)
-- [x] F5 — FAQ accordion exposes smooth height transitions (VERIFIED)
+# Reality Checklist
+- [x] F1 — Hero names Halcyon Logistics Dispatch and initialization status (VERIFIED)
+- [x] F2 — Bento grid includes device mock smartphone interface tile (VERIFIED)
+- [x] F3 — Dispatch listings include the Night Shift audio log release (VERIFIED)
+- [x] F4 — Topic showcase exposes accessible tablist controls (VERIFIED)
+- [x] F5 — Subscribe form offers the “Join manifest” call-to-action (VERIFIED)

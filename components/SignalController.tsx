@@ -1,43 +1,46 @@
 'use client'
 
 import { useMemo, useState } from 'react'
+import { immersionStages } from '@/content/site-data'
 
 export default function SignalController() {
   const [intensity, setIntensity] = useState<number>(60)
 
-  const status = useMemo(() => {
-    if (intensity < 35) return 'Drift mode — ambient insights'
-    if (intensity < 70) return 'Mission ready — balanced signal'
-    return 'Priority dispatch — rapid response'
+  const status = useMemo(() => {b
+    for (const stage of immersionStages) {
+      if (intensity <= stage.max) {
+        return stage.label
+      }
+    }
+    return immersionStages[immersionStages.length - 1]?.label ?? ''
   }, [intensity])
 
   return (
-    <div className="space-y-5 text-sm text-slate-200/80">
-      <div>
-        <h2 className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-200/80">Signal controller</h2>
-        <p className="mt-2 text-xs uppercase tracking-[0.3em] text-slate-400">Adjust how deep you want to dive.</p>
-      </div>
-      <div className="rounded-3xl border border-cyan-400/20 bg-black/40 p-5">
-        <label className="text-xs font-semibold uppercase tracking-[0.3em] text-cyan-100" htmlFor="signal">
+    <section className="signal-controller" aria-label="Immersion controller">
+      <header>
+        <p className="signal-controller__eyebrow">Signal controller</p>
+        <h2 className="signal-controller__title">Tune immersion</h2>
+        <p className="signal-controller__description">Adjust how intense the dispatch feed should feel.</p>
+      </header>
+      <div className="signal-controller__panel">
+        <label className="signal-controller__label" htmlFor="immersion">
           Immersion level
         </label>
         <input
-          id="signal"
+          id="immersion"
           type="range"
           min={0}
           max={100}
           value={intensity}
           onChange={event => setIntensity(Number(event.target.value))}
-          className="mt-4 w-full accent-cyan-400"
+
         />
-        <div className="mt-4 flex items-center justify-between text-xs font-semibold uppercase tracking-[0.3em] text-cyan-100/80">
+        <div className="signal-controller__scale" aria-hidden>
           <span>Low</span>
           <span>High</span>
         </div>
       </div>
-      <div className="rounded-3xl border border-cyan-300/30 bg-cyan-500/10 p-4 text-xs font-semibold uppercase tracking-[0.3em] text-cyan-100">
-        {status}
-      </div>
-    </div>
+      <p className="signal-controller__status">{status}</p>
+    </section>
   )
 }

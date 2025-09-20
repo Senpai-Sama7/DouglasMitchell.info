@@ -1,5 +1,2 @@
-$ rg -n "faq-panel" app/globals.css
-726:.faq-panel {
-733:.faq-item.is-open .faq-panel {
-738:.faq-panel p {
-887:  .faq-panel {
+            Join manifest
+=

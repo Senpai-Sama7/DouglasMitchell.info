@@ -1,8 +1,1 @@
-$ rg -n "network-line" app/page.tsx
-427:            <svg className="network-lines" viewBox="0 0 600 400" aria-hidden="true">
-428:              <path className="network-line" d="M120 80 C220 20, 380 20, 480 80" />
-429:              <path className="network-line" d="M120 80 C200 200, 200 200, 300 200" />
-430:              <path className="network-line" d="M300 200 C360 120, 420 120, 480 80" />
-431:              <path className="network-line" d="M300 200 C360 280, 420 280, 480 320" />
-432:              <path className="network-line" d="M120 320 C220 380, 380 380, 480 320" />
-433:              <path className="network-line" d="M120 320 C200 200, 200 200, 300 200" />
+      <div className="topic-tabs" role="tablist" aria-label="Topic filters">

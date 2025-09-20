@@ -1,7 +1,7 @@
 | ID | Feature | Command | Expected signal | Status | Evidence |
 | --- | --- | --- | --- | --- | --- |
-| F1 | Hero letters animate with GSAP staggered timeline. | `rg -n "hero-letter" app/page.tsx` | Output lists hero-letter markup and GSAP query registration. | VERIFIED | [F1](evidence/F1.txt) |
-| F2 | Sticky navigation renders a scroll progress indicator tied to progressRef. | `rg -n "nav-progress" app/page.tsx` | Matches show the progress container and ref-linked bar. | VERIFIED | [F2](evidence/F2.txt) |
-| F3 | Sections and text reveals are controlled by IntersectionObserver thresholds. | `rg -n "IntersectionObserver" app/page.tsx` | Results surface both observers responsible for section and text activation. | VERIFIED | [F3](evidence/F3.txt) |
-| F4 | Architecture constellation draws animated node connections via SVG paths. | `rg -n "network-line" app/page.tsx` | Command prints the network-line paths used for the constellation graphic. | VERIFIED | [F4](evidence/F4.txt) |
-| F5 | FAQ accordion panels animate height transitions in global styles. | `rg -n "faq-panel" app/globals.css` | Output enumerates the CSS rules controlling accordion panel animation. | VERIFIED | [F5](evidence/F5.txt) |
+| F1 | Hero names Halcyon Logistics Dispatch with initialization readout. | `rg "Halcyon Logistics Dispatch" content/site-data.ts` | Output lists the Halcyon Logistics Dispatch title defined for the hero and metadata. | VERIFIED | [F1](evidence/F1.txt) |
+| F2 | Bento grid includes the smartphone operations mock tile. | `rg "Smartphone interface" content/site-data.ts` | Command finds the device mock description referencing the smartphone interface. | VERIFIED | [F2](evidence/F2.txt) |
+| F3 | Dispatch roster highlights the Night Shift audio log entry. | `rg "Night Shift Audio Log" content/site-data.ts` | Result shows the dispatch title for the Night Shift Audio Log release. | VERIFIED | [F3](evidence/F3.txt) |
+| F4 | Topic showcase renders accessible tablist controls. | `rg "role=\"tablist\"" components/TopicShowcase.tsx` | Component source includes a div with role="tablist" labelling the topic filters. | VERIFIED | [F4](evidence/F4.txt) |
+| F5 | Subscribe form provides the Join manifest CTA. | `rg "Join manifest" app/page.tsx` | Search output contains the Join manifest button label within the subscribe form. | VERIFIED | [F5](evidence/F5.txt) |
