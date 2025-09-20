@@ -1,0 +1,109 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Install dependencies
+        run: npm ci --prefer-offline --no-audit
+
+      - name: Build Next.js app (with fallback)
+        run: |
+          echo "🚀 Attempting Next.js build..."
+
+          # Try building with increased memory and timeout protection
+          timeout 300 NODE_OPTIONS="--max-old-space-size=4096" npm run build || {
+            echo "⚠️ Next.js build failed or timed out. Using static-only deployment."
+            BUILD_FAILED=true
+          }
+
+          # Check if build succeeded
+          if [ ! -d "out" ]; then
+            echo "📄 Next.js build unsuccessful - deploying static site only"
+            BUILD_FAILED=true
+          else
+            echo "✅ Next.js build successful"
+            BUILD_FAILED=false
+          fi
+
+          echo "BUILD_FAILED=$BUILD_FAILED" >> $GITHUB_ENV
+        env:
+          NODE_ENV: production
+
+      - name: Prepare deployment directory
+        run: |
+          echo "📁 Preparing deployment directory..."
+          mkdir -p deploy
+
+          # Always copy static HTML files (primary deployment)
+          echo "📄 Copying static files..."
+          cp index.html deploy/ 2>/dev/null || echo "⚠️ index.html not found"
+          cp manifest.webmanifest deploy/ 2>/dev/null || echo "ℹ️ manifest.webmanifest not found"
+          cp styles.css deploy/ 2>/dev/null || echo "⚠️ styles.css not found"
+          cp script.js deploy/ 2>/dev/null || echo "ℹ️ script.js not found"
+          cp .nojekyll deploy/ 2>/dev/null || echo "ℹ️ .nojekyll not found"
+
+          # Copy assets directory if it exists
+          if [ -d "assets" ]; then
+            echo "🖼️ Copying assets directory..."
+            cp -r assets deploy/
+          else
+            echo "ℹ️ No assets directory found"
+          fi
+
+          # Copy Next.js build output only if build succeeded
+          if [ "$BUILD_FAILED" = "false" ] && [ -d "out" ]; then
+            echo "⚛️ Copying Next.js app to /app subdirectory..."
+            mkdir -p deploy/app
+            cp -r out/* deploy/app/
+            echo "✅ Next.js app included in deployment"
+          else
+            echo "📄 Static-only deployment (Next.js app not available)"
+            # Create a simple note about the app
+            echo "<p>Next.js app temporarily unavailable - using static version</p>" > deploy/app-status.html
+          fi
+
+          # Ensure .nojekyll exists in root
+          touch deploy/.nojekyll
+
+          echo "📊 Deployment structure:"
+          ls -la deploy/
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './deploy'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
