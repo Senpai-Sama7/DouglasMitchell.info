@@ -6,7 +6,7 @@ import { immersionStages } from '@/content/site-data'
 export default function SignalController() {
   const [intensity, setIntensity] = useState<number>(60)
 
-  const status = useMemo(() => {
+  const status = useMemo(() => {b
     for (const stage of immersionStages) {
       if (intensity <= stage.max) {
         return stage.label
@@ -33,6 +33,7 @@ export default function SignalController() {
           max={100}
           value={intensity}
           onChange={event => setIntensity(Number(event.target.value))}
+
         />
         <div className="signal-controller__scale" aria-hidden>
           <span>Low</span>
