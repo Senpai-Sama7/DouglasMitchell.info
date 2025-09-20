@@ -182,6 +182,11 @@ export const contactChannels = {
   newsletter: '#subscribe'
 }
 
+export const githubConfig = {
+  username: 'DouglasSMitchell',
+  perPage: 5
+}
+
 export const bios = {
   short: 'Systems storyteller translating logistics insight into calm, tactile dispatches.',
   medium:

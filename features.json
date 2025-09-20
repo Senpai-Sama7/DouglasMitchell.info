@@ -28,5 +28,11 @@
     "feature": "Subscribe form provides the Join manifest CTA.",
     "command": "rg \"Join manifest\" app/page.tsx",
     "expected_signal": "Search output contains the Join manifest button label within the subscribe form."
-  }
-]
+    },
+    {
+      "id": "F6",
+      "feature": "Production build compiles via npx --no-install next build.",
+      "command": "npx --no-install next build",
+      "expected_signal": "Command completes without module resolution, type checking, or prerender errors."
+    }
+  ]
