@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server'
-import { llmBundle } from '@/content/site-data'
+import * as siteData from '@/content/site-data'
+
+const llmBundle = { ...siteData }
 
 export const revalidate = 3600
 
