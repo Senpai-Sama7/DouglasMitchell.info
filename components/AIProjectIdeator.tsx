@@ -68,7 +68,7 @@ export function AIProjectIdeator({
             ))}
           </select>
         </label>
-        <button type="button" onClick={handleGenerate} className="button">
+        <button type="button" onClick={handleGenerate} className="axiom-button axiom-button--inline">
           Generate concept
         </button>
       </div>

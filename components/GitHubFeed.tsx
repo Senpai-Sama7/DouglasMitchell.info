@@ -1,3 +1,6 @@
+'use client'
+
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { githubConfig } from '@/content/site-data'
 
@@ -10,41 +13,50 @@ type Repo = {
   stargazers_count: number
 }
 
-async function fetchRepos(): Promise<Repo[]> {
-  const { username, perPage } = githubConfig
+export function GitHubFeed() {
+  const [repos, setRepos] = useState<Repo[]>([])
+  const [status, setStatus] = useState<'idle' | 'loading' | 'ready' | 'error'>('idle')
 
-  try {
-    const response = await fetch(
-      `https://api.github.com/users/${username}/repos?sort=updated&per_page=${perPage}`,
-      {
-        headers: {
-          Accept: 'application/vnd.github+json'
-        },
-        next: { revalidate: 3600 }
+  useEffect(() => {
+    const controller = new AbortController()
+    async function load() {
+      setStatus('loading')
+      try {
+        const { username, perPage } = githubConfig
+        const response = await fetch(
+          `https://api.github.com/users/${username}/repos?sort=updated&per_page=${perPage}`,
+          {
+            headers: { Accept: 'application/vnd.github+json' },
+            signal: controller.signal
+          }
+        )
+
+        if (!response.ok) {
+          setStatus('error')
+          return
+        }
+
+        const data = (await response.json()) as Repo[]
+        setRepos(data)
+        setStatus('ready')
+      } catch (error) {
+        if ((error as Error).name !== 'AbortError') {
+          setStatus('error')
+        }
       }
-    )
-
-    if (!response.ok) {
-      console.error('GitHub request failed', await response.text())
-      return []
     }
 
-    const data = (await response.json()) as Repo[]
-    return data
-  } catch (error) {
-    console.error('GitHub request failed', error)
-    return []
-  }
-}
-
-export async function GitHubFeed() {
-  const repos = await fetchRepos()
+    load()
+    return () => controller.abort()
+  }, [])
 
   return (
     <div className="github-feed" aria-live="polite">
-      {repos.length === 0 ? (
+      {status === 'loading' ? <p className="muted">Loading recent GitHub activity…</p> : null}
+      {status === 'error' ? (
         <p className="muted">GitHub data unavailable at the moment. Retry shortly.</p>
-      ) : (
+      ) : null}
+      {status === 'ready' && repos.length > 0 ? (
         <ul>
           {repos.map(repo => (
             <li key={repo.id}>
@@ -58,7 +70,7 @@ export async function GitHubFeed() {
             </li>
           ))}
         </ul>
-      )}
+      ) : null}
     </div>
   )
 }

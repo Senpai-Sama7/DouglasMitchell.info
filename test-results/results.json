@@ -1,0 +1,501 @@
+{
+  "config": {
+    "configFile": "/home/donovan/DouglasMitchell.info/playwright.config.js",
+    "rootDir": "/home/donovan/DouglasMitchell.info/tests",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {},
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "html",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/home/donovan/DouglasMitchell.info/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/home/donovan/DouglasMitchell.info/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/home/donovan/DouglasMitchell.info/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "/home/donovan/DouglasMitchell.info/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/home/donovan/DouglasMitchell.info/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "webkit",
+        "name": "webkit",
+        "testDir": "/home/donovan/DouglasMitchell.info/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/home/donovan/DouglasMitchell.info/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "Mobile Chrome",
+        "name": "Mobile Chrome",
+        "testDir": "/home/donovan/DouglasMitchell.info/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/home/donovan/DouglasMitchell.info/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "Mobile Safari",
+        "name": "Mobile Safari",
+        "testDir": "/home/donovan/DouglasMitchell.info/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.55.0",
+    "workers": 2,
+    "webServer": {
+      "command": "npm run dev -- --hostname 127.0.0.1 --port 3000",
+      "url": "http://localhost:3000",
+      "reuseExistingServer": true,
+      "timeout": 60000
+    }
+  },
+  "suites": [],
+  "errors": [
+    {
+      "message": "Error: Cannot find module '@axe-core/playwright'\nRequire stack:\n- /home/donovan/DouglasMitchell.info/tests/accessibility.spec.js\n- /home/donovan/DouglasMitchell.info/node_modules/playwright/lib/transform/transform.js\n- /home/donovan/DouglasMitchell.info/node_modules/playwright/lib/common/configLoader.js\n- /home/donovan/DouglasMitchell.info/node_modules/playwright/lib/program.js\n- /home/donovan/DouglasMitchell.info/node_modules/@playwright/test/cli.js",
+      "stack": "Error: Cannot find module '@axe-core/playwright'\nRequire stack:\n- /home/donovan/DouglasMitchell.info/tests/accessibility.spec.js\n- /home/donovan/DouglasMitchell.info/node_modules/playwright/lib/transform/transform.js\n- /home/donovan/DouglasMitchell.info/node_modules/playwright/lib/common/configLoader.js\n- /home/donovan/DouglasMitchell.info/node_modules/playwright/lib/program.js\n- /home/donovan/DouglasMitchell.info/node_modules/@playwright/test/cli.js\n    at Object.<anonymous> (/home/donovan/DouglasMitchell.info/tests/accessibility.spec.js:3:20)",
+      "location": {
+        "file": "/home/donovan/DouglasMitchell.info/tests/accessibility.spec.js",
+        "column": 20,
+        "line": 3
+      },
+      "snippet": "\u001b[90m   at \u001b[39maccessibility.spec.js:3\n\n  1 | // @ts-check\n  2 | const { test, expect } = require('@playwright/test');\n> 3 | const AxeBuilder = require('@axe-core/playwright').default;\n    |                    ^\n  4 |\n  5 | test.describe('Accessibility Testing', () => {\n  6 |   test('homepage accessibility compliance', async ({ page }) => {"
+    },
+    {
+      "message": "Cannot use({ defaultBrowserType }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "/home/donovan/DouglasMitchell.info/tests/cross-browser.spec.js",
+        "line": 16,
+        "column": 10
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcross-browser.spec.js:16\n\n  14 | for (const config of browserConfigs) {\n  15 |   test.describe(`Cross-browser compatibility - ${config.name}`, () => {\n> 16 |     test.use(config.use);\n     |          ^\n  17 |\n  18 |     test('layout renders correctly', async ({ page, browserName }) => {\n  19 |       await page.goto('/');"
+    },
+    {
+      "message": "Cannot use({ defaultBrowserType }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "/home/donovan/DouglasMitchell.info/tests/cross-browser.spec.js",
+        "line": 16,
+        "column": 10
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcross-browser.spec.js:16\n\n  14 | for (const config of browserConfigs) {\n  15 |   test.describe(`Cross-browser compatibility - ${config.name}`, () => {\n> 16 |     test.use(config.use);\n     |          ^\n  17 |\n  18 |     test('layout renders correctly', async ({ page, browserName }) => {\n  19 |       await page.goto('/');"
+    },
+    {
+      "message": "Cannot use({ defaultBrowserType }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "/home/donovan/DouglasMitchell.info/tests/cross-browser.spec.js",
+        "line": 16,
+        "column": 10
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcross-browser.spec.js:16\n\n  14 | for (const config of browserConfigs) {\n  15 |   test.describe(`Cross-browser compatibility - ${config.name}`, () => {\n> 16 |     test.use(config.use);\n     |          ^\n  17 |\n  18 |     test('layout renders correctly', async ({ page, browserName }) => {\n  19 |       await page.goto('/');"
+    },
+    {
+      "message": "Cannot use({ defaultBrowserType }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "/home/donovan/DouglasMitchell.info/tests/cross-browser.spec.js",
+        "line": 16,
+        "column": 10
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcross-browser.spec.js:16\n\n  14 | for (const config of browserConfigs) {\n  15 |   test.describe(`Cross-browser compatibility - ${config.name}`, () => {\n> 16 |     test.use(config.use);\n     |          ^\n  17 |\n  18 |     test('layout renders correctly', async ({ page, browserName }) => {\n  19 |       await page.goto('/');"
+    },
+    {
+      "message": "Cannot use({ defaultBrowserType }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "/home/donovan/DouglasMitchell.info/tests/cross-browser.spec.js",
+        "line": 16,
+        "column": 10
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcross-browser.spec.js:16\n\n  14 | for (const config of browserConfigs) {\n  15 |   test.describe(`Cross-browser compatibility - ${config.name}`, () => {\n> 16 |     test.use(config.use);\n     |          ^\n  17 |\n  18 |     test('layout renders correctly', async ({ page, browserName }) => {\n  19 |       await page.goto('/');"
+    },
+    {
+      "message": "Cannot use({ defaultBrowserType }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "/home/donovan/DouglasMitchell.info/tests/cross-browser.spec.js",
+        "line": 16,
+        "column": 10
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcross-browser.spec.js:16\n\n  14 | for (const config of browserConfigs) {\n  15 |   test.describe(`Cross-browser compatibility - ${config.name}`, () => {\n> 16 |     test.use(config.use);\n     |          ^\n  17 |\n  18 |     test('layout renders correctly', async ({ page, browserName }) => {\n  19 |       await page.goto('/');"
+    },
+    {
+      "message": "Cannot use({ defaultBrowserType }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "/home/donovan/DouglasMitchell.info/tests/cross-browser.spec.js",
+        "line": 16,
+        "column": 10
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcross-browser.spec.js:16\n\n  14 | for (const config of browserConfigs) {\n  15 |   test.describe(`Cross-browser compatibility - ${config.name}`, () => {\n> 16 |     test.use(config.use);\n     |          ^\n  17 |\n  18 |     test('layout renders correctly', async ({ page, browserName }) => {\n  19 |       await page.goto('/');"
+    },
+    {
+      "message": "Cannot use({ defaultBrowserType }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "/home/donovan/DouglasMitchell.info/tests/cross-browser.spec.js",
+        "line": 16,
+        "column": 10
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcross-browser.spec.js:16\n\n  14 | for (const config of browserConfigs) {\n  15 |   test.describe(`Cross-browser compatibility - ${config.name}`, () => {\n> 16 |     test.use(config.use);\n     |          ^\n  17 |\n  18 |     test('layout renders correctly', async ({ page, browserName }) => {\n  19 |       await page.goto('/');"
+    },
+    {
+      "message": "Cannot use({ defaultBrowserType }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "/home/donovan/DouglasMitchell.info/tests/cross-browser.spec.js",
+        "line": 16,
+        "column": 10
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcross-browser.spec.js:16\n\n  14 | for (const config of browserConfigs) {\n  15 |   test.describe(`Cross-browser compatibility - ${config.name}`, () => {\n> 16 |     test.use(config.use);\n     |          ^\n  17 |\n  18 |     test('layout renders correctly', async ({ page, browserName }) => {\n  19 |       await page.goto('/');"
+    },
+    {
+      "message": "Cannot use({ defaultBrowserType }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "/home/donovan/DouglasMitchell.info/tests/cross-browser.spec.js",
+        "line": 16,
+        "column": 10
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcross-browser.spec.js:16\n\n  14 | for (const config of browserConfigs) {\n  15 |   test.describe(`Cross-browser compatibility - ${config.name}`, () => {\n> 16 |     test.use(config.use);\n     |          ^\n  17 |\n  18 |     test('layout renders correctly', async ({ page, browserName }) => {\n  19 |       await page.goto('/');"
+    },
+    {
+      "message": "Cannot use({ defaultBrowserType }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "/home/donovan/DouglasMitchell.info/tests/cross-browser.spec.js",
+        "line": 16,
+        "column": 10
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcross-browser.spec.js:16\n\n  14 | for (const config of browserConfigs) {\n  15 |   test.describe(`Cross-browser compatibility - ${config.name}`, () => {\n> 16 |     test.use(config.use);\n     |          ^\n  17 |\n  18 |     test('layout renders correctly', async ({ page, browserName }) => {\n  19 |       await page.goto('/');"
+    },
+    {
+      "message": "Cannot use({ defaultBrowserType }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "/home/donovan/DouglasMitchell.info/tests/cross-browser.spec.js",
+        "line": 16,
+        "column": 10
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcross-browser.spec.js:16\n\n  14 | for (const config of browserConfigs) {\n  15 |   test.describe(`Cross-browser compatibility - ${config.name}`, () => {\n> 16 |     test.use(config.use);\n     |          ^\n  17 |\n  18 |     test('layout renders correctly', async ({ page, browserName }) => {\n  19 |       await page.goto('/');"
+    },
+    {
+      "message": "Cannot use({ defaultBrowserType }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "/home/donovan/DouglasMitchell.info/tests/cross-browser.spec.js",
+        "line": 16,
+        "column": 10
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcross-browser.spec.js:16\n\n  14 | for (const config of browserConfigs) {\n  15 |   test.describe(`Cross-browser compatibility - ${config.name}`, () => {\n> 16 |     test.use(config.use);\n     |          ^\n  17 |\n  18 |     test('layout renders correctly', async ({ page, browserName }) => {\n  19 |       await page.goto('/');"
+    },
+    {
+      "message": "Cannot use({ defaultBrowserType }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "/home/donovan/DouglasMitchell.info/tests/cross-browser.spec.js",
+        "line": 16,
+        "column": 10
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcross-browser.spec.js:16\n\n  14 | for (const config of browserConfigs) {\n  15 |   test.describe(`Cross-browser compatibility - ${config.name}`, () => {\n> 16 |     test.use(config.use);\n     |          ^\n  17 |\n  18 |     test('layout renders correctly', async ({ page, browserName }) => {\n  19 |       await page.goto('/');"
+    },
+    {
+      "message": "Cannot use({ defaultBrowserType }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "/home/donovan/DouglasMitchell.info/tests/cross-browser.spec.js",
+        "line": 16,
+        "column": 10
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcross-browser.spec.js:16\n\n  14 | for (const config of browserConfigs) {\n  15 |   test.describe(`Cross-browser compatibility - ${config.name}`, () => {\n> 16 |     test.use(config.use);\n     |          ^\n  17 |\n  18 |     test('layout renders correctly', async ({ page, browserName }) => {\n  19 |       await page.goto('/');"
+    },
+    {
+      "message": "Cannot use({ defaultBrowserType }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "/home/donovan/DouglasMitchell.info/tests/cross-browser.spec.js",
+        "line": 16,
+        "column": 10
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcross-browser.spec.js:16\n\n  14 | for (const config of browserConfigs) {\n  15 |   test.describe(`Cross-browser compatibility - ${config.name}`, () => {\n> 16 |     test.use(config.use);\n     |          ^\n  17 |\n  18 |     test('layout renders correctly', async ({ page, browserName }) => {\n  19 |       await page.goto('/');"
+    },
+    {
+      "message": "Cannot use({ defaultBrowserType }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "/home/donovan/DouglasMitchell.info/tests/cross-browser.spec.js",
+        "line": 16,
+        "column": 10
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcross-browser.spec.js:16\n\n  14 | for (const config of browserConfigs) {\n  15 |   test.describe(`Cross-browser compatibility - ${config.name}`, () => {\n> 16 |     test.use(config.use);\n     |          ^\n  17 |\n  18 |     test('layout renders correctly', async ({ page, browserName }) => {\n  19 |       await page.goto('/');"
+    },
+    {
+      "message": "Cannot use({ defaultBrowserType }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "/home/donovan/DouglasMitchell.info/tests/cross-browser.spec.js",
+        "line": 16,
+        "column": 10
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcross-browser.spec.js:16\n\n  14 | for (const config of browserConfigs) {\n  15 |   test.describe(`Cross-browser compatibility - ${config.name}`, () => {\n> 16 |     test.use(config.use);\n     |          ^\n  17 |\n  18 |     test('layout renders correctly', async ({ page, browserName }) => {\n  19 |       await page.goto('/');"
+    },
+    {
+      "message": "Cannot use({ defaultBrowserType }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "/home/donovan/DouglasMitchell.info/tests/cross-browser.spec.js",
+        "line": 16,
+        "column": 10
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcross-browser.spec.js:16\n\n  14 | for (const config of browserConfigs) {\n  15 |   test.describe(`Cross-browser compatibility - ${config.name}`, () => {\n> 16 |     test.use(config.use);\n     |          ^\n  17 |\n  18 |     test('layout renders correctly', async ({ page, browserName }) => {\n  19 |       await page.goto('/');"
+    },
+    {
+      "message": "Cannot use({ defaultBrowserType }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "/home/donovan/DouglasMitchell.info/tests/cross-browser.spec.js",
+        "line": 16,
+        "column": 10
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcross-browser.spec.js:16\n\n  14 | for (const config of browserConfigs) {\n  15 |   test.describe(`Cross-browser compatibility - ${config.name}`, () => {\n> 16 |     test.use(config.use);\n     |          ^\n  17 |\n  18 |     test('layout renders correctly', async ({ page, browserName }) => {\n  19 |       await page.goto('/');"
+    },
+    {
+      "message": "Cannot use({ defaultBrowserType }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "/home/donovan/DouglasMitchell.info/tests/cross-browser.spec.js",
+        "line": 16,
+        "column": 10
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcross-browser.spec.js:16\n\n  14 | for (const config of browserConfigs) {\n  15 |   test.describe(`Cross-browser compatibility - ${config.name}`, () => {\n> 16 |     test.use(config.use);\n     |          ^\n  17 |\n  18 |     test('layout renders correctly', async ({ page, browserName }) => {\n  19 |       await page.goto('/');"
+    },
+    {
+      "message": "Cannot use({ defaultBrowserType }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "/home/donovan/DouglasMitchell.info/tests/cross-browser.spec.js",
+        "line": 16,
+        "column": 10
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcross-browser.spec.js:16\n\n  14 | for (const config of browserConfigs) {\n  15 |   test.describe(`Cross-browser compatibility - ${config.name}`, () => {\n> 16 |     test.use(config.use);\n     |          ^\n  17 |\n  18 |     test('layout renders correctly', async ({ page, browserName }) => {\n  19 |       await page.goto('/');"
+    },
+    {
+      "message": "Cannot use({ defaultBrowserType }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "/home/donovan/DouglasMitchell.info/tests/cross-browser.spec.js",
+        "line": 16,
+        "column": 10
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcross-browser.spec.js:16\n\n  14 | for (const config of browserConfigs) {\n  15 |   test.describe(`Cross-browser compatibility - ${config.name}`, () => {\n> 16 |     test.use(config.use);\n     |          ^\n  17 |\n  18 |     test('layout renders correctly', async ({ page, browserName }) => {\n  19 |       await page.goto('/');"
+    },
+    {
+      "message": "Cannot use({ defaultBrowserType }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "/home/donovan/DouglasMitchell.info/tests/cross-browser.spec.js",
+        "line": 16,
+        "column": 10
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcross-browser.spec.js:16\n\n  14 | for (const config of browserConfigs) {\n  15 |   test.describe(`Cross-browser compatibility - ${config.name}`, () => {\n> 16 |     test.use(config.use);\n     |          ^\n  17 |\n  18 |     test('layout renders correctly', async ({ page, browserName }) => {\n  19 |       await page.goto('/');"
+    },
+    {
+      "message": "Cannot use({ defaultBrowserType }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "/home/donovan/DouglasMitchell.info/tests/cross-browser.spec.js",
+        "line": 16,
+        "column": 10
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcross-browser.spec.js:16\n\n  14 | for (const config of browserConfigs) {\n  15 |   test.describe(`Cross-browser compatibility - ${config.name}`, () => {\n> 16 |     test.use(config.use);\n     |          ^\n  17 |\n  18 |     test('layout renders correctly', async ({ page, browserName }) => {\n  19 |       await page.goto('/');"
+    },
+    {
+      "message": "Cannot use({ defaultBrowserType }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "/home/donovan/DouglasMitchell.info/tests/cross-browser.spec.js",
+        "line": 16,
+        "column": 10
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcross-browser.spec.js:16\n\n  14 | for (const config of browserConfigs) {\n  15 |   test.describe(`Cross-browser compatibility - ${config.name}`, () => {\n> 16 |     test.use(config.use);\n     |          ^\n  17 |\n  18 |     test('layout renders correctly', async ({ page, browserName }) => {\n  19 |       await page.goto('/');"
+    },
+    {
+      "message": "Cannot use({ defaultBrowserType }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "/home/donovan/DouglasMitchell.info/tests/cross-browser.spec.js",
+        "line": 16,
+        "column": 10
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcross-browser.spec.js:16\n\n  14 | for (const config of browserConfigs) {\n  15 |   test.describe(`Cross-browser compatibility - ${config.name}`, () => {\n> 16 |     test.use(config.use);\n     |          ^\n  17 |\n  18 |     test('layout renders correctly', async ({ page, browserName }) => {\n  19 |       await page.goto('/');"
+    },
+    {
+      "message": "Cannot use({ defaultBrowserType }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "/home/donovan/DouglasMitchell.info/tests/cross-browser.spec.js",
+        "line": 16,
+        "column": 10
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcross-browser.spec.js:16\n\n  14 | for (const config of browserConfigs) {\n  15 |   test.describe(`Cross-browser compatibility - ${config.name}`, () => {\n> 16 |     test.use(config.use);\n     |          ^\n  17 |\n  18 |     test('layout renders correctly', async ({ page, browserName }) => {\n  19 |       await page.goto('/');"
+    },
+    {
+      "message": "Cannot use({ defaultBrowserType }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "/home/donovan/DouglasMitchell.info/tests/cross-browser.spec.js",
+        "line": 16,
+        "column": 10
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcross-browser.spec.js:16\n\n  14 | for (const config of browserConfigs) {\n  15 |   test.describe(`Cross-browser compatibility - ${config.name}`, () => {\n> 16 |     test.use(config.use);\n     |          ^\n  17 |\n  18 |     test('layout renders correctly', async ({ page, browserName }) => {\n  19 |       await page.goto('/');"
+    },
+    {
+      "message": "Cannot use({ defaultBrowserType }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "/home/donovan/DouglasMitchell.info/tests/cross-browser.spec.js",
+        "line": 16,
+        "column": 10
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcross-browser.spec.js:16\n\n  14 | for (const config of browserConfigs) {\n  15 |   test.describe(`Cross-browser compatibility - ${config.name}`, () => {\n> 16 |     test.use(config.use);\n     |          ^\n  17 |\n  18 |     test('layout renders correctly', async ({ page, browserName }) => {\n  19 |       await page.goto('/');"
+    },
+    {
+      "message": "Cannot use({ defaultBrowserType }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "/home/donovan/DouglasMitchell.info/tests/cross-browser.spec.js",
+        "line": 16,
+        "column": 10
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcross-browser.spec.js:16\n\n  14 | for (const config of browserConfigs) {\n  15 |   test.describe(`Cross-browser compatibility - ${config.name}`, () => {\n> 16 |     test.use(config.use);\n     |          ^\n  17 |\n  18 |     test('layout renders correctly', async ({ page, browserName }) => {\n  19 |       await page.goto('/');"
+    },
+    {
+      "message": "Cannot use({ defaultBrowserType }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "/home/donovan/DouglasMitchell.info/tests/cross-browser.spec.js",
+        "line": 16,
+        "column": 10
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcross-browser.spec.js:16\n\n  14 | for (const config of browserConfigs) {\n  15 |   test.describe(`Cross-browser compatibility - ${config.name}`, () => {\n> 16 |     test.use(config.use);\n     |          ^\n  17 |\n  18 |     test('layout renders correctly', async ({ page, browserName }) => {\n  19 |       await page.goto('/');"
+    },
+    {
+      "message": "Cannot use({ defaultBrowserType }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "/home/donovan/DouglasMitchell.info/tests/cross-browser.spec.js",
+        "line": 16,
+        "column": 10
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcross-browser.spec.js:16\n\n  14 | for (const config of browserConfigs) {\n  15 |   test.describe(`Cross-browser compatibility - ${config.name}`, () => {\n> 16 |     test.use(config.use);\n     |          ^\n  17 |\n  18 |     test('layout renders correctly', async ({ page, browserName }) => {\n  19 |       await page.goto('/');"
+    },
+    {
+      "message": "Cannot use({ defaultBrowserType }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "/home/donovan/DouglasMitchell.info/tests/cross-browser.spec.js",
+        "line": 16,
+        "column": 10
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcross-browser.spec.js:16\n\n  14 | for (const config of browserConfigs) {\n  15 |   test.describe(`Cross-browser compatibility - ${config.name}`, () => {\n> 16 |     test.use(config.use);\n     |          ^\n  17 |\n  18 |     test('layout renders correctly', async ({ page, browserName }) => {\n  19 |       await page.goto('/');"
+    },
+    {
+      "message": "Cannot use({ defaultBrowserType }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "/home/donovan/DouglasMitchell.info/tests/cross-browser.spec.js",
+        "line": 16,
+        "column": 10
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcross-browser.spec.js:16\n\n  14 | for (const config of browserConfigs) {\n  15 |   test.describe(`Cross-browser compatibility - ${config.name}`, () => {\n> 16 |     test.use(config.use);\n     |          ^\n  17 |\n  18 |     test('layout renders correctly', async ({ page, browserName }) => {\n  19 |       await page.goto('/');"
+    },
+    {
+      "message": "Cannot use({ defaultBrowserType }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "/home/donovan/DouglasMitchell.info/tests/cross-browser.spec.js",
+        "line": 16,
+        "column": 10
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcross-browser.spec.js:16\n\n  14 | for (const config of browserConfigs) {\n  15 |   test.describe(`Cross-browser compatibility - ${config.name}`, () => {\n> 16 |     test.use(config.use);\n     |          ^\n  17 |\n  18 |     test('layout renders correctly', async ({ page, browserName }) => {\n  19 |       await page.goto('/');"
+    },
+    {
+      "message": "Cannot use({ defaultBrowserType }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "/home/donovan/DouglasMitchell.info/tests/cross-browser.spec.js",
+        "line": 16,
+        "column": 10
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcross-browser.spec.js:16\n\n  14 | for (const config of browserConfigs) {\n  15 |   test.describe(`Cross-browser compatibility - ${config.name}`, () => {\n> 16 |     test.use(config.use);\n     |          ^\n  17 |\n  18 |     test('layout renders correctly', async ({ page, browserName }) => {\n  19 |       await page.goto('/');"
+    },
+    {
+      "message": "Cannot use({ defaultBrowserType }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "/home/donovan/DouglasMitchell.info/tests/cross-browser.spec.js",
+        "line": 16,
+        "column": 10
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcross-browser.spec.js:16\n\n  14 | for (const config of browserConfigs) {\n  15 |   test.describe(`Cross-browser compatibility - ${config.name}`, () => {\n> 16 |     test.use(config.use);\n     |          ^\n  17 |\n  18 |     test('layout renders correctly', async ({ page, browserName }) => {\n  19 |       await page.goto('/');"
+    },
+    {
+      "message": "Cannot use({ defaultBrowserType }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "/home/donovan/DouglasMitchell.info/tests/cross-browser.spec.js",
+        "line": 16,
+        "column": 10
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcross-browser.spec.js:16\n\n  14 | for (const config of browserConfigs) {\n  15 |   test.describe(`Cross-browser compatibility - ${config.name}`, () => {\n> 16 |     test.use(config.use);\n     |          ^\n  17 |\n  18 |     test('layout renders correctly', async ({ page, browserName }) => {\n  19 |       await page.goto('/');"
+    },
+    {
+      "message": "Cannot use({ defaultBrowserType }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "/home/donovan/DouglasMitchell.info/tests/cross-browser.spec.js",
+        "line": 16,
+        "column": 10
+      },
+      "snippet": "\u001b[90m   at \u001b[39mcross-browser.spec.js:16\n\n  14 | for (const config of browserConfigs) {\n  15 |   test.describe(`Cross-browser compatibility - ${config.name}`, () => {\n> 16 |     test.use(config.use);\n     |          ^\n  17 |\n  18 |     test('layout renders correctly', async ({ page, browserName }) => {\n  19 |       await page.goto('/');"
+    },
+    {
+      "message": "TypeError: Cannot convert undefined or null to object",
+      "stack": "TypeError: Cannot convert undefined or null to object"
+    }
+  ],
+  "stats": {
+    "startTime": "2025-09-20T04:22:04.056Z",
+    "duration": 221.50599999999997,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

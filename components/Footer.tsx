@@ -1,12 +1,18 @@
 import Link from 'next/link'
 import { contactChannels, metrics } from '@/content/site-data'
 
+const socials = [
+  { label: 'GitHub', href: 'https://github.com/DouglasSMitchell' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/douglascmitchell/' },
+  { label: 'X (Twitter)', href: 'https://twitter.com/DouglasCSM' }
+]
+
 export function Footer() {
   return (
     <footer className="site-footer" role="contentinfo">
-      <div className="container footer-grid">
+      <div className="footer-grid">
         <div>
-          <h2 className="footer-heading">Signal checks</h2>
+          <h2 className="footer-heading">Trust signals</h2>
           <ul className="metric-list">
             {metrics.map(metric => (
               <li key={metric.name}>
@@ -18,28 +24,23 @@ export function Footer() {
           </ul>
         </div>
         <div>
-          <h2 className="footer-heading">Stay connected</h2>
+          <h2 className="footer-heading">Presence</h2>
           <ul className="contact-list">
             <li>
               <Link href={`mailto:${contactChannels.email}`}>{contactChannels.email}</Link>
             </li>
-            <li>
-              <Link href={contactChannels.github}>GitHub</Link>
-            </li>
-            <li>
-              <Link href={contactChannels.linkedin}>LinkedIn</Link>
-            </li>
-            <li>
-              <Link href={contactChannels.twitter}>X (Twitter)</Link>
-            </li>
+            <li>{contactChannels.location}</li>
+            {socials.map(social => (
+              <li key={social.href}>
+                <Link href={social.href}>{social.label}</Link>
+              </li>
+            ))}
           </ul>
         </div>
         <div>
-          <h2 className="footer-heading">Notes</h2>
-          <p className="footer-note">
-            Built as a personal lab for logistics storytelling. Privacy-respecting analytics only.
-          </p>
-          <p className="footer-note">© {new Date().getFullYear()} Douglas Mitchell · Halcyon Logistics Dispatch.</p>
+          <h2 className="footer-heading">Assurances</h2>
+          <p className="footer-note">Privacy-preserving analytics, MFA everywhere, and transparent data practices.</p>
+          <p className="footer-note">© {new Date().getFullYear()} Douglas Mitchell · All systems monitored.</p>
         </div>
       </div>
     </footer>

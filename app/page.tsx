@@ -1,240 +1,396 @@
+'use client'
+
 import Link from 'next/link'
-import TopicShowcase from '@/components/TopicShowcase'
-import SignalController from '@/components/SignalController'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import {
   heroContent,
-  dispatches,
-  bentoGridItems,
-  showcaseTopics,
-  mediaReleases,
-  faqEntries,
-  aboutCopy,
-  contactChannels
+  kpiStats,
+  toolkitStacks,
+  projectShowcase,
+  projectMetrics as projectMetricFallback,
+  skillTaxonomy,
+  writingDomains,
+  labStreams,
+  communityHighlights,
+  testimonials,
+  watcherStatement,
+  bios,
+  aiPillars,
+  skillProofs
 } from '@/content/site-data'
+import { KpiCounters } from '@/components/KpiCounters'
+import { AIProjectIdeator } from '@/components/AIProjectIdeator'
+import { GitHubFeed } from '@/components/GitHubFeed'
+import { CustomCursor } from '@/components/CustomCursor'
+
+interface ProjectMetric {
+  id: string
+  label: string
+  value: number
+  unit: string
+  detail: string
+}
+
+gsap.registerPlugin(ScrollTrigger)
 
 export default function Page() {
+  const rootRef = useRef<HTMLDivElement | null>(null)
+  const [metrics, setMetrics] = useState<ProjectMetric[]>(projectMetricFallback)
+
+  const heroLetters = useMemo(
+    () =>
+      heroContent.headline.split('').map((char, index) => (
+        <span key={`${char}-${index}`} className="hero-letter">
+          {char === ' ' ? '\u00A0' : char}
+        </span>
+      )),
+    []
+  )
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+
+    const ctx = gsap.context(() => {
+      gsap.from('.hero-letter', {
+        yPercent: 120,
+        opacity: 0,
+        rotateX: -50,
+        delay: 0.3,
+        duration: 1.5,
+        ease: 'power4.out',
+        stagger: 0.05
+      })
+
+      gsap.utils.toArray<HTMLElement>('.axiom-section').forEach(section => {
+        const inner = section.querySelector('.axiom-section__inner')
+        if (!inner) return
+        gsap.fromTo(
+          inner,
+          { opacity: 0, y: 56 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: 'cubic-bezier(0.4, 0, 0.2, 1)',
+            scrollTrigger: {
+              trigger: section,
+              start: 'top 72%',
+              toggleActions: 'play none none reverse'
+            }
+          }
+        )
+      })
+
+      gsap.utils.toArray<HTMLElement>('[data-parallax]').forEach(layer => {
+        const speed = Number(layer.dataset.parallax) || 0.1
+        gsap.to(layer, {
+          yPercent: speed * 100,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: layer,
+            scrub: true
+          }
+        })
+      })
+    }, rootRef)
+
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          entry.target.classList.toggle('is-visible', entry.isIntersecting)
+        })
+      },
+      { threshold: 0.7 }
+    )
+
+    rootRef.current?.querySelectorAll('.axiom-section').forEach(section => observer.observe(section))
+
+    return () => {
+      ctx.revert()
+      observer.disconnect()
+    }
+  }, [])
+
+  useEffect(() => {
+    let cancelled = false
+    ;(async () => {
+      try {
+        const response = await fetch('/api/metrics', { cache: 'no-store' })
+        if (!response.ok) return
+        const payload = (await response.json()) as { metrics?: ProjectMetric[] }
+        if (!cancelled && payload.metrics?.length) {
+          setMetrics(payload.metrics)
+        }
+      } catch (error) {
+        // Swallow errors and retain fallback metrics
+      }
+    })()
+
+    return () => {
+      cancelled = true
+    }
+  }, [])
+
   return (
-    <main>
-      <HeroSection />
-      <DispatchSection />
-      <GridSection />
-      <TopicsSection />
-      <MediaSection />
-      <AboutSection />
-      <FaqSection />
-      <SubscribeSection />
+    <main ref={rootRef} className="axiom-main">
+      <CustomCursor />
+      <div className="axiom-background">
+        <div className="axiom-background__halo" data-parallax="0.12" />
+        <div className="axiom-background__grid" data-parallax="-0.08" />
+      </div>
+
+      <section id="home" className="axiom-section axiom-section--hero">
+        <div className="axiom-section__inner">
+          <header className="axiom-section__header">
+            <p className="axiom-eyebrow">{heroContent.kicker}</p>
+            <h1 className="axiom-hero__headline" aria-label={heroContent.headline}>
+              {heroLetters}
+            </h1>
+            <p className="axiom-hero__subtitle">{heroContent.tagline}</p>
+            <p className="axiom-hero__description">{heroContent.subtext}</p>
+            <p className="axiom-hero__description axiom-hero__description--muted">{heroContent.description}</p>
+            <div className="axiom-hero__actions">
+              <Link href={heroContent.primaryCta.href} className="axiom-button axiom-button--primary">
+                {heroContent.primaryCta.label}
+              </Link>
+              <Link href={heroContent.secondaryCta.href} className="axiom-button axiom-button--ghost">
+                {heroContent.secondaryCta.label}
+              </Link>
+            </div>
+          </header>
+          <KpiCounters stats={kpiStats} />
+          <div className="toolkit-grid">
+            {toolkitStacks.map(stack => (
+              <article key={stack.title} className="toolkit-card">
+                <h3>{stack.title}</h3>
+                <ul>
+                  {stack.tools.map(tool => (
+                    <li key={tool}>{tool}</li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" className="axiom-section axiom-section--work">
+        <div className="axiom-section__inner">
+          <header className="axiom-section__header">
+            <p className="axiom-eyebrow">Projects</p>
+            <h2 className="axiom-heading">Precision systems with measurable outcomes.</h2>
+            <p className="axiom-body">
+              Each case study fuses architecture, validation, and ethical guardrails. Hover to reveal stacks and validation rituals.
+            </p>
+          </header>
+          <div className="axiom-projects">
+            {projectShowcase.map(project => (
+              <article key={project.id} className={`axiom-project-card axiom-project-card--${project.slug}`}>
+                <div className="axiom-project-card__visual" aria-hidden>
+                  <div className="axiom-project-card__blur" />
+                  <div className="axiom-project-card__overlay">
+                    <p>{project.architecture}</p>
+                    <ul>
+                      {project.tech.map(tool => (
+                        <li key={tool}>{tool}</li>
+                      ))}
+                    </ul>
+                    {project.links ? (
+                      <div className="axiom-project-card__links">
+                        {project.links.map(link => (
+                          <Link key={link.href} href={link.href} className="axiom-project-card__link" target="_blank" rel="noreferrer">
+                            {link.label}
+                          </Link>
+                        ))}
+                      </div>
+                    ) : null}
+                  </div>
+                </div>
+                <div className="axiom-project-card__copy">
+                  <p className="axiom-project-card__format">{project.format}</p>
+                  <h3>{project.title}</h3>
+                  <p>{project.summary}</p>
+                  <div className="axiom-project-card__meta">
+                    <span>{project.outcomes}</span>
+                    <div className="axiom-project-card__tags">
+                      {project.tags.map(tag => (
+                        <span key={tag}>{tag}</span>
+                      ))}
+                    </div>
+                  </div>
+                  <Link href={project.href} className="axiom-button axiom-button--inline">
+                    Read architecture & validation
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </div>
+          <aside className="axiom-metrics">
+            {metrics.map(metric => (
+              <div key={metric.id} className="axiom-metric">
+                <p className="axiom-metric__value">
+                  {metric.value}
+                  <span>{metric.unit}</span>
+                </p>
+                <p className="axiom-metric__label">{metric.label}</p>
+                <p className="axiom-metric__detail">{metric.detail}</p>
+              </div>
+            ))}
+          </aside>
+        </div>
+      </section>
+
+      <section id="about" className="axiom-section axiom-section--about">
+        <div className="axiom-section__inner">
+          <header className="axiom-section__header">
+            <p className="axiom-eyebrow">About</p>
+            <h2 className="axiom-heading">{bios.short}</h2>
+            <p className="axiom-body">{bios.medium}</p>
+          </header>
+          <div className="testimonial-grid">
+            {testimonials.map(testimonial => (
+              <blockquote key={testimonial.id} className="testimonial-card">
+                <p>“{testimonial.quote}”</p>
+                <footer>
+                  <span>{testimonial.author}</span>
+                  <span>{testimonial.role}</span>
+                </footer>
+              </blockquote>
+            ))}
+          </div>
+          <div className="watcher">{watcherStatement}</div>
+        </div>
+      </section>
+
+      <section id="skills" className="axiom-section axiom-section--skills">
+        <div className="axiom-section__inner">
+          <header className="axiom-section__header">
+            <p className="axiom-eyebrow">Skills</p>
+            <h2 className="axiom-heading">Cross-domain mastery anchored in safety.</h2>
+            <p className="axiom-body">
+              Systems thinking, security hygiene, and conscious network leadership keep every deployment grounded in measurable trust.
+            </p>
+          </header>
+          <div className="skills-grid">
+            {skillTaxonomy.map(skill => (
+              <article key={skill.id} className="skill-card">
+                <h3>{skill.title}</h3>
+                <p>{skill.summary}</p>
+                <ul>
+                  {skill.bullets.map(item => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+          <AIProjectIdeator pillars={aiPillars} skills={skillProofs} />
+        </div>
+      </section>
+
+      <section id="writing" className="axiom-section axiom-section--writing">
+        <div className="axiom-section__inner">
+          <header className="axiom-section__header">
+            <p className="axiom-eyebrow">Writing</p>
+            <h2 className="axiom-heading">Dispatches documenting evidence and vigilance.</h2>
+            <p className="axiom-body">
+              Essays, research logs, and influence guides connect architecture thinking with community outcomes.
+            </p>
+          </header>
+          <div className="writing-grid">
+            {writingDomains.map(domain => (
+              <article key={domain.id} className="writing-card">
+                <h3>{domain.title}</h3>
+                <p>{domain.summary}</p>
+                <ul>
+                  {domain.prompts.map(prompt => (
+                    <li key={prompt}>{prompt}</li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+          <GitHubFeed />
+        </div>
+      </section>
+
+      <section id="lab" className="axiom-section axiom-section--lab">
+        <div className="axiom-section__inner">
+          <header className="axiom-section__header">
+            <p className="axiom-eyebrow">Lab</p>
+            <h2 className="axiom-heading">Research streams keeping the axiom protocol sharp.</h2>
+            <p className="axiom-body">
+              Benchmarks, pipeline experiments, and security drills are documented with reproducibility checklists.
+            </p>
+          </header>
+          <div className="lab-grid">
+            {labStreams.map(stream => (
+              <article key={stream.id} className="lab-card">
+                <h3>{stream.title}</h3>
+                <p>{stream.description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="community" className="axiom-section axiom-section--community">
+        <div className="axiom-section__inner">
+          <header className="axiom-section__header">
+            <p className="axiom-eyebrow">Community</p>
+            <h2 className="axiom-heading">Conscious network infrastructure in motion.</h2>
+            <p className="axiom-body">
+              Environmental justice, coalition enablement, and cross-cluster trust-building are engineered with the same rigor as production systems.
+            </p>
+          </header>
+          <div className="community-grid">
+            {communityHighlights.map(highlight => (
+              <article key={highlight.id} className="community-card">
+                <h3>{highlight.title}</h3>
+                <p>{highlight.summary}</p>
+                <span>{highlight.cta}</span>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" className="axiom-section axiom-section--contact">
+        <div className="axiom-section__inner">
+          <header className="axiom-section__header">
+            <p className="axiom-eyebrow">Contact</p>
+            <h2 className="axiom-heading">Bring the next dispatch to life.</h2>
+            <p className="axiom-body">
+              The portal routes straight to Douglas. Expect a response inside 48 hours with integration notes and validation pathways.
+            </p>
+          </header>
+          <form className="axiom-form" action="/api/subscribe" method="post">
+            <div className="axiom-form__group">
+              <input id="name" name="name" type="text" placeholder=" " required />
+              <label htmlFor="name">Name</label>
+              <span className="axiom-form__hint">Who should I coordinate with?</span>
+            </div>
+            <div className="axiom-form__group">
+              <input id="email" name="email" type="email" placeholder=" " required />
+              <label htmlFor="email">Email</label>
+              <span className="axiom-form__hint">Replies land within 48 hours.</span>
+            </div>
+            <div className="axiom-form__group axiom-form__group--full">
+              <textarea id="context" name="context" placeholder=" " rows={4} required />
+              <label htmlFor="context">Mission brief</label>
+              <span className="axiom-form__hint">Share goals, scope, timeline, and Neon requirements.</span>
+            </div>
+            <div className="axiom-form__actions">
+              <button type="submit" className="axiom-button axiom-button--primary" data-loading-text="Sending…">
+                Initiate contact
+              </button>
+            </div>
+            <p className="axiom-form__footnote">Privacy-first analytics. Secrets stored in secure vaults. Reversible delivery guaranteed.</p>
+          </form>
+        </div>
+      </section>
     </main>
-  )
-}
-
-function HeroSection() {
-  return (
-    <section id="home" className="hero">
-      <div className="container hero__grid">
-        <header className="hero__copy">
-          <p className="hero__eyebrow">{heroContent.initializationLabel}</p>
-          <div className="hero__status" aria-hidden>
-            <span>{heroContent.initializationValue}</span>
-            <span>complete</span>
-          </div>
-          <h1>{heroContent.title}</h1>
-          <p className="hero__subtitle">{heroContent.subtitle}</p>
-          <p className="hero__description">{heroContent.description}</p>
-          <div className="hero__actions">
-            <Link href={heroContent.primaryCta.href} className="button button--primary">
-              {heroContent.primaryCta.label}
-            </Link>
-            <Link href={heroContent.secondaryCta.href} className="button">
-              {heroContent.secondaryCta.label}
-            </Link>
-          </div>
-        </header>
-        <aside className="hero__meta" aria-label="Featured dispatch highlight">
-          <div className="hero__meta-card">
-            <p className="hero__meta-label">Dispatch console</p>
-            <p className="hero__meta-text">Personal atlas documenting logistics futures through essays, prototypes, and audio.</p>
-            <p className="hero__meta-footnote">Hover over cards below to reveal contextual signals.</p>
-          </div>
-        </aside>
-      </div>
-    </section>
-  )
-}
-
-function DispatchSection() {
-  return (
-    <section id="dispatches" className="section">
-      <div className="container section__header">
-        <div>
-          <p className="section__eyebrow">Latest dispatches</p>
-          <h2 className="section__title">Multi-format releases curated by Douglas Mitchell</h2>
-        </div>
-        <p className="section__description">
-          Each entry blends logistics research with tactile storytelling — essays, audio logs, and interface studies that trace the
-          Halcyon network.
-        </p>
-      </div>
-      <div className="container dispatch-grid">
-        {dispatches.map(dispatch => (
-          <article key={dispatch.id} className="dispatch-card">
-            <header>
-              <p className="dispatch-card__format">{dispatch.format}</p>
-              <h3>{dispatch.title}</h3>
-            </header>
-            <p className="dispatch-card__summary">{dispatch.summary}</p>
-            <ul className="dispatch-card__tags">
-              {dispatch.tags.map(tag => (
-                <li key={tag}>{tag}</li>
-              ))}
-            </ul>
-            <Link href={dispatch.href} className="dispatch-card__link">
-              Open dispatch
-            </Link>
-          </article>
-        ))}
-      </div>
-    </section>
-  )
-}
-
-function GridSection() {
-  return (
-    <section id="grid" className="section">
-      <div className="container section__header">
-        <div>
-          <p className="section__eyebrow">Bento grid</p>
-          <h2 className="section__title">Brand assets & interface elements assembled in harmony</h2>
-        </div>
-        <p className="section__description">
-          Inspired by Halcyon Logistics branding, each tile holds a fragment — typography samples, device mockups, and soft alerts aligned
-          for rapid comprehension.
-        </p>
-      </div>
-      <div className="container bento-grid">
-        {bentoGridItems.map(item => (
-          <article key={item.id} className={`bento-grid__item bento-grid__item--${item.size}`}>
-            <p className="bento-grid__eyebrow">{item.eyebrow}</p>
-            <h3>{item.title}</h3>
-            <p>{item.description}</p>
-          </article>
-        ))}
-      </div>
-    </section>
-  )
-}
-
-function TopicsSection() {
-  return (
-    <section id="topics" className="section">
-      <div className="container topics-section">
-        <div className="topics-section__copy">
-          <p className="section__eyebrow">Topics</p>
-          <h2 className="section__title">Rotate between systems, UI, and media focus</h2>
-          <p className="section__description">
-            Toggle the showcase to surface different strands of the blog — everything is designed to feel intentional and calm, even when the
-            subject matter spans complex logistics.
-          </p>
-        </div>
-        <TopicShowcase topics={showcaseTopics} />
-        <SignalController />
-      </div>
-    </section>
-  )
-}
-
-function MediaSection() {
-  return (
-    <section id="media" className="section">
-      <div className="container section__header">
-        <div>
-          <p className="section__eyebrow">Media bay</p>
-          <h2 className="section__title">Different channels, one narrative</h2>
-        </div>
-        <p className="section__description">
-          Video, audio, and photography flow through the same calm interface language. Future integrations will stream live via Mux and swap in
-          seconds using the modular deck.
-        </p>
-      </div>
-      <div className="container media-grid">
-        {mediaReleases.map(media => (
-          <article key={media.id} className="media-card">
-            <p className="media-card__type">{media.type}</p>
-            <h3>{media.title}</h3>
-            <p>{media.description}</p>
-          </article>
-        ))}
-      </div>
-    </section>
-  )
-}
-
-function AboutSection() {
-  return (
-    <section id="about" className="section">
-      <div className="container about-panel">
-        <div className="about-panel__copy">
-          <p className="section__eyebrow">About</p>
-          <h2 className="section__title">{aboutCopy.headline}</h2>
-          <p className="section__description">{aboutCopy.body}</p>
-        </div>
-        <div className="about-panel__details">
-          <p className="about-panel__note">Philosophy</p>
-          <ul>
-            <li>Calm is a design principle.</li>
-            <li>Evidence beats hype.</li>
-            <li>Community is the operating system.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-  )
-}
-
-function FaqSection() {
-  return (
-    <section id="faq" className="section">
-      <div className="container section__header">
-        <div>
-          <p className="section__eyebrow">FAQ</p>
-          <h2 className="section__title">Common questions about the dispatch</h2>
-        </div>
-        <p className="section__description">
-          Transparent, welcoming, and clear. Each response keeps the Halcyon ethos grounded in care and rigor.
-        </p>
-      </div>
-      <div className="container faq-list">
-        {faqEntries.map(entry => (
-          <details key={entry.question} className="faq-item">
-            <summary>{entry.question}</summary>
-            <p>{entry.answer}</p>
-          </details>
-        ))}
-      </div>
-    </section>
-  )
-}
-
-function SubscribeSection() {
-  return (
-    <section id="contact" className="section section--subscribe">
-      <div className="container subscribe-panel">
-        <div>
-          <p className="section__eyebrow">Subscribe</p>
-          <h2 className="section__title">Join the manifest</h2>
-          <p className="section__description">
-            Receive dispatch alerts, behind-the-scenes prototypes, and invitations to collaborative logistics sessions.
-          </p>
-        </div>
-        <form className="subscribe-form" action="/api/subscribe" method="post">
-          <label htmlFor="email" className="subscribe-form__label">
-            Email address
-          </label>
-          <input id="email" type="email" name="email" placeholder="you@example.com" required />
-          <button type="submit" className="button button--primary">
-            Join manifest
-          </button>
-        </form>
-      </div>
-    </section>
   )
 }

@@ -1,7 +1,12 @@
 'use client'
 
 import { useMemo, useState } from 'react'
-import { immersionStages } from '@/content/site-data'
+
+const immersionStages = [
+  { max: 30, label: 'Observation mode — soft ambient telemetry.' },
+  { max: 70, label: 'Ops mode — balanced throughput, stay aligned.' },
+  { max: 100, label: 'Alert mode — full-spectrum response engaged.' }
+]
 
 export default function SignalController() {
   const [intensity, setIntensity] = useState<number>(60)

@@ -3,9 +3,10 @@ import type { Metadata } from 'next'
 import { NavBar } from '@/components/NavBar'
 import { Footer } from '@/components/Footer'
 import { seo } from '@/content/site-data'
-import { Inter } from 'next/font/google'
+import { Inter, Space_Grotesk } from 'next/font/google'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
+const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-space-grotesk' })
 
 export const metadata: Metadata = {
   title: seo.title,
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.className} site-body`}>
+      <body className={`${inter.variable} ${spaceGrotesk.variable} site-body`}>
         <NavBar />
         {children}
         <Footer />
