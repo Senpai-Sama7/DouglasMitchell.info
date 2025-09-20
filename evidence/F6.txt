@@ -1,0 +1,19 @@
+$ npx --no-install next build
+  ▲ Next.js 14.2.32
+   Creating an optimized production build ...
+   Generating static pages (2/10)  [=   ]
+Error occurred prerendering page "/api/gh". Read more: https://nextjs.org/docs/messages/prerender-error
+
+TypeError: fetch failed
+    at node:internal/deps/undici/undici:13510:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async u (/workspace/DouglasMitchell.info/.next/server/app/api/gh/route.js:1:667)
+    at async /workspace/DouglasMitchell.info/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:6:38411
+    at async e_.execute (/workspace/DouglasMitchell.info/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:6:27880)
+    at async e_.handle (/workspace/DouglasMitchell.info/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:6:39943)
+    at async exportAppRoute (/workspace/DouglasMitchell.info/node_modules/next/dist/export/routes/app-route.js:77:26)
+    at async exportPageImpl (/workspace/DouglasMitchell.info/node_modules/next/dist/export/worker.js:175:20)
+    at async Span.traceAsyncFn (/workspace/DouglasMitchell.info/node_modules/next/dist/trace/trace.js:154:20)
+    at async Object.exportPage (/workspace/DouglasMitchell.info/node_modules/next/dist/export/worker.js:237:20)
+> Export encountered errors on following paths:
+        /api/gh/route: /api/gh

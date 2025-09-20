@@ -6,7 +6,7 @@ import { immersionStages } from '@/content/site-data'
 export default function SignalController() {
   const [intensity, setIntensity] = useState<number>(60)
 
-  const status = useMemo(() => {b
+  const status = useMemo(() => {
     for (const stage of immersionStages) {
       if (intensity <= stage.max) {
         return stage.label
