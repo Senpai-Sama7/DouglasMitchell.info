@@ -9,8 +9,17 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ status: 'UNVERIFIED', reason: 'Invalid or missing token' }, { status: 401 })
   }
 
-  const { timingSafeEqual } = await import('crypto');
-  const tokenBuffer = Buffer.from(body.token);
+  const rawPath = body.path ?? '/'
+  const path = rawPath.startsWith('/') ? rawPath : `/${rawPath}`
+
+  // Allow-list of safe prefixes to revalidate
+  const allowedPrefixes = ['/', '/dispatches', '/media', '/about', '/contact', '/resume']
+  const isAllowed = allowedPrefixes.some(prefix => path === prefix || path.startsWith(`${prefix}/`))
+
+  if (!isAllowed) {
+    return NextResponse.json({ status: 'UNVERIFIED', reason: 'Path not allowed' }, { status: 400 })
+  }
+
   const secretBuffer = Buffer.from(secret);
 
   if (tokenBuffer.length !== secretBuffer.length || !timingSafeEqual(tokenBuffer, secretBuffer)) {
