@@ -1,39 +1,80 @@
-import { NextRequest, NextResponse } from 'next/server'
+// app/api/revalidate/route.ts
+import { NextResponse, NextRequest } from 'next/server'
 import { revalidatePath } from 'next/cache'
+import { timingSafeEqual } from 'crypto'
 
-export async function POST(request: NextRequest) {
-  const secret = process.env.REVALIDATE_SECRET
-  const body = await request.json().catch(() => ({})) as { path?: string; token?: string }
+type Body = {
+  token?: string
+  path?: string
+}
 
-  if (!secret || !body.token) {
-    return NextResponse.json({ status: 'UNVERIFIED', reason: 'Invalid or missing token' }, { status: 401 })
-  }
-
-  const rawPath = body.path ?? '/'
-  const path = rawPath.startsWith('/') ? rawPath : `/${rawPath}`
-
-  // Allow-list of safe prefixes to revalidate
-  const allowedPrefixes = ['/', '/dispatches', '/media', '/about', '/contact', '/resume']
-  const isAllowed = allowedPrefixes.some(prefix => path === prefix || path.startsWith(`${prefix}/`))
-
-  if (!isAllowed) {
-    return NextResponse.json({ status: 'UNVERIFIED', reason: 'Path not allowed' }, { status: 400 })
-  }
-
-  const secretBuffer = Buffer.from(secret);
-
-  if (tokenBuffer.length !== secretBuffer.length || !timingSafeEqual(tokenBuffer, secretBuffer)) {
-    return NextResponse.json({ status: 'UNVERIFIED', reason: 'Invalid or missing token' }, { status: 401 })
-  }
-
-  const path = body.path ?? '/'
-
+export async function POST(req: NextRequest) {
   try {
-    revalidatePath(path)
-  } catch (error) {
-    console.error('Revalidate trigger failed', error)
-    return NextResponse.json({ status: 'UNVERIFIED', reason: 'Revalidate invocation failed' }, { status: 500 })
-  }
+    const body = (await req.json()) as Body
 
-  return NextResponse.json({ status: 'VERIFIED', path })
+    const token = body?.token ?? req.nextUrl.searchParams.get('token') ?? ''
+    const secret = process.env.REVALIDATE_TOKEN ?? ''
+
+    if (!secret) {
+      return NextResponse.json(
+        { status: 'ERROR', reason: 'REVALIDATE_TOKEN not set' },
+        { status: 500 }
+      )
+    }
+    if (!token) {
+      return NextResponse.json(
+        { status: 'UNVERIFIED', reason: 'Missing token' },
+        { status: 401 }
+      )
+    }
+
+    const tokenBuffer = Buffer.from(token)
+    const secretBuffer = Buffer.from(secret)
+
+    if (
+      tokenBuffer.length !== secretBuffer.length ||
+      !timingSafeEqual(tokenBuffer, secretBuffer)
+    ) {
+      return NextResponse.json(
+        { status: 'UNVERIFIED', reason: 'Invalid token' },
+        { status: 401 }
+      )
+    }
+
+    // Normalize once — don’t redeclare it later
+    const rawPath = body?.path ?? '/'
+    const normalizedPath = rawPath.startsWith('/') ? rawPath : `/${rawPath}`
+
+    // Allow-list of safe prefixes to revalidate
+    const allowedPrefixes = [
+      '/',
+      '/dispatches',
+      '/media',
+      '/about',
+      '/contact',
+      '/resume',
+    ]
+    const isAllowed = allowedPrefixes.some(
+      (prefix) =>
+        normalizedPath === prefix || normalizedPath.startsWith(`${prefix}/`)
+    )
+    if (!isAllowed) {
+      return NextResponse.json(
+        { status: 'UNVERIFIED', reason: 'Path not allowed' },
+        { status: 400 }
+      )
+    }
+
+    revalidatePath(normalizedPath)
+
+    return NextResponse.json(
+      { status: 'OK', revalidated: true, path: normalizedPath },
+      { status: 200 }
+    )
+  } catch (err) {
+    return NextResponse.json(
+      { status: 'ERROR', reason: 'Invalid JSON body' },
+      { status: 400 }
+    )
+  }
 }
