@@ -1,0 +1,62 @@
+name: Quality Gates
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+
+      - name: Lint
+        run: npm run lint
+        env:
+          CI: true
+
+      - name: Unit tests
+        run: npm run test:unit
+        env:
+          CI: true
+
+      - name: Build
+        run: npm run build
+        env:
+          CI: true
+
+      - name: Bundle guardrail
+        run: npm run check:bundle
+        env:
+          CI: true
+
+      - name: Metrics benchmark
+        run: npm run bench:metrics
+        env:
+          CI: true
+
+      - name: End-to-end tests
+        run: npm run test:e2e
+        env:
+          CI: true
+
+      - name: Verify ADR presence
+        run: npm run verify:adr
+        env:
+          CI: true

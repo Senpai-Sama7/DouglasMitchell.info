@@ -1,0 +1,13 @@
+#!/bin/sh
+
+if [ "$SKIP_PRECOMMIT" = "1" ]; then
+  exit 0
+fi
+
+npm run lint || exit 1
+
+if [ "$RUN_PRECOMMIT_TESTS" = "1" ]; then
+  npm run test:unit || exit 1
+else
+  echo "[husky] Skipping unit tests (set RUN_PRECOMMIT_TESTS=1 to enable)."
+fi

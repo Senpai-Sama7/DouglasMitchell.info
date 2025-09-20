@@ -1,33 +1,48 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
-import { projectShowcase } from '@/content/site-data'
+import { getProjectBySlug, getProjectStaticParams, ProjectNotFoundError } from '@/lib/projects'
 
-const projectMap = new Map(projectShowcase.map(project => [project.slug, project]))
+type ProjectPageParams = Promise<{ slug: string }>
+type ProjectPageProps = { params: ProjectPageParams }
 
 export function generateStaticParams() {
-  return projectShowcase.map(project => ({ slug: project.slug }))
+  return getProjectStaticParams()
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const project = projectMap.get(params.slug)
-  if (!project) {
+export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
+  const { slug } = await params
+
+  try {
+    const project = getProjectBySlug(slug)
+
     return {
-      title: 'Project not found · Douglas Mitchell'
+      title: `${project.title} · Douglas Mitchell`,
+      description: project.summary
     }
-  }
+  } catch (error) {
+    if (error instanceof ProjectNotFoundError) {
+      return {
+        title: 'Project not found · Douglas Mitchell'
+      }
+    }
 
-  return {
-    title: `${project.title} · Douglas Mitchell`,
-    description: project.summary
+    throw error
   }
 }
 
-export default function ProjectDetailPage({ params }: { params: { slug: string } }) {
-  const project = projectMap.get(params.slug)
+export default async function ProjectDetailPage({ params }: ProjectPageProps) {
+  const { slug } = await params
+  let project
 
-  if (!project) {
-    notFound()
+  try {
+    project = getProjectBySlug(slug)
+  } catch (error) {
+    if (error instanceof ProjectNotFoundError) {
+      notFound()
+    }
+
+    throw error
   }
 
   return (

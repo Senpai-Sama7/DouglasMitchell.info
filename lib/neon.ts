@@ -1,5 +1,6 @@
 import { neon } from '@neondatabase/serverless'
 import { projectMetrics as fallbackMetrics } from '@/content/site-data'
+import { getLogger } from '@/lib/log'
 
 type MetricRow = {
   id: string
@@ -9,16 +10,28 @@ type MetricRow = {
   detail: string
 }
 
+const logger = getLogger('neon')
+
+let loggedMissingConnection = false
+let loggedFallbackStatic = false
+let loggedEmptyResults = false
+
 export function getNeonClient() {
   const connectionString = process.env.DATABASE_URL
   if (!connectionString) {
-    console.warn('DATABASE_URL not set; falling back to static metrics.')
+    if (!loggedMissingConnection) {
+      logger.warn({ event: 'neon.connection.missing', message: 'DATABASE_URL not set; falling back to static metrics.' })
+      loggedMissingConnection = true
+    }
     return null
   }
   try {
     return neon(connectionString)
   } catch (error) {
-    console.warn('Failed to initialise Neon client:', error)
+    if (!loggedMissingConnection) {
+      logger.warn({ event: 'neon.connection.error', message: 'Failed to initialise Neon client', error })
+      loggedMissingConnection = true
+    }
     return null
   }
 }
@@ -26,12 +39,20 @@ export function getNeonClient() {
 export async function loadProjectMetrics() {
   const sql = getNeonClient()
   if (!sql) {
+    if (!loggedFallbackStatic) {
+      logger.info({ event: 'metrics.fallback.static', message: 'Serving static metrics fallback' })
+      loggedFallbackStatic = true
+    }
     return fallbackMetrics
   }
 
   try {
     const rows = (await sql`SELECT id, label, value, unit, detail FROM axiom_metrics ORDER BY label`) as MetricRow[]
     if (!rows?.length) {
+      if (!loggedEmptyResults) {
+        logger.warn({ event: 'metrics.query.empty', message: 'Neon metrics table empty, using fallback data' })
+        loggedEmptyResults = true
+      }
       return fallbackMetrics
     }
 
@@ -43,7 +64,7 @@ export async function loadProjectMetrics() {
       detail: row.detail
     }))
   } catch (error) {
-    console.warn('Error querying Neon metrics; using fallback data.', error)
+    logger.error({ event: 'metrics.query.error', message: 'Error querying Neon metrics; using fallback data.', error })
     return fallbackMetrics
   }
 }
