@@ -21,7 +21,7 @@
     "id": "F4",
     "feature": "Topic showcase renders accessible tablist controls.",
     "command": "rg \"role=\\\"tablist\\\"\" components/TopicShowcase.tsx",
-    "expected_signal": "Component source includes a div with role=\\\"tablist\\\" labelling the topic filters."
+    "expected_signal": "Component source includes a div with role=\"tablist\" labelling the topic filters."
   },
   {
     "id": "F5",
