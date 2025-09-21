@@ -17,6 +17,16 @@ npm start
 # Linting
 npm run lint
 
+# Testing
+npm run test:unit        # Unit tests via custom script
+npm run test:e2e         # End-to-end tests with Playwright
+
+# Quality checks
+npm run bench:metrics    # Performance benchmarking
+npm run check:bundle     # Bundle size analysis
+npm run verify:adr       # Architecture decision record validation
+npm run ci:quality       # Complete CI pipeline (lint + build + tests + checks)
+
 # Static export
 npm run export
 ```
@@ -60,8 +70,9 @@ SANITY_DATASET=production
 - **Dual deployment**: Can function as static site OR Next.js application
 - **Content-driven**: UI components consume data from centralized `site-data.ts`
 - **Component isolation**: Each component is self-contained with clear data contracts
-- **No test suite**: Project relies on TypeScript compilation and manual testing
+- **Quality pipeline**: Custom test suite with unit tests, E2E tests, and performance benchmarks
 - **Path aliases**: Use `@/` prefix for imports (maps to project root)
+- **Script automation**: Custom utilities in `/scripts/` for build optimization, testing, and validation
 
 ## Development Workflow
 
@@ -78,3 +89,12 @@ SANITY_DATASET=production
 - `sanity.config.ts`: Sanity CMS configuration
 - `index.html`: Standalone static version
 - `components/`: Reusable UI components with clear data interfaces
+- `scripts/`: Custom automation utilities (testing, benchmarking, validation)
+- `tests/unit/`: Unit test files
+- `tests/e2e/`: Playwright end-to-end tests
+
+## Important Configuration Notes
+
+- **Next.js export mode**: Configured for static export via `output: 'export'` in `next.config.js`
+- **Husky pre-commit**: Lint-staged setup enforces code quality on commit
+- **Node version**: Requires Node >=20.0.0 and npm >=10.0.0 as specified in `engines`
