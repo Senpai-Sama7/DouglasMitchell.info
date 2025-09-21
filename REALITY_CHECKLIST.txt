@@ -1,7 +1,7 @@
 # Reality Checklist
-- [x] F1 — Hero names Halcyon Logistics Dispatch and initialization status (VERIFIED)
-- [x] F2 — Bento grid includes device mock smartphone interface tile (VERIFIED)
-- [x] F3 — Dispatch listings include the Night Shift audio log release (VERIFIED)
+- [x] F1 — Hero kicker proclaims “AXIOM PROTOCOL ONLINE” status (VERIFIED)
+- [x] F2 — Ultimate AI Agent — Production-Ready Edition appears in project showcase (VERIFIED)
+- [x] F3 — Lab streams list the Security Drills feed (VERIFIED)
 - [x] F4 — Topic showcase exposes accessible tablist controls (VERIFIED)
-- [x] F5 — Subscribe form offers the “Join manifest” call-to-action (VERIFIED)
-- [ ] F6 — Production build compiles via `npx --no-install next build` (UNVERIFIED)
+- [x] F5 — Contact form button invites visitors to “Initiate contact” (VERIFIED)
+- [x] F6 — Production build compiles via `CI=1 npx --no-install next build` (VERIFIED)
