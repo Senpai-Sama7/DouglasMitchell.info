@@ -23,9 +23,18 @@ async function collectTests(dir) {
 }
 
 async function main() {
-  const entryPoints = await collectTests(testGlobRoot)
+  const filters = process.argv.slice(2)
+  let entryPoints = await collectTests(testGlobRoot)
+
+  if (filters.length > 0) {
+    entryPoints = entryPoints.filter(testPath =>
+      filters.some(filter => testPath.includes(filter))
+    )
+  }
+
   if (entryPoints.length === 0) {
-    console.warn('[unit-tests] No test files found under tests/unit')
+    const scope = filters.length > 0 ? ` matching filters: ${filters.join(', ')}` : ''
+    console.warn(`[unit-tests] No test files found under tests/unit${scope}`)
     return
   }
 
@@ -51,14 +60,44 @@ async function main() {
     return path.join(outDir, jsName)
   })
 
+  // Check if coverage is requested
+  const enableCoverage = process.env.COVERAGE === 'true' || process.argv.includes('--coverage')
+
   await new Promise((resolve, reject) => {
-    const child = spawn(process.execPath, ['--test', ...compiledFiles], {
-      cwd: projectRoot,
-      stdio: 'inherit'
-    })
+    let child
+    if (enableCoverage) {
+      // Use c8 for coverage
+      child = spawn('npx', [
+        'c8',
+        '--reporter=text',
+        '--reporter=html',
+        '--reporter=json',
+        '--reports-dir=coverage',
+        '--exclude=.tmp/**',
+        '--exclude=tests/**',
+        '--exclude=scripts/**',
+        '--exclude=*.config.*',
+        '--exclude=coverage/**',
+        '--include=lib/**',
+        '--include=app/**',
+        process.execPath,
+        '--test',
+        ...compiledFiles
+      ], {
+        cwd: projectRoot,
+        stdio: 'inherit'
+      })
+    } else {
+      // Run tests without coverage
+      child = spawn(process.execPath, ['--test', ...compiledFiles], {
+        cwd: projectRoot,
+        stdio: 'inherit'
+      })
+    }
+
     child.on('exit', code => {
       if (code === 0) resolve()
-      else reject(new Error(`node --test exited with code ${code}`))
+      else reject(new Error(`${enableCoverage ? 'c8 node' : 'node'} --test exited with code ${code}`))
     })
     child.on('error', reject)
   })

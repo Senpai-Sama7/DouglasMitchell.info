@@ -1,34 +1,22 @@
 # Repository Guidelines
 
 ## Project Structure & Module Organization
-- `app/page.tsx` orchestrates the Axiom Protocol landing flow—hero, skills, projects, lab, community—binding data from `content/site-data.ts` to GSAP timelines.
-- UI primitives live in `components/` (e.g., `NavBar`, `AIProjectIdeator`, `CustomCursor`, `KpiCounters`); treat each as an isolated client module with clear props.
-- Server logic sits in `app/api/metrics/route.ts` and shared helpers under `lib/`, especially `lib/neon.ts` for Neon SQL access. Visual assets and experiment captures reside in `assets/` and `evidence/`.
-- Playwright specs and artefacts are under `tests/` and `playwright-report/`; keep selectors stable when adjusting DOM structure.
+Source views live in `app/`, with `app/page.tsx` coordinating the hero, skills, projects, lab, and community sections via GSAP timelines that pull data from `content/site-data.ts`. Client-side primitives sit in `components/` (e.g., `NavBar`, `AIProjectIdeator`, `CustomCursor`, `KpiCounters`) and should expose clear props for reuse. API handlers and shared utilities belong in `app/api/` and `lib/` respectively; `lib/neon.ts` wraps Neon SQL access. Visual assets, motion captures, and research artefacts are kept in `assets/` and `evidence/`. Playwright specs and reports live under `tests/` and `playwright-report/`; keep DOM hooks stable when touching animated sections.
 
 ## Build, Test & Development Commands
-- `npm run dev` — start Next.js with live reload and API routes (requires `DATABASE_URL` for Neon parity).
-- `npm run lint` — enforce ESLint + TypeScript rules; the pipeline blocks on failures.
-- `npm run build` — validate server/client boundaries before deploying to Vercel or static export.
-- `npx playwright test` — optional end-to-end regression sweep across hero interactions and metrics fallback.
+- `npm run dev` – start the Next.js app with API routes; expect Neon reads if `DATABASE_URL` is set.
+- `npm run lint` – enforce ESLint + TypeScript conventions before commits; fails block the pipeline.
+- `npm run build` – validate server/client boundaries prior to Vercel deploys or static export.
+- `npx playwright test` – run E2E regressions covering hero motions and metrics fallbacks.
 
 ## Coding Style & Naming Conventions
-- Prefer TypeScript with explicit interfaces, early returns, and descriptive prop names; stick to `camelCase` variables and `PascalCase` components.
-- Keep client-only logic in `components/` with `'use client'` headers; server utilities remain in `lib/` or API routes.
-- Follow the established white-on-black aesthetic by extending tokens in `app/globals.css` (e.g., `--axiom-spacing-` scale, `.axiom-section` scope).
-- Coordinate GSAP animations inside page-level hooks, and wrap motion in `prefers-reduced-motion` guards.
-- In Next 15, App Router `params` are delivered as Promises; `await` them before reading values (see `app/projects/[slug]/page.tsx`).
-- Delivery artefacts (ADR, benchmarks, security notes) accompany every change; see `docs/engineering-charter.md` for the charter and `docs/quality-gates.md` for mandatory checks.
+Use TypeScript with explicit interfaces, early returns, and descriptive prop names. Follow `camelCase` for variables, `PascalCase` for components, and maintain `'use client'` headers for browser-only modules. Extend the monochrome design tokens in `app/globals.css` (e.g., `--axiom-spacing-*`, `.axiom-section`) and gate GSAP animations behind `prefers-reduced-motion` checks. Next 15 App Router `params` arrive as Promises—`await` them before use (see `app/projects/[slug]/page.tsx`).
 
 ## Testing Guidelines
-- Run `npm run lint` before committing; add targeted Playwright specs when altering motion timing, cursor behaviour, or Neon metrics.
-- Use descriptive test file names (`metrics.spec.ts`) and reset database fixtures to keep Neon reads idempotent.
+Name Playwright specs descriptively (`metrics.spec.ts`) and reset Neon fixtures to keep reads idempotent. Run `npm run lint` plus targeted Playwright suites when adjusting motion timing, cursor behaviour, or metrics handling. Capture failures under `playwright-report/` for review.
 
 ## Commit & Pull Request Guidelines
-- Use imperative, scoped commits (`Feat:`, `Fix:`, `Docs:`) and reference relevant tickets or Notion docs.
-- PRs should outline behavioural changes, include screenshots or short clips for motion tweaks, and call out Neon schema or env updates.
+Adopt imperative, scoped commits (`Feat:`, `Fix:`, `Docs:`) referencing tickets or Notion docs. PRs should summarise behaviour changes, link relevant ADRs, and include screenshots or clips for motion tweaks. Call out Neon schema or env updates explicitly.
 
 ## Security & Configuration Tips
-- Store `DATABASE_URL` and `DATABASE_URL_UNPOOLED` in `.env.local`; rely on statics when unavailable.
-- Avoid committing artefacts from `/home/donovan/Videos/me/me_ina_db/cred`; scrub logs before sharing.
-- Keep payloads lean—debounce network calls, lazy-load heavy components, and honour reduced-motion preferences.
+Store `DATABASE_URL` and `DATABASE_URL_UNPOOLED` in `.env.local`; rely on static fallbacks otherwise. Exclude artefacts from `/home/donovan/Videos/me/me_ina_db/cred` and scrub logs of sensitive data. Debounce network calls, lazy-load heavy modules, and honour reduced-motion preferences to respect user settings.

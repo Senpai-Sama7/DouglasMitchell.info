@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { createMotionSafeScrollTrigger, prefersReducedMotion } from '@/lib/motion'
 import {
   heroContent,
   kpiStats,
@@ -24,14 +25,9 @@ import { KpiCounters } from '@/components/KpiCounters'
 import { AIProjectIdeator } from '@/components/AIProjectIdeator'
 import { GitHubFeed } from '@/components/GitHubFeed'
 import { CustomCursor } from '@/components/CustomCursor'
+import { PageTimer } from '@/app/_metrics/page-timer'
 
-interface ProjectMetric {
-  id: string
-  label: string
-  value: number
-  unit: string
-  detail: string
-}
+import type { ProjectMetric } from '@/lib/neon'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -51,21 +47,41 @@ export default function Page() {
 
   useEffect(() => {
     if (typeof window === 'undefined') return
+    const reduceMotion = prefersReducedMotion()
 
     const ctx = gsap.context(() => {
-      gsap.from('.hero-letter', {
-        yPercent: 120,
-        opacity: 0,
-        rotateX: -50,
-        delay: 0.3,
-        duration: 1.5,
-        ease: 'power4.out',
-        stagger: 0.05
-      })
+      if (reduceMotion) {
+        gsap.set('.hero-letter', { opacity: 1, yPercent: 0, rotateX: 0 })
+      } else {
+        gsap.from('.hero-letter', {
+          yPercent: 120,
+          opacity: 0,
+          rotateX: -50,
+          delay: 0.3,
+          duration: 1.5,
+          ease: 'power4.out',
+          stagger: 0.05
+        })
+      }
 
       gsap.utils.toArray<HTMLElement>('.axiom-section').forEach(section => {
         const inner = section.querySelector('.axiom-section__inner')
         if (!inner) return
+
+        const triggerConfig = createMotionSafeScrollTrigger(
+          {
+            trigger: section,
+            start: 'top 72%',
+            toggleActions: 'play none none reverse'
+          },
+          {}
+        )
+
+        if (!triggerConfig) {
+          gsap.set(inner, { opacity: 1, y: 0 })
+          return
+        }
+
         gsap.fromTo(
           inner,
           { opacity: 0, y: 56 },
@@ -74,26 +90,26 @@ export default function Page() {
             y: 0,
             duration: 0.8,
             ease: 'cubic-bezier(0.4, 0, 0.2, 1)',
-            scrollTrigger: {
-              trigger: section,
-              start: 'top 72%',
-              toggleActions: 'play none none reverse'
-            }
+            scrollTrigger: triggerConfig
           }
         )
       })
 
-      gsap.utils.toArray<HTMLElement>('[data-parallax]').forEach(layer => {
-        const speed = Number(layer.dataset.parallax) || 0.1
-        gsap.to(layer, {
-          yPercent: speed * 100,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: layer,
-            scrub: true
-          }
+      if (!reduceMotion) {
+        gsap.utils.toArray<HTMLElement>('[data-parallax]').forEach(layer => {
+          const speed = Number(layer.dataset.parallax) || 0.1
+          gsap.to(layer, {
+            yPercent: speed * 100,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: layer,
+              scrub: true
+            }
+          })
         })
-      })
+      } else {
+        gsap.set('[data-parallax]', { yPercent: 0 })
+      }
     }, rootRef)
 
     const observer = new IntersectionObserver(
@@ -115,9 +131,18 @@ export default function Page() {
 
   useEffect(() => {
     let cancelled = false
+    const metricsApiKey = process.env.NEXT_PUBLIC_METRICS_API_KEY
+
     ;(async () => {
       try {
-        const response = await fetch('/api/metrics', { cache: 'no-store' })
+        const headers: HeadersInit = { 'cache-control': 'no-cache' }
+        if (metricsApiKey) {
+          headers['x-api-key'] = metricsApiKey
+        }
+        const response = await fetch('/api/metrics', {
+          cache: 'no-store',
+          headers
+        })
         if (!response.ok) return
         const payload = (await response.json()) as { metrics?: ProjectMetric[] }
         if (!cancelled && payload.metrics?.length) {
@@ -134,7 +159,8 @@ export default function Page() {
   }, [])
 
   return (
-    <main ref={rootRef} className="axiom-main">
+    <PageTimer pageName="home">
+      <main ref={rootRef} className="axiom-main">
       <CustomCursor />
       <div className="axiom-background">
         <div className="axiom-background__halo" data-parallax="0.12" />
@@ -400,6 +426,7 @@ export default function Page() {
           </form>
         </div>
       </section>
-    </main>
+      </main>
+    </PageTimer>
   )
 }

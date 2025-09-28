@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import { prefersReducedMotion } from '@/lib/motion'
 
 export function CustomCursor() {
   const cursorRef = useRef<HTMLDivElement | null>(null)
@@ -10,30 +11,40 @@ export function CustomCursor() {
     const cursor = cursorRef.current
     if (!cursor) return
 
-    const handleMove = (event: MouseEvent) => {
-      const x = event.clientX
-      const y = event.clientY
-      cursor.style.transform = `translate3d(${x}px, ${y}px, 0)`
+    const pointerFine = window.matchMedia('(pointer: fine)').matches
+    if (!pointerFine || prefersReducedMotion()) {
+      cursor.style.display = 'none'
+      return
     }
 
-    const interactiveSelector = 'a, button, .axiom-project-card, [role="button"]'
-    const handleEnter = () => cursor.classList.add('is-active')
-    const handleLeave = () => cursor.classList.remove('is-active')
+    const handleMove = (event: MouseEvent) => {
+      cursor.style.transform = `translate3d(${event.clientX}px, ${event.clientY}px, 0)`
+    }
 
-    window.addEventListener('mousemove', handleMove)
+    const handlePointerEnter = (event: MouseEvent) => {
+      const target = event.target as HTMLElement
+      if (!target) return
+      if (target.closest('a,button,[role="button"],.axiom-project-card')) {
+        cursor.classList.add('is-active')
+      }
+    }
 
-    const interactiveElements = Array.from(document.querySelectorAll(interactiveSelector))
-    interactiveElements.forEach(element => {
-      element.addEventListener('mouseenter', handleEnter)
-      element.addEventListener('mouseleave', handleLeave)
-    })
+    const handlePointerLeave = (event: MouseEvent) => {
+      const target = event.target as HTMLElement
+      if (!target) return
+      if (target.closest('a,button,[role="button"],.axiom-project-card')) {
+        cursor.classList.remove('is-active')
+      }
+    }
+
+    window.addEventListener('mousemove', handleMove, { passive: true })
+    document.addEventListener('mouseover', handlePointerEnter, true)
+    document.addEventListener('mouseout', handlePointerLeave, true)
 
     return () => {
       window.removeEventListener('mousemove', handleMove)
-      interactiveElements.forEach(element => {
-        element.removeEventListener('mouseenter', handleEnter)
-        element.removeEventListener('mouseleave', handleLeave)
-      })
+      document.removeEventListener('mouseover', handlePointerEnter, true)
+      document.removeEventListener('mouseout', handlePointerLeave, true)
     }
   }, [])
 

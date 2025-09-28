@@ -60,7 +60,9 @@ test.describe('Core functionality', () => {
     await page.locator('#context').fill('Test message')
     await page.locator("button[type='submit']").click()
 
-    const emailValidity = await page.locator('#email').evaluate(element => element.validity.valid)
+    const emailValidity = await page
+      .locator('#email')
+      .evaluate(element => (element as HTMLInputElement).validity.valid)
     expect(emailValidity).toBe(false)
   })
 })

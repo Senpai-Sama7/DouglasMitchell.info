@@ -38,9 +38,9 @@ test.describe('Accessibility', () => {
     await expect(page.locator('label[for="context"]')).toBeVisible()
 
     const requiredStates = await Promise.all([
-      name.evaluate(el => el.required),
-      email.evaluate(el => el.required),
-      context.evaluate(el => el.required)
+      name.evaluate(el => (el as HTMLInputElement).required),
+      email.evaluate(el => (el as HTMLInputElement).required),
+      context.evaluate(el => (el as HTMLInputElement).required)
     ])
 
     expect(requiredStates).toEqual([true, true, true])

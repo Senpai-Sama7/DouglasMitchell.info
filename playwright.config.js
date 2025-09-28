@@ -1,6 +1,13 @@
 // @ts-check
 const { defineConfig, devices } = require('@playwright/test');
 
+// Provide default API keys for local Playwright runs so authenticated routes work
+// without requiring contributors to export secrets manually. These defaults are
+// only applied when values are absent in the environment.
+process.env.METRICS_API_KEY ??= 'test-metrics-key'
+process.env.NEXT_PUBLIC_METRICS_API_KEY ??= process.env.METRICS_API_KEY
+process.env.SUBSCRIBE_API_KEY ??= process.env.METRICS_API_KEY
+
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
@@ -55,10 +62,12 @@ module.exports = defineConfig({
   ],
 
   /* Run your local dev server before starting the tests */
-  webServer: {
-    command: 'npm run dev -- --hostname 127.0.0.1 --port 3100',
-    url: 'http://127.0.0.1:3100',
-    reuseExistingServer: !process.env.CI,
-    timeout: 60000,
-  },
+  webServer: process.env.PLAYWRIGHT_SKIP_WEBSERVER
+    ? undefined
+    : {
+        command: 'npm run dev -- --hostname 127.0.0.1 --port 3100',
+        url: 'http://127.0.0.1:3100',
+        reuseExistingServer: !process.env.CI,
+        timeout: 60000,
+      },
 });

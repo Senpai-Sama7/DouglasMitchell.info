@@ -72,15 +72,15 @@
             - /url: /resume
       - generic [ref=e16]:
         - generic [ref=e17]:
-          - generic: 120,000+
+          - generic: 0+
           - generic: Lines of resilient code stewarded
           - generic: Versioned across production-grade client and community systems.
         - generic [ref=e18]:
-          - generic: 36+
+          - generic: 0+
           - generic: Projects delivered end-to-end
           - generic: Architecture, implementation, validation, and launch support.
         - generic [ref=e19]:
-          - generic: 97%
+          - generic: 0%
           - generic: Client satisfaction index
           - generic: Post-engagement surveys and repeat collaborations since 2022.
       - generic [ref=e20]:
@@ -263,114 +263,117 @@
             - listitem: Coalition enablement
             - listitem: Ethical persuasion frameworks
             - listitem: Resource routing & safety nets
-      - region [ref=e128]:
+      - region "AI Project Ideator" [ref=e128]:
         - generic [ref=e129]:
-          - generic [ref=e130]:
+          - heading "AI Project Ideator" [level=3]
+          - paragraph: Blend narrative pillars and skill domains to conjure a new experiment.
+        - generic [ref=e130]:
+          - generic [ref=e131]:
             - text: Narrative pillar
-            - combobox "Narrative pillar" [ref=e131]:
+            - combobox "Narrative pillar" [ref=e132]:
               - option "Systems Architect" [selected]
               - option "Conscious Network Hub"
               - option "Mastery & Safety"
               - option "Evidence & Vigilance"
-          - generic [ref=e132]:
+          - generic [ref=e133]:
             - text: Skill focus
-            - combobox "Skill focus" [ref=e133]:
+            - combobox "Skill focus" [ref=e134]:
               - option "Architecture & Systems" [selected]
               - option "Security & Ops"
               - option "AI/ML & Analysis"
               - option "Influence & Community"
-          - button "Generate concept" [ref=e134]
-        - status [ref=e135]: Select a focus and generate a concept.
-    - generic [ref=e137]:
-      - generic [ref=e138]:
-        - paragraph [ref=e139]: Writing
+          - button "Generate concept" [ref=e135]
+        - status "Concept" [ref=e136]:
+          - paragraph: Concept
+          - paragraph: Select a focus and generate a concept.
+    - generic [ref=e138]:
+      - generic [ref=e139]:
+        - paragraph [ref=e140]: Writing
         - heading "Dispatches documenting evidence and vigilance." [level=2]
         - paragraph: Essays, research logs, and influence guides connect architecture thinking with community outcomes.
-      - generic [ref=e140]:
-        - article [ref=e141]:
+      - generic [ref=e141]:
+        - article [ref=e142]:
           - heading "Environmental Justice" [level=3]
           - paragraph: Protective data patterns, advocacy tooling, and community safeguards for healthier ecosystems.
-          - list [ref=e142]:
+          - list [ref=e143]:
             - listitem: Air quality telemetry protocols
             - listitem: Legal-engineering partnership guides
             - listitem: Community data trusts playbooks
-        - article [ref=e143]:
+        - article [ref=e144]:
           - heading "Advanced AI & Tech" [level=3]
           - paragraph: Model benchmarking, agent pipelines, and deployment maturity anchored in guardrails.
-          - list [ref=e144]:
+          - list [ref=e145]:
             - listitem: Agent observability dashboards
             - listitem: Latency-aware inference strategies
             - listitem: Ethical evaluation matrices
-        - article [ref=e145]:
+        - article [ref=e146]:
           - heading "Health Optimization" [level=3]
           - paragraph: Systems thinking applied to personal resilience, nervous system regulation, and high-performance rituals.
-          - list [ref=e146]:
+          - list [ref=e147]:
             - listitem: Recovery cadences for builders
             - listitem: Biofeedback-informed work sprints
             - listitem: Sustainable mastery loops
-        - article [ref=e147]:
+        - article [ref=e148]:
           - heading "Psychology of Influence" [level=3]
           - paragraph: Narrative framing, network dynamics, and ethical persuasion for coalition building.
-          - list [ref=e148]:
+          - list [ref=e149]:
             - listitem: Influence matrix templates
             - listitem: Trust calibration scorecards
             - listitem: Network choreography field notes
-      - generic [ref=e149]:
-        - paragraph: GitHub data unavailable at the moment. Retry shortly.
-    - generic [ref=e151]:
-      - generic [ref=e152]:
-        - paragraph [ref=e153]: Lab
+    - generic [ref=e152]:
+      - generic [ref=e153]:
+        - paragraph [ref=e154]: Lab
         - heading "Research streams keeping the axiom protocol sharp." [level=2]
         - paragraph: Benchmarks, pipeline experiments, and security drills are documented with reproducibility checklists.
-      - generic [ref=e154]:
-        - article [ref=e155]:
+      - generic [ref=e155]:
+        - article [ref=e156]:
           - heading "Model Benchmarking Logs" [level=3]
           - paragraph: Transparent records of agent and model evaluations with reproducibility checklists and anomaly notes.
-        - article [ref=e156]:
+        - article [ref=e157]:
           - heading "Pipeline Experiments" [level=3]
           - paragraph: Continuous integration of multimedia and AI data flows with validation gates documented per iteration.
-        - article [ref=e157]:
+        - article [ref=e158]:
           - heading "Security Drills" [level=3]
           - paragraph: Anonymized incident responses, learning loops, and readiness drills reinforcing zero-trust posture.
-    - generic [ref=e159]:
-      - generic [ref=e160]:
-        - paragraph [ref=e161]: Community
+    - generic [ref=e160]:
+      - generic [ref=e161]:
+        - paragraph [ref=e162]: Community
         - heading "Conscious network infrastructure in motion." [level=2]
         - paragraph: Environmental justice, coalition enablement, and cross-cluster trust-building are engineered with the same rigor as production systems.
-      - generic [ref=e162]:
-        - article [ref=e163]:
+      - generic [ref=e163]:
+        - article [ref=e164]:
           - heading "Houston Oil Airs" [level=3]
           - paragraph: Environmental justice advocacy with secure data handling, legal bridges, and community onboarding kits.
           - generic: See how technical rigor powers environmental justice and collective safety.
-        - article [ref=e164]:
+        - article [ref=e165]:
           - heading "Bridge Stories" [level=3]
           - paragraph: Short vignettes showing how legal, nonprofit, and technical collaborators aligned under shared rituals.
           - generic: Explore coordination playbooks built for equitable outcomes.
-    - generic [ref=e166]:
-      - generic [ref=e167]:
-        - paragraph [ref=e168]: Contact
+    - generic [ref=e167]:
+      - generic [ref=e168]:
+        - paragraph [ref=e169]: Contact
         - heading "Bring the next dispatch to life." [level=2]
         - paragraph: The portal routes straight to Douglas. Expect a response inside 48 hours with integration notes and validation pathways.
-      - generic [ref=e169]:
-        - generic [ref=e170]:
-          - textbox "Name" [ref=e171]
+      - generic [ref=e170]:
+        - generic [ref=e171]:
+          - textbox "Name" [ref=e172]
           - generic: Name
           - generic: Who should I coordinate with?
-        - generic [ref=e172]:
-          - textbox "Email" [ref=e173]
+        - generic [ref=e173]:
+          - textbox "Email" [ref=e174]
           - generic: Email
           - generic: Replies land within 48 hours.
-        - generic [ref=e174]:
-          - textbox "Mission brief" [ref=e175]
+        - generic [ref=e175]:
+          - textbox "Mission brief" [ref=e176]
           - generic: Mission brief
           - generic: Share goals, scope, timeline, and Neon requirements.
-        - button "Initiate contact" [ref=e177]
+        - button "Initiate contact" [ref=e178]
         - paragraph: Privacy-first analytics. Secrets stored in secure vaults. Reversible delivery guaranteed.
-  - contentinfo [ref=e178]:
-    - generic [ref=e179]:
-      - generic [ref=e180]:
+  - contentinfo [ref=e179]:
+    - generic [ref=e180]:
+      - generic [ref=e181]:
         - heading "Trust signals" [level=2]
-        - list [ref=e181]:
+        - list [ref=e182]:
           - listitem:
             - generic: Technical centrality
             - generic: 85%
@@ -383,9 +386,9 @@
             - generic: Security posture
             - generic: 0 breaches
             - generic: Documented through drills, audits, and continuous monitoring.
-      - generic [ref=e182]:
+      - generic [ref=e183]:
         - heading "Presence" [level=2]
-        - list [ref=e183]:
+        - list [ref=e184]:
           - listitem:
             - link "contact@douglasmitchell.info":
               - /url: mailto:contact@douglasmitchell.info
@@ -399,11 +402,8 @@
           - listitem:
             - link "X (Twitter)":
               - /url: https://twitter.com/DouglasCSM
-      - generic [ref=e184]:
+      - generic [ref=e185]:
         - heading "Assurances" [level=2]
         - paragraph: Privacy-preserving analytics, MFA everywhere, and transparent data practices.
         - paragraph: © 2025 Douglas Mitchell · All systems monitored.
-  - button "Open Next.js Dev Tools" [ref=e190] [cursor=pointer]:
-    - img [ref=e191] [cursor=pointer]
-  - alert [ref=e194]
 ```
