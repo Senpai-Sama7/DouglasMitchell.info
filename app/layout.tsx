@@ -1,4 +1,5 @@
 import './globals.css'
+import '../styles/performance.css'
 import type { Metadata } from 'next'
 import { NavBar } from '@/components/NavBar'
 import { Footer } from '@/components/Footer'
@@ -31,8 +32,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${inter.variable} ${spaceGrotesk.variable} site-body`}>
+        <a href="#main-content" className="skip-to-content">
+          Skip to main content
+        </a>
         <NavBar />
-        {children}
+        <div id="main-content">
+          {children}
+        </div>
         <Footer />
       </body>
     </html>

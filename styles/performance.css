@@ -1,0 +1,130 @@
+/* Performance and Accessibility Enhancements */
+
+/* Preload critical fonts */
+@font-face {
+  font-family: 'Inter';
+  font-weight: 400 700;
+  font-display: swap;
+  src: local('Inter');
+}
+
+/* Reduce motion for animations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .hero-letter {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  
+  [data-parallax] {
+    transform: none !important;
+  }
+}
+
+/* Error boundary styles */
+.error-boundary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  padding: var(--space-lg);
+  background: var(--surface-1);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-soft);
+}
+
+.error-boundary__content {
+  text-align: center;
+  max-width: 400px;
+}
+
+.error-boundary h2 {
+  color: var(--fg-strong);
+  margin-bottom: var(--space-sm);
+}
+
+.error-boundary p {
+  color: var(--fg-muted);
+  margin-bottom: var(--space-lg);
+}
+
+/* Component-specific error states */
+.ai-ideator-error,
+.github-feed-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-lg);
+  background: var(--surface-1);
+  border-radius: var(--radius-sm);
+  color: var(--fg-muted);
+  border: 1px dashed var(--border-soft);
+  min-height: 200px;
+}
+
+/* Focus indicators for accessibility */
+.axiom-button:focus-visible,
+.axiom-form input:focus-visible,
+.axiom-form textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+/* Skip to content link */
+.skip-to-content {
+  position: absolute;
+  top: -100px;
+  left: var(--space-md);
+  background: var(--accent);
+  color: white;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  z-index: 1000;
+  transition: top 0.3s;
+}
+
+.skip-to-content:focus {
+  top: var(--space-md);
+}
+
+/* Performance optimizations */
+.axiom-project-card__visual {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.hero-letter {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --fg-muted: var(--fg-strong);
+    --border-soft: var(--border-strong);
+  }
+}
+
+/* Print styles */
+@media print {
+  .custom-cursor,
+  .axiom-hero__rings,
+  [data-parallax] {
+    display: none !important;
+  }
+  
+  .axiom-section {
+    page-break-inside: avoid;
+  }
+}

@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "npm run typecheck && NEXT_SKIP_TYPE_CHECK=1 NEXT_DISABLE_SWC_BINARY=1 next build",
+    "build:static": "node scripts/exclude-api-routes.js clean && npm run typecheck && node scripts/exclude-api-routes.js move && NEXT_EXPORT=true NEXT_SKIP_TYPE_CHECK=1 NEXT_DISABLE_SWC_BINARY=1 next build && node scripts/exclude-api-routes.js restore",
+    "build:optimized": "node scripts/build-optimized.js",
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
@@ -15,7 +17,8 @@
     "check:bundle": "tsx scripts/check-bundle.ts",
     "verify:adr": "node scripts/verify-adr.js",
     "ci:quality": "npm run lint && npm run build && npm run test:unit && npm run test:e2e && npm run bench:metrics && npm run check:bundle && npm run verify:adr",
-    "export": "npm run build",
+    "ci:quality:static": "npm run lint && npm run build:static && npm run test:unit && npm run bench:metrics && npm run check:bundle && npm run verify:adr",
+    "export": "npm run build:static",
     "deploy": "npm run build && npx vercel deploy --prebuilt",
     "prepare": "node scripts/setup-husky.js"
   },

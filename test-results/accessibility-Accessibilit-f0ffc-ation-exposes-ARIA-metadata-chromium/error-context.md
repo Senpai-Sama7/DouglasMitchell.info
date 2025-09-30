@@ -2,9 +2,11 @@
 
 ```yaml
 - generic [active] [ref=e1]:
-  - banner [ref=e2]:
-    - generic [ref=e4]:
-      - link "Halcyon Logistics home" [ref=e5] [cursor=pointer]:
+  - link "Skip to main content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=e3]:
+    - generic [ref=e5]:
+      - link "Halcyon Logistics home" [ref=e6] [cursor=pointer]:
         - /url: "#home"
         - text: Halcyon Logistics
       - navigation "Primary":
@@ -36,12 +38,12 @@
           - listitem:
             - link "Resume":
               - /url: /resume
-      - button "Activate dark mode" [ref=e7]:
+      - button "Activate dark mode" [ref=e8]:
         - generic: Light mode
-  - main [ref=e8]:
-    - generic [ref=e10]:
-      - generic [ref=e11]:
-        - paragraph [ref=e12]: AXIOM PROTOCOL ONLINE
+  - main [ref=e10]:
+    - generic [ref=e12]:
+      - generic [ref=e13]:
+        - paragraph [ref=e14]: AXIOM PROTOCOL ONLINE
         - heading "Build less. Ship more." [level=1]:
           - generic: B
           - generic: u
@@ -65,315 +67,315 @@
         - paragraph: Engineering resilient, validated systems—turning complexity into repeatable performance.
         - paragraph: Conscious Network Hub connecting technical excellence to community impact.
         - paragraph: Douglas Mitchell is a 85% technical-centrality systems architect delivering premium, evidence-backed products. Every engagement fuses architecture, security hygiene, and community-scale empathy.
-        - generic [ref=e13]:
-          - link "Explore flagship projects" [ref=e14] [cursor=pointer]:
+        - generic [ref=e15]:
+          - link "Explore flagship projects" [ref=e16] [cursor=pointer]:
             - /url: "#projects"
-          - link "Download resume" [ref=e15] [cursor=pointer]:
+          - link "Download resume" [ref=e17] [cursor=pointer]:
             - /url: /resume
-      - generic [ref=e16]:
-        - generic [ref=e17]:
+      - generic [ref=e18]:
+        - generic [ref=e19]:
           - generic: 0+
           - generic: Lines of resilient code stewarded
           - generic: Versioned across production-grade client and community systems.
-        - generic [ref=e18]:
+        - generic [ref=e20]:
           - generic: 0+
           - generic: Projects delivered end-to-end
           - generic: Architecture, implementation, validation, and launch support.
-        - generic [ref=e19]:
+        - generic [ref=e21]:
           - generic: 0%
           - generic: Client satisfaction index
           - generic: Post-engagement surveys and repeat collaborations since 2022.
-      - generic [ref=e20]:
-        - article [ref=e21]:
+      - generic [ref=e22]:
+        - article [ref=e23]:
           - heading "Core Architecture" [level=3]
-          - list [ref=e22]:
+          - list [ref=e24]:
             - listitem: JavaScript / TypeScript
             - listitem: React & Next.js
             - listitem: Node.js
             - listitem: APIs & GraphQL
             - listitem: Git & CI/CD
-        - article [ref=e23]:
-          - heading "Motion & Visualization" [level=3] [ref=e24]
-          - list [ref=e25]:
-            - listitem [ref=e26]: CSS & GSAP
-            - listitem [ref=e27]: Three.js / WebGL
-            - listitem [ref=e28]: Data storytelling
-            - listitem [ref=e29]: Accessibility-first animation
-        - article [ref=e30]:
+        - article [ref=e25]:
+          - heading "Motion & Visualization" [level=3] [ref=e26]
+          - list [ref=e27]:
+            - listitem [ref=e28]: CSS & GSAP
+            - listitem [ref=e29]: Three.js / WebGL
+            - listitem [ref=e30]: Data storytelling
+            - listitem [ref=e31]: Accessibility-first animation
+        - article [ref=e32]:
           - heading "Security & Ops" [level=3]
-          - list [ref=e31]:
+          - list [ref=e33]:
             - listitem: MFA everywhere
             - listitem: Neon Postgres
             - listitem: pfSense + VLAN segmentation
             - listitem: SIEM log discipline
             - listitem: Automated regression rigs
-      - link "Scroll to projects section" [ref=e33] [cursor=pointer]:
+      - link "Scroll to projects section" [ref=e35] [cursor=pointer]:
         - /url: "#projects"
         - text: Explore projects ↘
-    - generic [ref=e35]:
-      - generic [ref=e36]:
-        - paragraph [ref=e37]: Projects
+    - generic [ref=e37]:
+      - generic [ref=e38]:
+        - paragraph [ref=e39]: Projects
         - heading "Precision systems with measurable outcomes." [level=2]
         - paragraph: Each case study fuses architecture, validation, and ethical guardrails. Hover to reveal stacks and validation rituals.
-      - generic [ref=e38]:
-        - article [ref=e39]:
-          - generic [ref=e44]:
+      - generic [ref=e40]:
+        - article [ref=e41]:
+          - generic [ref=e46]:
             - paragraph: AI & Systems Architecture
             - heading "Ultimate AI Agent — Production-Ready Edition" [level=3]
             - paragraph: Modular agent stack coordinating research, validation, and delivery rituals without human bottlenecks.
-            - generic [ref=e45]:
+            - generic [ref=e47]:
               - generic: Cut delivery cycle times by 38% while raising reliability to 99.9% uptime.
-              - generic [ref=e46]:
-                - generic [ref=e47]: AI Systems
-                - generic [ref=e48]: Neon
-                - generic [ref=e49]: Guardrails
-            - link "Read architecture & validation" [ref=e50] [cursor=pointer]:
+              - generic [ref=e48]:
+                - generic [ref=e49]: AI Systems
+                - generic [ref=e50]: Neon
+                - generic [ref=e51]: Guardrails
+            - link "Read architecture & validation" [ref=e52] [cursor=pointer]:
               - /url: /projects/ultimate-ai-agent
-        - article [ref=e51]:
-          - generic [ref=e56]:
+        - article [ref=e53]:
+          - generic [ref=e58]:
             - paragraph: Content Orchestration
             - heading "Multimedia Pipeline" [level=3]
             - paragraph: Production pipeline aligning video, audio, and microcontent with continuous validation gates.
-            - generic [ref=e57]:
+            - generic [ref=e59]:
               - generic: Doubled publish throughput with zero missed release windows across a quarter.
-              - generic [ref=e58]:
-                - generic [ref=e59]: Content Ops
-                - generic [ref=e60]: Mux
-                - generic [ref=e61]: Automation
-            - link "Read architecture & validation" [ref=e62] [cursor=pointer]:
+              - generic [ref=e60]:
+                - generic [ref=e61]: Content Ops
+                - generic [ref=e62]: Mux
+                - generic [ref=e63]: Automation
+            - link "Read architecture & validation" [ref=e64] [cursor=pointer]:
               - /url: /projects/multimedia-pipeline
-        - article [ref=e63]:
-          - generic [ref=e68]:
+        - article [ref=e65]:
+          - generic [ref=e70]:
             - paragraph: Security Architecture
             - heading "Cybersecurity Home Lab" [level=3]
             - paragraph: pfSense-driven segmentation, SIEM telemetry, and incident drills codified for rapid learning loops.
-            - generic [ref=e69]:
+            - generic [ref=e71]:
               - generic: Zero successful breaches with <15m anomaly response time across simulations.
-              - generic [ref=e70]:
-                - generic [ref=e71]: Security
-                - generic [ref=e72]: pfSense
-                - generic [ref=e73]: SIEM
-            - link "Read architecture & validation" [ref=e74] [cursor=pointer]:
+              - generic [ref=e72]:
+                - generic [ref=e73]: Security
+                - generic [ref=e74]: pfSense
+                - generic [ref=e75]: SIEM
+            - link "Read architecture & validation" [ref=e76] [cursor=pointer]:
               - /url: /projects/cybersecurity-home-lab
-        - article [ref=e75]:
-          - generic [ref=e80]:
+        - article [ref=e77]:
+          - generic [ref=e82]:
             - paragraph: Data Visualization
             - heading "Influence Matrix Unveiled" [level=3]
             - paragraph: Network intelligence model aligning legal, nonprofit, and technical actors for coordinated action.
-            - generic [ref=e81]:
+            - generic [ref=e83]:
               - generic: Accelerated coalition decision-making by 45% while maintaining ethical guardrails.
-              - generic [ref=e82]:
-                - generic [ref=e83]: Network Graphs
-                - generic [ref=e84]: Ethical AI
-            - link "Read architecture & validation" [ref=e85] [cursor=pointer]:
+              - generic [ref=e84]:
+                - generic [ref=e85]: Network Graphs
+                - generic [ref=e86]: Ethical AI
+            - link "Read architecture & validation" [ref=e87] [cursor=pointer]:
               - /url: /projects/influence-matrix
-        - article [ref=e86]:
-          - generic [ref=e91]:
+        - article [ref=e88]:
+          - generic [ref=e93]:
             - paragraph: Community Infrastructure
             - heading "Houston Oil Airs Enablement" [level=3]
             - paragraph: Systems support for environmental justice advocacy with secure data flows and collaboration protocols.
-            - generic [ref=e92]:
+            - generic [ref=e94]:
               - generic: Reduced coordination friction by 60% and unlocked new partnerships across Houston networks.
-              - generic [ref=e93]:
-                - generic [ref=e94]: Community Systems
-                - generic [ref=e95]: Security
-            - link "Read architecture & validation" [ref=e96] [cursor=pointer]:
+              - generic [ref=e95]:
+                - generic [ref=e96]: Community Systems
+                - generic [ref=e97]: Security
+            - link "Read architecture & validation" [ref=e98] [cursor=pointer]:
               - /url: /projects/houston-oil-airs
-      - complementary [ref=e97]:
-        - generic [ref=e98]:
+      - complementary [ref=e99]:
+        - generic [ref=e100]:
           - paragraph:
             - text: "99.9"
             - generic: "%"
           - paragraph: Operational uptime
           - paragraph: Monitored via automated regression rigs.
-        - generic [ref=e99]:
+        - generic [ref=e101]:
           - paragraph:
             - text: "36"
             - generic: +
           - paragraph: Projects delivered
           - paragraph: End-to-end architecture, implementation, and rollout.
-        - generic [ref=e100]:
+        - generic [ref=e102]:
           - paragraph:
             - text: "97"
             - generic: "%"
           - paragraph: Client satisfaction
           - paragraph: Surveyed post-engagement and repeat clients.
-    - generic [ref=e102]:
-      - generic [ref=e103]:
-        - paragraph [ref=e104]: About
+    - generic [ref=e104]:
+      - generic [ref=e105]:
+        - paragraph [ref=e106]: About
         - heading "Systems architect and conscious network hub with 85% technical centrality, delivering quality-first engineering for high-impact teams." [level=2]
         - paragraph: Douglas Mitchell architects resilient systems that stay human-centered under pressure. With a mastery drive of 0.880 and achievement drive of 0.900, Douglas fuses architecture, security vigilance, and cross-domain synthesis to deliver production-ready outcomes. Each build codifies conscious network practices so collaborators can execute without dependency while communities stay safeguarded.
-      - generic [ref=e105]:
-        - blockquote [ref=e106]:
-          - paragraph: “Douglas rebuilt our operations UI with precision. Every interaction was justified with telemetry — launch day shipped at 60fps.”
-          - generic [ref=e107]:
+      - generic [ref=e107]:
+        - blockquote [ref=e108]:
+          - paragraph: "\"Douglas rebuilt our operations UI with precision. Every interaction was justified with telemetry — launch day shipped at 60fps.\""
+          - generic [ref=e109]:
             - generic: Lena Veras
             - generic: Director of Product, Port Atlas
-        - blockquote [ref=e108]:
-          - paragraph: “The Halcyon prototypes turned dense logistics into a calm narrative. Stakeholders finally understood the system in one walkthrough.”
-          - generic [ref=e109]:
+        - blockquote [ref=e110]:
+          - paragraph: "\"The Halcyon prototypes turned dense logistics into a calm narrative. Stakeholders finally understood the system in one walkthrough.\""
+          - generic [ref=e111]:
             - generic: Kenji Morales
             - generic: Principal Systems Engineer, Relay Collective
-      - generic [ref=e110]: Presence systems keep mastery and safety balanced. I map signals, validate assumptions, and make decisions with full nervous-system consent.
-    - generic [ref=e112]:
-      - generic [ref=e113]:
-        - paragraph [ref=e114]: Skills
+      - generic [ref=e112]: Presence systems keep mastery and safety balanced. I map signals, validate assumptions, and make decisions with full nervous-system consent.
+    - generic [ref=e114]:
+      - generic [ref=e115]:
+        - paragraph [ref=e116]: Skills
         - heading "Cross-domain mastery anchored in safety." [level=2]
         - paragraph: Systems thinking, security hygiene, and conscious network leadership keep every deployment grounded in measurable trust.
-      - generic [ref=e115]:
-        - article [ref=e116]:
+      - generic [ref=e117]:
+        - article [ref=e118]:
           - heading "Architecture & Systems" [level=3]
           - paragraph: Multi-layered processing pipelines from information sensing through validation, implementation, and optimization.
-          - list [ref=e117]:
+          - list [ref=e119]:
             - listitem: Scalability blueprints & future-proofing
             - listitem: Protocol design for transferability
             - listitem: Evidence-backed iteration rituals
-        - article [ref=e118]:
+        - article [ref=e120]:
           - heading "Security & Ops" [level=3]
           - paragraph: Security hygiene, anomaly response, and observability baked into every deployment.
-          - list [ref=e119]:
+          - list [ref=e121]:
             - listitem: MFA, secrets discipline, automated audits
             - listitem: pfSense/VLAN segmentation & SIEM flows
             - listitem: Rollback pathways codified per release
-        - article [ref=e120]:
+        - article [ref=e122]:
           - heading "AI/ML & Analysis" [level=3]
           - paragraph: Benchmarking, pipeline orchestration, and ethical guardrails driving research intensity to production value.
-          - list [ref=e121]:
+          - list [ref=e123]:
             - listitem: Agent orchestration with telemetry
             - listitem: Model evaluation frameworks
             - listitem: Cross-domain synthesis for decision readiness
-        - article [ref=e122]:
+        - article [ref=e124]:
           - heading "Web & Frontend" [level=3]
           - paragraph: Premium interfaces with motion discipline, accessible interactions, and performant storytelling.
-          - list [ref=e123]:
+          - list [ref=e125]:
             - listitem: React/Next.js & GraphQL integrations
             - listitem: GSAP + CSS architecture
             - listitem: Three.js/WebGL prototyping
-        - article [ref=e124]:
+        - article [ref=e126]:
           - heading "Documentation & Knowledge Transfer" [level=3]
           - paragraph: Consciousness transfer protocols ensuring teams can execute without dependency.
-          - list [ref=e125]:
+          - list [ref=e127]:
             - listitem: Runbooks & validation checklists
             - listitem: Narrative system diagrams
             - listitem: Community-ready playbooks
-        - article [ref=e126]:
+        - article [ref=e128]:
           - heading "Influence & Community" [level=3]
           - paragraph: Hub-and-spoke coordination bridging legal, nonprofit, and technical clusters across Houston.
-          - list [ref=e127]:
+          - list [ref=e129]:
             - listitem: Coalition enablement
             - listitem: Ethical persuasion frameworks
             - listitem: Resource routing & safety nets
-      - region "AI Project Ideator" [ref=e128]:
-        - generic [ref=e129]:
+      - region "AI Project Ideator" [ref=e130]:
+        - generic [ref=e131]:
           - heading "AI Project Ideator" [level=3]
           - paragraph: Blend narrative pillars and skill domains to conjure a new experiment.
-        - generic [ref=e130]:
-          - generic [ref=e131]:
+        - generic [ref=e132]:
+          - generic [ref=e133]:
             - text: Narrative pillar
-            - combobox "Narrative pillar" [ref=e132]:
+            - combobox "Narrative pillar" [ref=e134]:
               - option "Systems Architect" [selected]
               - option "Conscious Network Hub"
               - option "Mastery & Safety"
               - option "Evidence & Vigilance"
-          - generic [ref=e133]:
+          - generic [ref=e135]:
             - text: Skill focus
-            - combobox "Skill focus" [ref=e134]:
+            - combobox "Skill focus" [ref=e136]:
               - option "Architecture & Systems" [selected]
               - option "Security & Ops"
               - option "AI/ML & Analysis"
               - option "Influence & Community"
-          - button "Generate concept" [ref=e135]
-        - status "Concept" [ref=e136]:
+          - button "Generate concept" [ref=e137]
+        - status "Concept" [ref=e138]:
           - paragraph: Concept
           - paragraph: Select a focus and generate a concept.
-    - generic [ref=e138]:
-      - generic [ref=e139]:
-        - paragraph [ref=e140]: Writing
+    - generic [ref=e140]:
+      - generic [ref=e141]:
+        - paragraph [ref=e142]: Writing
         - heading "Dispatches documenting evidence and vigilance." [level=2]
         - paragraph: Essays, research logs, and influence guides connect architecture thinking with community outcomes.
-      - generic [ref=e141]:
-        - article [ref=e142]:
+      - generic [ref=e143]:
+        - article [ref=e144]:
           - heading "Environmental Justice" [level=3]
           - paragraph: Protective data patterns, advocacy tooling, and community safeguards for healthier ecosystems.
-          - list [ref=e143]:
+          - list [ref=e145]:
             - listitem: Air quality telemetry protocols
             - listitem: Legal-engineering partnership guides
             - listitem: Community data trusts playbooks
-        - article [ref=e144]:
+        - article [ref=e146]:
           - heading "Advanced AI & Tech" [level=3]
           - paragraph: Model benchmarking, agent pipelines, and deployment maturity anchored in guardrails.
-          - list [ref=e145]:
+          - list [ref=e147]:
             - listitem: Agent observability dashboards
             - listitem: Latency-aware inference strategies
             - listitem: Ethical evaluation matrices
-        - article [ref=e146]:
+        - article [ref=e148]:
           - heading "Health Optimization" [level=3]
           - paragraph: Systems thinking applied to personal resilience, nervous system regulation, and high-performance rituals.
-          - list [ref=e147]:
+          - list [ref=e149]:
             - listitem: Recovery cadences for builders
             - listitem: Biofeedback-informed work sprints
             - listitem: Sustainable mastery loops
-        - article [ref=e148]:
+        - article [ref=e150]:
           - heading "Psychology of Influence" [level=3]
           - paragraph: Narrative framing, network dynamics, and ethical persuasion for coalition building.
-          - list [ref=e149]:
+          - list [ref=e151]:
             - listitem: Influence matrix templates
             - listitem: Trust calibration scorecards
             - listitem: Network choreography field notes
-    - generic [ref=e152]:
-      - generic [ref=e153]:
-        - paragraph [ref=e154]: Lab
+    - generic [ref=e154]:
+      - generic [ref=e155]:
+        - paragraph [ref=e156]: Lab
         - heading "Research streams keeping the axiom protocol sharp." [level=2]
         - paragraph: Benchmarks, pipeline experiments, and security drills are documented with reproducibility checklists.
-      - generic [ref=e155]:
-        - article [ref=e156]:
+      - generic [ref=e157]:
+        - article [ref=e158]:
           - heading "Model Benchmarking Logs" [level=3]
           - paragraph: Transparent records of agent and model evaluations with reproducibility checklists and anomaly notes.
-        - article [ref=e157]:
+        - article [ref=e159]:
           - heading "Pipeline Experiments" [level=3]
           - paragraph: Continuous integration of multimedia and AI data flows with validation gates documented per iteration.
-        - article [ref=e158]:
+        - article [ref=e160]:
           - heading "Security Drills" [level=3]
           - paragraph: Anonymized incident responses, learning loops, and readiness drills reinforcing zero-trust posture.
-    - generic [ref=e160]:
-      - generic [ref=e161]:
-        - paragraph [ref=e162]: Community
+    - generic [ref=e162]:
+      - generic [ref=e163]:
+        - paragraph [ref=e164]: Community
         - heading "Conscious network infrastructure in motion." [level=2]
         - paragraph: Environmental justice, coalition enablement, and cross-cluster trust-building are engineered with the same rigor as production systems.
-      - generic [ref=e163]:
-        - article [ref=e164]:
+      - generic [ref=e165]:
+        - article [ref=e166]:
           - heading "Houston Oil Airs" [level=3]
           - paragraph: Environmental justice advocacy with secure data handling, legal bridges, and community onboarding kits.
           - generic: See how technical rigor powers environmental justice and collective safety.
-        - article [ref=e165]:
+        - article [ref=e167]:
           - heading "Bridge Stories" [level=3]
           - paragraph: Short vignettes showing how legal, nonprofit, and technical collaborators aligned under shared rituals.
           - generic: Explore coordination playbooks built for equitable outcomes.
-    - generic [ref=e167]:
-      - generic [ref=e168]:
-        - paragraph [ref=e169]: Contact
+    - generic [ref=e169]:
+      - generic [ref=e170]:
+        - paragraph [ref=e171]: Contact
         - heading "Bring the next dispatch to life." [level=2]
         - paragraph: The portal routes straight to Douglas. Expect a response inside 48 hours with integration notes and validation pathways.
-      - generic [ref=e170]:
-        - generic [ref=e171]:
-          - textbox "Name" [ref=e172]
+      - generic [ref=e172]:
+        - generic [ref=e173]:
+          - textbox "Name" [ref=e174]
           - generic: Name
           - generic: Who should I coordinate with?
-        - generic [ref=e173]:
-          - textbox "Email" [ref=e174]
+        - generic [ref=e175]:
+          - textbox "Email" [ref=e176]
           - generic: Email
           - generic: Replies land within 48 hours.
-        - generic [ref=e175]:
-          - textbox "Mission brief" [ref=e176]
+        - generic [ref=e177]:
+          - textbox "Mission brief" [ref=e178]
           - generic: Mission brief
           - generic: Share goals, scope, timeline, and Neon requirements.
-        - button "Initiate contact" [ref=e178]
+        - button "Initiate contact" [ref=e180]
         - paragraph: Privacy-first analytics. Secrets stored in secure vaults. Reversible delivery guaranteed.
-  - contentinfo [ref=e179]:
-    - generic [ref=e180]:
-      - generic [ref=e181]:
+  - contentinfo [ref=e181]:
+    - generic [ref=e182]:
+      - generic [ref=e183]:
         - heading "Trust signals" [level=2]
-        - list [ref=e182]:
+        - list [ref=e184]:
           - listitem:
             - generic: Technical centrality
             - generic: 85%
@@ -386,9 +388,9 @@
             - generic: Security posture
             - generic: 0 breaches
             - generic: Documented through drills, audits, and continuous monitoring.
-      - generic [ref=e183]:
+      - generic [ref=e185]:
         - heading "Presence" [level=2]
-        - list [ref=e184]:
+        - list [ref=e186]:
           - listitem:
             - link "contact@douglasmitchell.info":
               - /url: mailto:contact@douglasmitchell.info
@@ -402,7 +404,7 @@
           - listitem:
             - link "X (Twitter)":
               - /url: https://twitter.com/DouglasCSM
-      - generic [ref=e185]:
+      - generic [ref=e187]:
         - heading "Assurances" [level=2]
         - paragraph: Privacy-preserving analytics, MFA everywhere, and transparent data practices.
         - paragraph: © 2025 Douglas Mitchell · All systems monitored.

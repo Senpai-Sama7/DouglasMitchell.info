@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState, memo } from 'react'
 
 type Stat = {
   id: string
@@ -10,10 +10,15 @@ type Stat = {
   source?: string
 }
 
-export function KpiCounters({ stats }: { stats: Stat[] }) {
+interface KpiCountersProps {
+  stats: Stat[]
+}
+
+export const KpiCounters = memo(function KpiCounters({ stats }: KpiCountersProps) {
   const containerRef = useRef<HTMLDivElement | null>(null)
   const [active, setActive] = useState(false)
   const [displayValues, setDisplayValues] = useState(() => stats.map(() => 0))
+  const animationFrameRef = useRef<number | null>(null)
 
   useEffect(() => {
     const node = containerRef.current
@@ -34,29 +39,44 @@ export function KpiCounters({ stats }: { stats: Stat[] }) {
     return () => observer.disconnect()
   }, [])
 
-  useEffect(() => {
+  const animateValues = useCallback(() => {
     if (!active) return
 
-    let animationFrame: number | null = null
     const start = performance.now()
     const duration = 900
     const targets = stats.map(stat => stat.value)
+    const startValues = displayValues.slice()
 
     const tick = (time: number) => {
       const progress = Math.min(1, (time - start) / duration)
-      setDisplayValues(targets.map(value => value * progress))
+      const easedProgress = 1 - Math.pow(1 - progress, 3) // ease-out cubic
+      
+      setDisplayValues(
+        targets.map((target, index) => {
+          const start = startValues[index] || 0
+          return start + (target - start) * easedProgress
+        })
+      )
+      
       if (progress < 1) {
-        animationFrame = requestAnimationFrame(tick)
+        animationFrameRef.current = requestAnimationFrame(tick)
+      } else {
+        animationFrameRef.current = null
       }
     }
 
-    animationFrame = requestAnimationFrame(tick)
+    animationFrameRef.current = requestAnimationFrame(tick)
+  }, [active, stats, displayValues])
+
+  useEffect(() => {
+    animateValues()
     return () => {
-      if (animationFrame) {
-        cancelAnimationFrame(animationFrame)
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current)
+        animationFrameRef.current = null
       }
     }
-  }, [active, stats])
+  }, [animateValues])
 
   return (
     <div ref={containerRef} className="kpi-strip" aria-live="polite">
@@ -72,11 +92,11 @@ export function KpiCounters({ stats }: { stats: Stat[] }) {
       ))}
     </div>
   )
-}
+})
 
 function formatValue(value: number) {
   if (value >= 1000) {
-    return value.toLocaleString()
+    return Math.floor(value).toLocaleString()
   }
-  return Math.round(value)
+  return Math.floor(value)
 }

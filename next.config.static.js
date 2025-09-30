@@ -1,19 +1,3 @@
-// CSP will be dynamically generated with nonces in middleware
-function generateCSP(nonce) {
-  return `
-    default-src 'self';
-    frame-ancestors 'none';
-    base-uri 'self';
-    form-action 'self';
-    font-src 'self' data:;
-    img-src 'self' data: https://cdn.sanity.io;
-    style-src 'self' 'nonce-${nonce}' 'unsafe-inline';
-    script-src 'self' 'nonce-${nonce}' 'strict-dynamic';
-    object-src 'none';
-    connect-src 'self' https://api.github.com https://*.sanity.io https://apicdn.sanity.io https://upstash.io https://*.upstash.io;
-  `.replace(/\s{2,}/g, ' ').trim()
-}
-
 const ContentSecurityPolicy = `
   default-src 'self';
   frame-ancestors 'none';
@@ -23,7 +7,6 @@ const ContentSecurityPolicy = `
   img-src 'self' data: https://cdn.sanity.io;
   style-src 'self' 'unsafe-inline';
   script-src 'self' 'unsafe-inline';
-  object-src 'none';
   connect-src 'self' https://api.github.com https://*.sanity.io https://apicdn.sanity.io https://upstash.io https://*.upstash.io;
 `.replace(/\s{2,}/g, ' ').trim()
 
@@ -56,18 +39,20 @@ const securityHeaders = [
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Dynamic build - includes API routes
+  output: 'export',
   images: {
     unoptimized: true
   },
   basePath: '',
   assetPrefix: '',
   outputFileTracingRoot: __dirname,
+  distDir: 'out',
+  trailingSlash: true,
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production'
   },
   webpack: (config, { isServer }) => {
-    // Optimize bundle size
+    // Optimize for static export
     if (!isServer) {
       config.resolve.fallback = {
         ...config.resolve.fallback,
@@ -78,20 +63,16 @@ const nextConfig = {
     }
     return config
   },
-  async headers() {
-    return [
-      {
-        source: '/:path*',
-        headers: securityHeaders
-      }
-    ]
-  },
-  // Enable when needed for static export
-  ...(process.env.NEXT_EXPORT === 'true' && {
-    output: 'export',
-    distDir: 'out',
-    trailingSlash: true
-  })
+  // Skip API routes during static export
+  exportPathMap: async function (defaultPathMap, { dev, dir, outDir, distDir, buildId }) {
+    const paths = {}
+    
+    // Only include static pages for export
+    paths['/'] = { page: '/' }
+    paths['/resume'] = { page: '/resume' }
+    
+    return paths
+  }
 }
 
 module.exports = nextConfig
