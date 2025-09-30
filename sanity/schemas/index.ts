@@ -1,8 +1,6 @@
-import article from './article'
-import media from './media'
-import liveEvent from './liveEvent'
-import game from './game'
-import dailyDeck from './dailyDeck'
-import metric from './metric'
+import post from './post'
+import category from './category'
+import mediaItem from './mediaItem'
+import blockContent from './blockContent'
 
-export const schemaTypes = [article, media, liveEvent, game, dailyDeck, metric]
+export const schemaTypes = [post, category, mediaItem, blockContent]
