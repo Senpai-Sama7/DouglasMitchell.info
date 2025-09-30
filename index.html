@@ -1,161 +1,395 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#ffffff">
-  <meta name="color-scheme" content="light dark">
-  <title>Douglas Mitchell · Philosophical Engineer & Systems Architect</title>
-  <meta name="description" content="Philosophical Engineer and Conscious Network Hub architecting resilient systems that bridge technical excellence with community impact. Houston-based systems architect with 85% technical centrality.">
-
-  <!-- SEO and Social Sharing -->
-  <meta property="og:title" content="Douglas Mitchell · Philosophical Engineer & Systems Architect">
-  <meta property="og:description" content="Architecting resilient systems that bridge technical excellence with community impact.">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="assets/social-preview.png">
-  <meta property="og:url" content="https://senpai-sama7.github.io/DouglasMitchell.info/">
-  <meta name="twitter:card" content="summary_large_image">
-
-  <!-- Preconnect to essential origins -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <!-- Preload critical assets -->
-  <link rel="preload" href="styles.css" as="style">
-  <link rel="preload" href="script.js" as="script">
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"></noscript>
-
-  <link rel="stylesheet" href="styles.css">
-  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-  <link rel="manifest" href="manifest.webmanifest">
-
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Douglas Mitchell",
-    "url": "https://senpai-sama7.github.io/DouglasMitchell.info/",
-    "jobTitle": "Philosophical Engineer & Systems Architect",
-    "knowsAbout": ["Systems Architecture", "AI/ML Engineering", "Environmental Justice", "Cybersecurity", "Community Networks"],
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Houston",
-      "addressRegion": "TX"
-    },
-    "sameAs": [
-      "https://github.com/Senpai-Sama7",
-      "https://www.linkedin.com/in/douglasmitchell-houston/"
-    ]
-  }
-  </script>
-</head>
-<body class="light-theme">
-  <a class="skip" href="#main">Skip to content</a>
-  <header class="site-header" data-container>
-    <nav class="nav" aria-label="Primary">
-      <a class="brand" href="/">Douglas Mitchell</a>
-      <button class="nav__toggle" aria-expanded="false" aria-controls="nav-list" id="navToggle">
-        <span class="sr-only">Menu</span>
-        <svg class="icon-menu" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/></svg>
-        <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="display:none;"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
-      </button>
-      <ul id="nav-list" class="nav__list">
-        <li><a href="#work">Work</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li>
-          <button id="themeToggle" class="ghost" aria-label="Toggle theme">
-            <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.64 5.64c-.39-.39-1.02-.39-1.41 0s-.39 1.02 0 1.41l1.06 1.06c.39.39 1.02.39 1.41 0s.39-1.02 0-1.41L5.64 5.64zm12.72 12.72c-.39-.39-1.02-.39-1.41 0s-.39 1.02 0 1.41l1.06 1.06c.39.39 1.02.39 1.41 0s.39-1.02 0-1.41l-1.06-1.06zM5.64 18.36c.39.39 1.02.39 1.41 0s.39-1.02 0-1.41l-1.06-1.06c-.39-.39-1.02-.39-1.41 0s-.39 1.02 0 1.41l1.06 1.06zm12.72-12.72c.39.39 1.02.39 1.41 0s.39-1.02 0-1.41l-1.06-1.06c-.39-.39-1.02-.39-1.41 0s-.39 1.02 0 1.41l1.06 1.06z"/></svg>
-            <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="display:none;"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.82.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg>
-          </button>
-        </li>
-      </ul>
-    </nav>
-  </header>
-
-  <main id="main" class="site-main">
-    <div class="floating-elements"></div>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a0e1a" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="color-scheme" content="light dark">
+    <meta name="robots" content="index, follow">
     
-    <section class="hero" data-container>
-      <h1 class="hero__title">Architect of Consciousness & Systems</h1>
-      <p class="lead">Philosophical Engineer and Conscious Network Hub with 85% technical centrality. Building foundational systems from scratch—turning complexity into conscious, production-ready solutions.</p>
-      <div class="hero__cta">
-        <a class="btn" href="#work">See work</a>
-        <a class="btn ghost" href="mailto:douglas@douglasmitchell.info">Get in touch</a>
-      </div>
-    </section>
+    <title>Douglas Mitchell • Philosophical Engineer & Conscious Network Hub</title>
+    <meta name="description" content="Houston-based Systems Architect with 85% technical centrality. Building production-ready AI orchestration, environmental justice platforms, and secure network infrastructure from first principles.">
+    
+    <!-- Enhanced Open Graph and Social Media Meta -->
+    <meta property="og:title" content="Douglas Mitchell • Philosophical Engineer & Conscious Network Hub">
+    <meta property="og:description" content="Architecting conscious systems that bridge technical excellence with community impact. Production-ready AI orchestration with 99.9% uptime.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://senpai-sama7.github.io/DouglasMitchell.info/assets/social-preview.webp">
+    <meta property="og:url" content="https://senpai-sama7.github.io/DouglasMitchell.info/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="author" content="Douglas Mitchell">
+    
+    <!-- Performance-Critical Resource Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Progressive Font Loading -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Inter:wght@300;400;500;600;700&display=swap"></noscript>
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+    <link rel="manifest" href="manifest.webmanifest">
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Douglas Mitchell",
+        "jobTitle": "Philosophical Engineer & Conscious Network Hub",
+        "description": "Systems Architect specializing in AI orchestration, environmental justice platforms, and secure network infrastructure",
+        "url": "https://senpai-sama7.github.io/DouglasMitchell.info/",
+        "sameAs": [
+            "https://github.com/senpai-sama7",
+            "https://linkedin.com/in/douglasmitchell"
+        ],
+        "knowsAbout": [
+            "AI/ML Systems Architecture",
+            "Network Security Engineering", 
+            "Environmental Justice Technology",
+            "Production Systems Design"
+        ],
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Houston",
+            "addressRegion": "TX",
+            "addressCountry": "US"
+        }
+    }
+    </script>
+</head>
 
-    <section id="work" class="work" data-container>
-      <h2>Recent work</h2>
-      <div class="cards">
-        <article class="card">
-          <div class="card__image">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="currentColor" opacity="0.1">
-              <rect width="400" height="300" fill="currentColor"/>
-              <path d="M200 100l50 50-50 50-50-50z" fill="white"/>
-            </svg>
-          </div>
-          <h3>Ultimate AI Agent Stack</h3>
-          <p>Production-ready AI orchestration with guardrails, telemetry, and 99.9% uptime. Modular agent coordination without human bottlenecks.</p>
-          <a class="btn small" href="https://github.com/Senpai-Sama7" target="_blank" rel="noopener noreferrer">View Project</a>
-        </article>
-        <article class="card">
-          <div class="card__image">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="currentColor" opacity="0.1">
-              <rect width="400" height="300" fill="currentColor"/>
-              <circle cx="200" cy="150" r="50" fill="white"/>
-            </svg>
-          </div>
-          <h3>Houston Oil Airs</h3>
-          <p>Environmental justice advocacy platform with secure data handling and community onboarding protocols. Bridging legal, nonprofit, and technical domains.</p>
-          <a class="btn small" href="https://github.com/Senpai-Sama7" target="_blank" rel="noopener noreferrer">View Project</a>
-        </article>
-        <article class="card">
-          <div class="card__image">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="currentColor" opacity="0.1">
-              <rect width="400" height="300" fill="currentColor"/>
-              <polygon points="200,100 250,200 150,200" fill="white"/>
-            </svg>
-          </div>
-          <h3>Cybersecurity Home Lab</h3>
-          <p>pfSense-driven network segmentation, SIEM telemetry, and incident response drills. Zero breach history with <15min response time.</p>
-          <a class="btn small" href="https://github.com/Senpai-Sama7" target="_blank" rel="noopener noreferrer">View Project</a>
-        </article>
-      </div>
-    </section>
+<body class="light-theme">
+    <a href="#main-content" class="skip">Skip to main content</a>
+    
+    <header class="site-header glass" role="banner">
+        <nav class="nav" aria-label="Primary navigation" role="navigation">
+            <div class="nav__brand">
+                <a href="/" aria-label="Douglas Mitchell - Home">
+                    <svg class="logo" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
+                        <defs>
+                            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#6366f1"/>
+                                <stop offset="100%" style="stop-color:#8b5cf6"/>
+                            </linearGradient>
+                        </defs>
+                        <path d="M16 2L28 16L16 30L4 16Z" fill="url(#logoGradient)"/>
+                        <circle cx="16" cy="16" r="6" fill="white"/>
+                    </svg>
+                    <span class="logo-text">Douglas Mitchell</span>
+                </a>
+            </div>
+            
+            <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu" id="navToggle">
+                <span class="sr-only">Menu</span>
+                <svg class="icon-menu" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/></svg>
+                <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="display:none;"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+            </button>
+            
+            <ul id="nav-menu" class="nav__list" role="menubar">
+                <li role="none"><a href="#work" role="menuitem">Work</a></li>
+                <li role="none"><a href="#about" role="menuitem">About</a></li>
+                <li role="none"><a href="#contact" role="menuitem">Contact</a></li>
+                <li role="none">
+                    <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode" role="menuitem">
+                        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1z"/></svg>
+                        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="display:none;"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.82.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
 
-    <section id="about" class="about" data-container>
-      <h2>About</h2>
-      <p>Philosophical Engineer operating as a Conscious Network Hub from Houston, Texas. Pioneer creating foundational systems that integrate AI/ML, environmental justice, and cybersecurity with ethical guardrails.</p>
-      <ul class="facts">
-        <li>85% technical centrality across networks</li>
-        <li>36+ end-to-end projects delivered</li>
-        <li>99.9% system uptime maintained</li>
-        <li>Zero breach security history</li>
-      </ul>
-    </section>
+    <main id="main-content" class="main-content" role="main">
+        <div class="floating-elements"></div>
+        
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero__content">
+                <h1 id="hero-title" class="hero__title">Architect of Consciousness & Systems</h1>
+                <p class="hero__subtitle">
+                    Philosophical Engineer operating as a Conscious Network Hub from Houston, Texas. 
+                    Pioneering foundational systems that integrate AI/ML, environmental justice, 
+                    and cybersecurity with ethical guardrails.
+                </p>
+                <div class="hero__stats">
+                    <div class="stat">
+                        <span class="stat__value">99.9%</span>
+                        <span class="stat__label">Uptime</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat__value">85%</span>
+                        <span class="stat__label">Technical Centrality</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat__value">&lt;15min</span>
+                        <span class="stat__label">Response Time</span>
+                    </div>
+                </div>
+                <div class="hero__cta">
+                    <a href="#work" class="btn btn--primary">
+                        <span>Explore Systems</span>
+                        <svg class="btn__icon" width="16" height="16" viewBox="0 0 16 16">
+                            <path d="M6 12l4-4-4-4"/>
+                        </svg>
+                    </a>
+                    <a href="mailto:douglas@douglasmitchell.info" class="btn btn--secondary">
+                        <span>Connect</span>
+                        <svg class="btn__icon" width="16" height="16" viewBox="0 0 16 16">
+                            <path d="M8 0v16M0 8h16"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <canvas id="network-canvas" class="hero__canvas" aria-hidden="true"></canvas>
+        </section>
 
-    <section id="contact" class="contact" data-container>
-      <h2>Contact</h2>
-      <div class="contact__info">
-        <p>Ready to architect resilient systems that bridge technical excellence with community impact?</p>
-        <div class="contact__links">
-          <a class="btn" href="mailto:douglas@douglasmitchell.info">Email</a>
-          <a class="btn ghost" href="https://github.com/Senpai-Sama7" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a class="btn ghost" href="https://www.linkedin.com/in/douglasmitchell-houston/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <section id="work" class="work" aria-labelledby="work-title">
+            <div class="container">
+                <h2 id="work-title" class="section__title">Production Systems</h2>
+                <p class="section__subtitle">
+                    Foundational systems architected from first principles, 
+                    turning complexity into conscious, production-ready solutions.
+                </p>
+                
+                <div class="projects-grid">
+                    <article class="project-card glass" data-category="ai">
+                        <div class="project-card__header">
+                            <div class="project-card__meta">
+                                <span class="project-card__category">AI/ML</span>
+                                <div class="project-card__status project-card__status--live">
+                                    <span class="status-indicator"></span>
+                                    Production
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-card__content">
+                            <h3 class="project-card__title">Ultimate AI Agent Stack</h3>
+                            <p class="project-card__description">
+                                Production-ready AI orchestration with guardrails, telemetry, and 99.9% uptime. 
+                                Modular agent coordination without human bottlenecks.
+                            </p>
+                            
+                            <div class="project-card__tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Docker</span>
+                                <span class="tech-tag">Kubernetes</span>
+                                <span class="tech-tag">MLOps</span>
+                            </div>
+                        </div>
+                        
+                        <div class="project-card__actions">
+                            <a href="https://github.com/Senpai-Sama7" class="btn btn--sm btn--outline" target="_blank" rel="noopener noreferrer">
+                                <span>View Details</span>
+                                <svg class="btn__icon" width="14" height="14" viewBox="0 0 14 14">
+                                    <path d="M5 11l4-4-4-4"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
+                    
+                    <article class="project-card glass" data-category="justice">
+                        <div class="project-card__header">
+                            <div class="project-card__meta">
+                                <span class="project-card__category">Environmental Justice</span>
+                                <div class="project-card__status project-card__status--beta">
+                                    <span class="status-indicator"></span>
+                                    Beta
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-card__content">
+                            <h3 class="project-card__title">Houston Oil Airs Platform</h3>
+                            <p class="project-card__description">
+                                Secure advocacy platform with data handling protocols and community onboarding. 
+                                Bridging legal, nonprofit, and technical domains.
+                            </p>
+                            
+                            <div class="project-card__tech">
+                                <span class="tech-tag">Next.js</span>
+                                <span class="tech-tag">PostgreSQL</span>
+                                <span class="tech-tag">GDPR</span>
+                                <span class="tech-tag">OAuth 2.0</span>
+                            </div>
+                        </div>
+                        
+                        <div class="project-card__actions">
+                            <a href="https://github.com/Senpai-Sama7" class="btn btn--sm btn--outline" target="_blank" rel="noopener noreferrer">
+                                <span>View Platform</span>
+                                <svg class="btn__icon" width="14" height="14" viewBox="0 0 14 14">
+                                    <path d="M5 11l4-4-4-4"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
+                    
+                    <article class="project-card glass" data-category="security">
+                        <div class="project-card__header">
+                            <div class="project-card__meta">
+                                <span class="project-card__category">Network Security</span>
+                                <div class="project-card__status project-card__status--live">
+                                    <span class="status-indicator"></span>
+                                    Production
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-card__content">
+                            <h3 class="project-card__title">Secure Network Infrastructure</h3>
+                            <p class="project-card__description">
+                                pfSense-driven network segmentation, SIEM telemetry, and incident response drills. 
+                                Zero breach history with &lt;15min response time.
+                            </p>
+                            
+                            <div class="project-card__tech">
+                                <span class="tech-tag">pfSense</span>
+                                <span class="tech-tag">SIEM</span>
+                                <span class="tech-tag">IDS/IPS</span>
+                                <span class="tech-tag">Zero Trust</span>
+                            </div>
+                        </div>
+                        
+                        <div class="project-card__actions">
+                            <a href="https://github.com/Senpai-Sama7" class="btn btn--sm btn--outline" target="_blank" rel="noopener noreferrer">
+                                <span>View Architecture</span>
+                                <svg class="btn__icon" width="14" height="14" viewBox="0 0 14 14">
+                                    <path d="M5 11l4-4-4-4"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about" aria-labelledby="about-title">
+            <div class="container">
+                <div class="about__grid">
+                    <div class="about__content">
+                        <h2 id="about-title" class="section__title">Conscious Network Hub</h2>
+                        <p class="about__description">
+                            Operating as a philosophical engineer with 85% technical centrality, 
+                            I architect foundational systems that bridge technical excellence with ethical responsibility. 
+                            My approach integrates first-principles thinking with production-ready implementation.
+                        </p>
+                        
+                        <div class="principles-grid">
+                            <div class="principle glass">
+                                <div class="principle__icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24">
+                                        <path d="M12 2l9 4.5v7c0 5.55-3.84 10.74-9 12-5.16-1.26-9-6.45-9-12v-7L12 2z"/>
+                                    </svg>
+                                </div>
+                                <h3 class="principle__title">Security-First</h3>
+                                <p class="principle__description">Zero breach history with sub-15-minute incident response protocols</p>
+                            </div>
+                            
+                            <div class="principle glass">
+                                <div class="principle__icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+                                    </svg>
+                                </div>
+                                <h3 class="principle__title">Production-Ready</h3>
+                                <p class="principle__description">99.9% uptime with comprehensive monitoring and automated recovery</p>
+                            </div>
+                            
+                            <div class="principle glass">
+                                <div class="principle__icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24">
+                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                    </svg>
+                                </div>
+                                <h3 class="principle__title">Ethical by Design</h3>
+                                <p class="principle__description">Built-in guardrails ensuring responsible AI and community-centered solutions</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact" aria-labelledby="contact-title">
+            <div class="container">
+                <div class="contact__grid">
+                    <div class="contact__info">
+                        <h2 id="contact-title" class="section__title">Initialize Connection</h2>
+                        <p class="contact__description">
+                            Ready to architect conscious systems together? 
+                            Let's discuss how ethical engineering can serve your mission.
+                        </p>
+                        
+                        <div class="contact__methods">
+                            <div class="contact-method glass">
+                                <div class="contact-method__icon">
+                                    <svg width="20" height="20" viewBox="0 0 20 20">
+                                        <path d="M2 3h16a1 1 0 011 1v12a1 1 0 01-1 1H2a1 1 0 01-1-1V4a1 1 0 011-1z"/>
+                                    </svg>
+                                </div>
+                                <div class="contact-method__content">
+                                    <h3>Direct Communication</h3>
+                                    <p>douglas@douglasmitchell.info</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-method glass">
+                                <div class="contact-method__icon">
+                                    <svg width="20" height="20" viewBox="0 0 20 20">
+                                        <path d="M10 0C4.48 0 0 4.48 0 10c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.11-1.46-1.11-1.46-.91-.62.07-.61.07-.61 1.01.07 1.54 1.03 1.54 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02.8-.22 1.65-.33 2.5-.33.85 0 1.7.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85 0 1.34-.01 2.42-.01 2.75 0 .27.18.58.69.48C17.14 18.16 20 14.42 20 10A10 10 0 0010 0z"/>
+                                    </svg>
+                                </div>
+                                <div class="contact-method__content">
+                                    <h3>Code Repository</h3>
+                                    <p>github.com/senpai-sama7</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-method glass">
+                                <div class="contact-method__icon">
+                                    <svg width="20" height="20" viewBox="0 0 20 20">
+                                        <path d="M10 2L3 7v11h4v-6h6v6h4V7l-7-5z"/>
+                                    </svg>
+                                </div>
+                                <div class="contact-method__content">
+                                    <h3>Network Hub</h3>
+                                    <p>Houston, Texas</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer glass" role="contentinfo">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__info">
+                    <p class="footer__copyright">
+                        © <span id="current-year">2025</span> Douglas Mitchell
+                        <span class="footer__separator">•</span>
+                        <span class="footer__status">
+                            <span class="status-dot status-dot--online"></span>
+                            Systems Online
+                        </span>
+                    </p>
+                    <p class="footer__tagline">
+                        Conscious Network Hub • Houston, TX
+                    </p>
+                </div>
+                
+                <div class="footer__links">
+                    <a href="https://github.com/Senpai-Sama7" class="footer__link" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a href="https://www.linkedin.com/in/douglasmitchell-houston/" class="footer__link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                </div>
+            </div>
         </div>
-        <p><small>Houston, TX • Available for consulting and collaboration</small></p>
-      </div>
-    </section>
-  </main>
+    </footer>
 
-  <footer class="site-footer" data-container>
-    <small>© <span id="year"></span> Douglas Mitchell — <a href="https://github.com/Senpai-Sama7" target="_blank" rel="noopener noreferrer">GitHub</a></small>
-  </footer>
-
-  <script src="script.js" defer></script>
+    <script src="script.js" defer></script>
 </body>
 </html>
