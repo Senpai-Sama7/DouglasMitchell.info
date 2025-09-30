@@ -11,51 +11,53 @@ export const navigationLinks = [
 ]
 
 export const seo = {
-  title: 'Douglas Mitchell · Systems Architect & Conscious Network Hub',
+  title: 'Douglas Mitchell · Philosophical Engineer & Systems Architect',
   description:
-    'Quality-first systems architect and conscious network hub building resilient, validated, production-ready solutions that scale impact.',
+    'Philosophical Engineer and Conscious Network Hub architecting resilient systems that bridge technical excellence with community impact. Houston-based systems architect with 85% technical centrality.',
   keywords: [
     'Douglas Mitchell',
+    'philosophical engineer',
     'systems architect',
     'AI/ML pipelines',
-    'security hygiene',
+    'environmental justice',
     'Houston network hub',
+    'conscious network hub',
     'production-ready engineering'
   ]
 }
 
 export const heroContent = {
-  kicker: 'AXIOM PROTOCOL ONLINE',
-  headline: 'Build less. Ship more.',
-  tagline: 'Engineering resilient, validated systems—turning complexity into repeatable performance.',
-  subtext: 'Conscious Network Hub connecting technical excellence to community impact.',
+  kicker: 'PHILOSOPHICAL ENGINEER ONLINE',
+  headline: 'Architect of Consciousness & Systems',
+  tagline: 'Building foundational systems from scratch—turning complexity into conscious, production-ready solutions.',
+  subtext: 'Pioneer & Architect creating possibility spaces where technical excellence meets community impact.',
   description:
-    'Douglas Mitchell is a 85% technical-centrality systems architect delivering premium, evidence-backed products. Every engagement fuses architecture, security hygiene, and community-scale empathy.',
+    'Douglas Mitchell is a Philosophical Engineer and Conscious Network Hub with 85% technical centrality. Operating as a central node bridging AI/ML, environmental justice, and community systems—architecting resilient solutions that scale impact while maintaining ethical guardrails.',
   primaryCta: { label: 'Explore flagship projects', href: '#projects' },
   secondaryCta: { label: 'Download resume', href: '/resume' }
 }
 
 export const kpiStats = [
   {
-    id: 'code-stewarded',
-    label: 'Lines of resilient code stewarded',
-    value: 120000,
-    suffix: '+',
-    source: 'Versioned across production-grade client and community systems.'
+    id: 'technical-centrality',
+    label: 'Technical centrality in networks',
+    value: 85,
+    suffix: '%',
+    source: 'Cross-context analysis from technical, architectural, and narrative audits.'
   },
   {
-    id: 'projects-completed',
-    label: 'Projects delivered end-to-end',
+    id: 'projects-delivered',
+    label: 'End-to-end projects delivered',
     value: 36,
     suffix: '+',
-    source: 'Architecture, implementation, validation, and launch support.'
+    source: 'Architecture, implementation, validation, and launch support since 2022.'
   },
   {
-    id: 'client-satisfaction',
-    label: 'Client satisfaction index',
-    value: 97,
+    id: 'uptime-achievement',
+    label: 'System uptime maintained',
+    value: 99.9,
     suffix: '%',
-    source: 'Post-engagement surveys and repeat collaborations since 2022.'
+    source: 'Zero breach history with automated regression rigs and security drills.'
   }
 ]
 
@@ -294,26 +296,26 @@ export const watcherStatement =
   'Presence systems keep mastery and safety balanced. I map signals, validate assumptions, and make decisions with full nervous-system consent.'
 
 export const contactChannels = {
-  email: 'contact@douglasmitchell.info',
-  consulting: 'mailto:contact@douglasmitchell.info?subject=Consulting%20Inquiry',
-  github: 'https://github.com/DouglasSMitchell',
-  linkedin: 'https://www.linkedin.com/in/douglascmitchell/',
-  twitter: 'https://twitter.com/DouglasCSM',
+  email: 'douglas@douglasmitchell.info',
+  consulting: 'mailto:douglas@douglasmitchell.info?subject=Consulting%20Inquiry',
+  github: 'https://github.com/Senpai-Sama7',
+  linkedin: 'https://www.linkedin.com/in/douglasmitchell-houston/',
+  twitter: 'https://twitter.com/DouglasMitchell',
   location: 'Houston, TX'
 }
 
 export const githubConfig = {
-  username: 'DouglasSMitchell',
+  username: 'Senpai-Sama7',
   perPage: 5
 }
 
 export const bios = {
   short:
-    'Systems architect and conscious network hub with 85% technical centrality, delivering quality-first engineering for high-impact teams.',
+    'Philosophical Engineer and Conscious Network Hub with 85% technical centrality, architecting resilient systems that bridge technical excellence with community impact.',
   medium:
-    'Douglas Mitchell architects resilient systems that stay human-centered under pressure. With a mastery drive of 0.880 and achievement drive of 0.900, Douglas fuses architecture, security vigilance, and cross-domain synthesis to deliver production-ready outcomes. Each build codifies conscious network practices so collaborators can execute without dependency while communities stay safeguarded.',
+    'Douglas Mitchell is a Philosophical Engineer who operates as a Conscious Network Hub, bridging technical, legal, and community domains. With exceptional mastery drive (0.880) and achievement orientation (0.900), Douglas creates foundational systems from scratch while maintaining ethical guardrails. Each project codifies conscious network practices, enabling teams to execute without dependency while communities stay protected.',
   long:
-    'Douglas Mitchell is a systems architect and conscious network hub operating out of Houston, Texas. The practice began with personal research into environmental justice and rapidly evolved into an architecture lab translating complex realities into resilient, validated solutions. Across AI, security, and community systems, Douglas designs modular protocols that transfer knowledge without creating bottlenecks. Mastery and safety remain inseparable: incident drills, ethical guardrails, and compassionate leadership keep teams regulated while shipping at pace. From the Ultimate AI Agent stack to Houston Oil Airs advocacy tooling, Douglas orchestrates multidisciplinary coalitions, proving that high-intensity research can stay grounded in public-interest outcomes and premium engineering discipline.'
+    'Douglas Mitchell is a Philosophical Engineer and Conscious Network Hub operating from Houston, Texas. Identified as a "Pioneer" and "Architect," Douglas creates foundational systems that integrate diverse domains—AI/ML, environmental justice, cybersecurity, and community advocacy. With 85% technical centrality across networks, Douglas serves as a critical integrator connecting legal (environmental justice), nonprofit (Houston Oil Airs), and technical communities that would otherwise remain isolated. The practice emphasizes "bleeding-edge, sophisticated, and production-ready" solutions while maintaining systematic emotional regulation and ethical guardrails. From AI agent orchestration to environmental justice tooling, Douglas architects possibility spaces where technical excellence meets compassionate action, proving that high-intensity research can stay grounded in community-centered outcomes.'
 }
 
 export const experience = [
