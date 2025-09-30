@@ -75,9 +75,10 @@ export default function Page() {
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-float [animation-delay:2s]"></div>
       </div>
 
-      <div ref={containerRef} className="relative z-10 min-h-screen">
+      <div ref={containerRef as any} className="relative z-10 min-h-screen">
         <CustomCursor />
-        <PageTimer />
+        <PageTimer pageName="home">
+          <div>
 
         {/* Hero Section */}
         <HeroSection />
@@ -135,14 +136,13 @@ export default function Page() {
         </section>
 
         {/* KPI Strip */}
-        <section className="axiom-section" id="metrics">
-          <div className="axiom-section__inner">
-            <div className="kpi-strip">
+        <section className="py-16 px-4">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {metrics.map((metric, index) => (
-                <div key={index} className="kpi-item">
-                  <div className="kpi-value">{metric.value}</div>
-                  <div className="kpi-label">{metric.label}</div>
-                  <div className="kpi-source">{metric.source}</div>
+                <div key={index} className="bg-glass-100 backdrop-blur-xl border border-white/20 rounded-2xl p-6 text-center">
+                  <div className="text-3xl font-bold text-white mb-2">{metric.value}</div>
+                  <div className="text-white/70 text-sm">{metric.label}</div>
                 </div>
               ))}
             </div>
@@ -150,84 +150,88 @@ export default function Page() {
         </section>
 
         {/* Skills Section */}
-        <section className="axiom-section" id="skills">
-          <div className="axiom-section__inner">
-            <div className="axiom-section__header">
-              <span className="axiom-eyebrow">Expertise</span>
-              <h2 className="axiom-heading">Skills & Technologies</h2>
-              <p className="axiom-body">
+        <section className="py-16 px-4">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-white mb-4">Skills & Technologies</h2>
+              <p className="text-white/70 max-w-2xl mx-auto">
                 A comprehensive toolkit spanning AI/ML, full-stack development, and emerging technologies.
               </p>
             </div>
-            <div className="skills-grid">
-              {Object.entries(skillTaxonomy).map(([category, skills]) => (
-                <div key={category} className="skill-card">
-                  <h3>{category}</h3>
-                  <ul>
-                    {skills.map((skill, index) => (
-                      <li key={index}>{skill}</li>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {Array.isArray(skillTaxonomy) ? skillTaxonomy.map((skill: any, index: number) => (
+                <div key={index} className="bg-glass-100 backdrop-blur-xl border border-white/20 rounded-2xl p-6">
+                  <h3 className="text-xl font-bold text-white mb-4">{skill.title}</h3>
+                  <ul className="space-y-2">
+                    {skill.bullets?.map((bullet: string, i: number) => (
+                      <li key={i} className="text-white/70 text-sm">{bullet}</li>
                     ))}
                   </ul>
                 </div>
-              ))}
+              )) : null}
             </div>
           </div>
         </section>
 
         {/* Projects Section */}
-        <ProjectsSection />
+        <ProjectsSection metrics={metrics} />
 
         {/* Lab Section */}
-        <section className="axiom-section" id="lab">
-          <div className="axiom-section__inner">
-            <div className="axiom-section__header">
-              <span className="axiom-eyebrow">Innovation</span>
-              <h2 className="axiom-heading">Research Lab</h2>
-              <p className="axiom-body">
+        <section className="py-16 px-4">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-white mb-4">Research Lab</h2>
+              <p className="text-white/70 max-w-2xl mx-auto">
                 Experimental projects and research initiatives pushing the boundaries of AI and technology.
               </p>
             </div>
-            <div className="lab-grid">
-              {labStreams.map((stream, index) => (
-                <div key={index} className="lab-card">
-                  <h3>{stream.name}</h3>
-                  <p>{stream.description}</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {labStreams.map((stream: any, index: number) => (
+                <div key={index} className="bg-glass-100 backdrop-blur-xl border border-white/20 rounded-2xl p-6">
+                  <h3 className="text-xl font-bold text-white mb-4">{stream.title || stream.name}</h3>
+                  <p className="text-white/70">{stream.description}</p>
                 </div>
               ))}
             </div>
-            <div className="mt-8">
-              <AIProjectIdeator />
+            <div className="mt-12 flex justify-center">
+              <div className="bg-glass-100 backdrop-blur-xl border border-white/20 rounded-2xl p-6">
+                <AIProjectIdeator pillars={aiPillars || []} skills={skillProofs || []} />
+              </div>
             </div>
           </div>
         </section>
 
         {/* Community Section */}
-        <section className="axiom-section" id="community">
-          <div className="axiom-section__inner">
-            <div className="axiom-section__header">
-              <span className="axiom-eyebrow">Engagement</span>
-              <h2 className="axiom-heading">Community</h2>
-              <p className="axiom-body">
+        <section className="py-16 px-4">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-white mb-4">Community</h2>
+              <p className="text-white/70 max-w-2xl mx-auto">
                 Active participation in the tech community through open source, mentoring, and knowledge sharing.
               </p>
             </div>
-            <div className="community-grid">
-              {communityHighlights.map((highlight, index) => (
-                <div key={index} className="community-card">
-                  <h3>{highlight.platform}</h3>
-                  <p>{highlight.contribution}</p>
-                  <span>{highlight.impact}</span>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {communityHighlights.map((highlight: any, index: number) => (
+                <div key={index} className="bg-glass-100 backdrop-blur-xl border border-white/20 rounded-2xl p-6">
+                  <h3 className="text-xl font-bold text-white mb-4">{highlight.title}</h3>
+                  <p className="text-white/70 mb-4">{highlight.summary}</p>
+                  <span className="text-purple-300 text-sm">{highlight.cta}</span>
                 </div>
               ))}
             </div>
-            <div className="mt-8">
-              <GitHubFeed />
+            <div className="mt-12 flex justify-center">
+              <div className="bg-glass-100 backdrop-blur-xl border border-white/20 rounded-2xl p-6">
+                <GitHubFeed />
+              </div>
             </div>
           </div>
         </section>
 
         {/* Contact Section */}
         <ContactSection />
+
+          </div>
+        </PageTimer>
       </div>
     </ErrorBoundary>
   )
