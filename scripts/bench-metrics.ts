@@ -2,6 +2,10 @@ import { promises as fs } from 'node:fs'
 import path from 'node:path'
 import { performance } from 'node:perf_hooks'
 
+// Load environment variables
+import { config } from 'dotenv'
+config({ path: '.env.local' })
+
 import { loadProjectMetrics } from '../lib/neon'
 import { getMetricsSnapshot, resetMetrics } from '../lib/metrics'
 
