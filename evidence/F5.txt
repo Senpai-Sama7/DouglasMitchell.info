@@ -1,2 +1,0 @@
-$ rg "Initiate contact" app/page.tsx
-                Initiate contact

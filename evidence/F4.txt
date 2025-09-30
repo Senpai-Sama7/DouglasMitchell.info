@@ -1,2 +1,0 @@
-$ rg "role=\"tablist\"" components/TopicShowcase.tsx
-      <div className="topic-tabs" role="tablist" aria-label="Topic filters">

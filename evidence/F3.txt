@@ -1,2 +1,0 @@
-$ rg "Security Drills" content/site-data.ts
-    title: 'Security Drills',
