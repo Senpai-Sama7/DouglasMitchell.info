@@ -8,43 +8,50 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Halcyon-inspired palette
-        'halcyon-sun': '#FFD700',
-        'halcyon-dusk': '#FF6B6B', 
-        'halcyon-sky': '#4ECDC4',
-        'halcyon-slate': '#45B7D1',
-        'halcyon-warm': '#FFF8E1',
-        'halcyon-text': '#2C3E50',
-        // Extended palette for bento cards
-        primary: '#3B82F6',
-        secondary: '#8B5CF6', 
-        accent: '#F59E0B',
-        success: '#10B981',
-        danger: '#EF4444',
+        // Modern glassmorphic palette
+        glass: {
+          50: 'rgba(255, 255, 255, 0.1)',
+          100: 'rgba(255, 255, 255, 0.2)',
+          200: 'rgba(255, 255, 255, 0.3)',
+          300: 'rgba(255, 255, 255, 0.4)',
+        },
+        dark: {
+          50: 'rgba(0, 0, 0, 0.1)',
+          100: 'rgba(0, 0, 0, 0.2)',
+          200: 'rgba(0, 0, 0, 0.3)',
+          300: 'rgba(0, 0, 0, 0.4)',
+        },
+        accent: {
+          purple: '#8B5CF6',
+          blue: '#3B82F6',
+          pink: '#EC4899',
+          emerald: '#10B981',
+        }
       },
-      fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+      backdropBlur: {
+        xs: '2px',
       },
       borderRadius: {
-        'bento': '1.25rem',
+        '4xl': '2rem',
       },
       boxShadow: {
-        'bento': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-        'bento-hover': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
+        'glass-inset': 'inset 0 1px 0 0 rgba(255, 255, 255, 0.05)',
+        'clay': '0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.08)',
+        'clay-hover': '0 20px 40px rgba(0, 0, 0, 0.15), 0 4px 12px rgba(0, 0, 0, 0.1)',
       },
       animation: {
-        'fade-in': 'fadeIn 0.6s ease-out',
-        'slide-up': 'slideUp 0.6s ease-out',
-        'pulse-soft': 'pulse 2s infinite',
+        'float': 'float 6s ease-in-out infinite',
+        'glow': 'glow 2s ease-in-out infinite alternate',
       },
       keyframes: {
-        fadeIn: {
-          '0%': { opacity: '0' },
-          '100%': { opacity: '1' },
+        float: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-10px)' },
         },
-        slideUp: {
-          '0%': { transform: 'translateY(20px)', opacity: '0' },
-          '100%': { transform: 'translateY(0)', opacity: '1' },
+        glow: {
+          '0%': { boxShadow: '0 0 20px rgba(139, 92, 246, 0.3)' },
+          '100%': { boxShadow: '0 0 30px rgba(139, 92, 246, 0.6)' },
         },
       },
     },
