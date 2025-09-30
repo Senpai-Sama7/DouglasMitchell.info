@@ -17,6 +17,7 @@ import {
 import { AIProjectIdeator } from '@/components/AIProjectIdeator'
 import { GitHubFeed } from '@/components/GitHubFeed'
 import { CustomCursor } from '@/components/CustomCursor'
+import { BentoGrid, defaultBentoItems } from '@/components/BentoGrid'
 import { PageTimer } from '@/app/_metrics/page-timer'
 import { ErrorBoundary } from '@/components/ErrorBoundary'
 import { HeroSection } from '@/components/sections/HeroSection'
@@ -48,12 +49,13 @@ export default function Page() {
           headers
         })
         if (!response.ok) return
-        const payload = (await response.json()) as { metrics?: ProjectMetric[] }
-        if (!cancelled && payload.metrics?.length) {
-          setMetrics(payload.metrics)
+
+        const data = await response.json()
+        if (!cancelled && Array.isArray(data)) {
+          setMetrics(data)
         }
       } catch (error) {
-        // Swallow errors and retain fallback metrics
+        console.warn('Metrics API unavailable, using fallback data')
       }
     })()
 
@@ -63,140 +65,136 @@ export default function Page() {
   }, [])
 
   return (
-    <PageTimer pageName="home">
-      <ErrorBoundary>
-        <main ref={containerRef} className="axiom-main">
+    <ErrorBoundary>
+      <div ref={containerRef} className="site-body">
         <CustomCursor />
-        <div className="axiom-background">
-          <div className="axiom-background__halo" data-parallax="0.12" />
-          <div className="axiom-background__grid" data-parallax="-0.08" />
-        </div>
+        <PageTimer />
 
+        {/* Hero Section */}
         <HeroSection />
-        <ProjectsSection metrics={metrics} />
 
-        <section id="about" className="axiom-section axiom-section--about">
+        {/* Bento Grid Showcase Section */}
+        <section className="axiom-section" id="bento-showcase">
           <div className="axiom-section__inner">
-            <header className="axiom-section__header">
-              <p className="axiom-eyebrow">About</p>
-              <h2 className="axiom-heading">{bios.short}</h2>
-              <p className="axiom-body">{bios.medium}</p>
-            </header>
-            <div className="testimonial-grid">
-              {testimonials.map(testimonial => (
-                <blockquote key={testimonial.id} className="testimonial-card">
-                  <p>"{testimonial.quote}"</p>
-                  <footer>
-                    <span>{testimonial.author}</span>
-                    <span>{testimonial.role}</span>
-                  </footer>
-                </blockquote>
-              ))}
+            <div className="axiom-section__header">
+              <span className="axiom-eyebrow">Interactive Design</span>
+              <h2 className="axiom-heading">Bento Grid Experience</h2>
+              <p className="axiom-body">
+                A modern, interactive layout system inspired by Japanese bento boxes. 
+                Each card tells a story, creating an engaging visual narrative.
+              </p>
             </div>
-            <div className="watcher">{watcherStatement}</div>
+            
+            <div className="max-w-6xl mx-auto">
+              <BentoGrid items={defaultBentoItems} />
+            </div>
+
+            <div className="flex justify-center mt-8">
+              <Link 
+                href="/admin" 
+                className="axiom-button axiom-button--ghost"
+              >
+                Customize Layout
+              </Link>
+            </div>
           </div>
         </section>
 
-        <section id="skills" className="axiom-section axiom-section--skills">
+        {/* KPI Strip */}
+        <section className="axiom-section" id="metrics">
           <div className="axiom-section__inner">
-            <header className="axiom-section__header">
-              <p className="axiom-eyebrow">Skills</p>
-              <h2 className="axiom-heading">Cross-domain mastery anchored in safety.</h2>
+            <div className="kpi-strip">
+              {metrics.map((metric, index) => (
+                <div key={index} className="kpi-item">
+                  <div className="kpi-value">{metric.value}</div>
+                  <div className="kpi-label">{metric.label}</div>
+                  <div className="kpi-source">{metric.source}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Skills Section */}
+        <section className="axiom-section" id="skills">
+          <div className="axiom-section__inner">
+            <div className="axiom-section__header">
+              <span className="axiom-eyebrow">Expertise</span>
+              <h2 className="axiom-heading">Skills & Technologies</h2>
               <p className="axiom-body">
-                Systems thinking, security hygiene, and conscious network leadership keep every deployment grounded in measurable trust.
+                A comprehensive toolkit spanning AI/ML, full-stack development, and emerging technologies.
               </p>
-            </header>
+            </div>
             <div className="skills-grid">
-              {skillTaxonomy.map(skill => (
-                <article key={skill.id} className="skill-card">
-                  <h3>{skill.title}</h3>
-                  <p>{skill.summary}</p>
+              {Object.entries(skillTaxonomy).map(([category, skills]) => (
+                <div key={category} className="skill-card">
+                  <h3>{category}</h3>
                   <ul>
-                    {skill.bullets.map(item => (
-                      <li key={item}>{item}</li>
+                    {skills.map((skill, index) => (
+                      <li key={index}>{skill}</li>
                     ))}
                   </ul>
-                </article>
+                </div>
               ))}
             </div>
-            <ErrorBoundary fallback={<div className="ai-ideator-error">AI Project Ideator temporarily unavailable</div>}>
-              <AIProjectIdeator pillars={aiPillars} skills={skillProofs} />
-            </ErrorBoundary>
           </div>
         </section>
 
-        <section id="writing" className="axiom-section axiom-section--writing">
-          <div className="axiom-section__inner">
-            <header className="axiom-section__header">
-              <p className="axiom-eyebrow">Writing</p>
-              <h2 className="axiom-heading">Dispatches documenting evidence and vigilance.</h2>
-              <p className="axiom-body">
-                Essays, research logs, and influence guides connect architecture thinking with community outcomes.
-              </p>
-            </header>
-            <div className="writing-grid">
-              {writingDomains.map(domain => (
-                <article key={domain.id} className="writing-card">
-                  <h3>{domain.title}</h3>
-                  <p>{domain.summary}</p>
-                  <ul>
-                    {domain.prompts.map(prompt => (
-                      <li key={prompt}>{prompt}</li>
-                    ))}
-                  </ul>
-                </article>
-              ))}
-            </div>
-            <ErrorBoundary fallback={<div className="github-feed-error">GitHub feed temporarily unavailable</div>}>
-              <GitHubFeed />
-            </ErrorBoundary>
-          </div>
-        </section>
+        {/* Projects Section */}
+        <ProjectsSection />
 
-        <section id="lab" className="axiom-section axiom-section--lab">
+        {/* Lab Section */}
+        <section className="axiom-section" id="lab">
           <div className="axiom-section__inner">
-            <header className="axiom-section__header">
-              <p className="axiom-eyebrow">Lab</p>
-              <h2 className="axiom-heading">Research streams keeping the axiom protocol sharp.</h2>
+            <div className="axiom-section__header">
+              <span className="axiom-eyebrow">Innovation</span>
+              <h2 className="axiom-heading">Research Lab</h2>
               <p className="axiom-body">
-                Benchmarks, pipeline experiments, and security drills are documented with reproducibility checklists.
+                Experimental projects and research initiatives pushing the boundaries of AI and technology.
               </p>
-            </header>
+            </div>
             <div className="lab-grid">
-              {labStreams.map(stream => (
-                <article key={stream.id} className="lab-card">
-                  <h3>{stream.title}</h3>
+              {labStreams.map((stream, index) => (
+                <div key={index} className="lab-card">
+                  <h3>{stream.name}</h3>
                   <p>{stream.description}</p>
-                </article>
+                </div>
               ))}
+            </div>
+            <div className="mt-8">
+              <AIProjectIdeator />
             </div>
           </div>
         </section>
 
-        <section id="community" className="axiom-section axiom-section--community">
+        {/* Community Section */}
+        <section className="axiom-section" id="community">
           <div className="axiom-section__inner">
-            <header className="axiom-section__header">
-              <p className="axiom-eyebrow">Community</p>
-              <h2 className="axiom-heading">Conscious network infrastructure in motion.</h2>
+            <div className="axiom-section__header">
+              <span className="axiom-eyebrow">Engagement</span>
+              <h2 className="axiom-heading">Community</h2>
               <p className="axiom-body">
-                Environmental justice, coalition enablement, and cross-cluster trust-building are engineered with the same rigor as production systems.
+                Active participation in the tech community through open source, mentoring, and knowledge sharing.
               </p>
-            </header>
+            </div>
             <div className="community-grid">
-              {communityHighlights.map(highlight => (
-                <article key={highlight.id} className="community-card">
-                  <h3>{highlight.title}</h3>
-                  <p>{highlight.summary}</p>
-                  <span>{highlight.cta}</span>
-                </article>
+              {communityHighlights.map((highlight, index) => (
+                <div key={index} className="community-card">
+                  <h3>{highlight.platform}</h3>
+                  <p>{highlight.contribution}</p>
+                  <span>{highlight.impact}</span>
+                </div>
               ))}
+            </div>
+            <div className="mt-8">
+              <GitHubFeed />
             </div>
           </div>
         </section>
 
+        {/* Contact Section */}
         <ContactSection />
-        </main>
-      </ErrorBoundary>
-    </PageTimer>
+      </div>
+    </ErrorBoundary>
   )
 }
