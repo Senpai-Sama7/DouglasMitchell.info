@@ -39,7 +39,7 @@ export default function BentoBlogGrid({ posts }: BentoBlogGridProps) {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: index * 0.1 }}
-          className={`${getGridClass(index, post.featured)} group`}
+          className={`${getGridClass(index, post.featured || false)} group`}
         >
           <Link href={`/blog/${post.slug.current}`}>
             <div className="relative h-full w-full rounded-2xl overflow-hidden bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-white/20 hover:border-cyan-400/50 transition-all duration-300 cursor-pointer">

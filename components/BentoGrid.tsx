@@ -6,11 +6,12 @@ import clsx from "clsx";
 
 export interface BentoItem {
   id: string;
-  type: "hero" | "stats" | "about" | "newsletter" | "activity" | "feature";
+  type: "hero" | "stats" | "about" | "newsletter" | "activity" | "feature" | "blog";
   title: string;
   content?: string;
   size: "small" | "medium" | "large" | "wide";
   gradient?: string;
+  color?: "blue" | "purple" | "orange" | "green";
   data?: any;
 }
 

@@ -66,7 +66,7 @@ export default function BlogPost({ title, content, readTime }: BlogPostProps) {
           height: '3px',
           background: 'linear-gradient(90deg, #00f5ff, #ff00ff)',
           transformOrigin: 'left',
-          scaleX: 0,
+          transform: 'scaleX(0)',
           zIndex: 1000
         }}
       />
