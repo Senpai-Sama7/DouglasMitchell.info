@@ -4,6 +4,9 @@ import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import BentoBlogGrid from '@/components/BentoBlogGrid'
 import { getBlogPosts } from '@/lib/sanity'
+import { getLogger } from '@/lib/log'
+
+const logger = getLogger('blog-page')
 
 export default function BlogPage() {
   const [posts, setPosts] = useState([])
@@ -15,7 +18,13 @@ export default function BlogPage() {
         const blogPosts = await getBlogPosts()
         setPosts(blogPosts)
       } catch (error) {
-        console.error('Failed to fetch posts:', error)
+        if (process.env.NODE_ENV === 'development') {
+          logger.error({
+            event: 'blog.posts.fetch.failed',
+            message: 'Failed to fetch blog posts from Sanity',
+            error
+          })
+        }
       } finally {
         setLoading(false)
       }

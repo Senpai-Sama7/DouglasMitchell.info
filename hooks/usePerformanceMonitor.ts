@@ -1,6 +1,9 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import { getLogger } from '@/lib/log'
+
+const logger = getLogger('performance-monitor')
 
 interface PerformanceEntry {
   name: string
@@ -36,7 +39,15 @@ export function usePerformanceMonitor({
             startTime: entry.startTime
           }
           
-          console.warn(`Slow component detected: ${entry.name} took ${entry.duration.toFixed(2)}ms`)
+          if (process.env.NODE_ENV === 'development') {
+            logger.warn({
+              event: 'performance.slow_component',
+              message: `Slow component detected: ${entry.name}`,
+              component: entry.name,
+              durationMs: entry.duration,
+              threshold
+            })
+          }
           onSlowComponent?.(slowEntry)
         }
       })
@@ -51,7 +62,13 @@ export function usePerformanceMonitor({
     try {
       observerRef.current.observe({ entryTypes })
     } catch (error) {
-      console.warn('Performance monitoring not fully supported:', error)
+      if (process.env.NODE_ENV === 'development') {
+        logger.warn({
+          event: 'performance.monitor.unsupported',
+          message: 'Performance monitoring not fully supported',
+          error
+        })
+      }
     }
 
     return () => {

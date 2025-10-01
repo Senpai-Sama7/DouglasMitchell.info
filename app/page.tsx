@@ -28,6 +28,9 @@ import { ContactSection } from '@/components/sections/ContactSection'
 import { useScrollAnimations } from '@/hooks/useScrollAnimations'
 
 import type { ProjectMetric } from '@/lib/neon'
+import { getLogger } from '@/lib/log'
+
+const logger = getLogger('home-page')
 
 export default function Page() {
   const [metrics, setMetrics] = useState<ProjectMetric[]>(projectMetricFallback)
@@ -57,7 +60,13 @@ export default function Page() {
           setMetrics(data)
         }
       } catch (error) {
-        console.warn('Metrics API unavailable, using fallback data')
+        if (process.env.NODE_ENV === 'development') {
+          logger.warn({
+            event: 'metrics.fetch.fallback',
+            message: 'Metrics API unavailable, using fallback data',
+            error
+          })
+        }
       }
     })()
 
