@@ -1,0 +1,12 @@
+
+> ultimate-dynamic-portfolio@0.1.0 check:bundle
+> tsx scripts/check-bundle.ts
+
+┌───────────────┬────────┐
+│ (index)       │ Values │
+├───────────────┼────────┤
+│ totalBytes    │ 348374 │
+│ baselineBytes │ 348374 │
+│ delta         │ 0      │
+│ deltaPercent  │ 0      │
+└───────────────┴────────┘

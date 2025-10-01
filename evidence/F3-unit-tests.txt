@@ -1,0 +1,14 @@
+
+> ultimate-dynamic-portfolio@0.1.0 test:unit
+> node scripts/run-unit-tests.mjs
+
+🔍 [2025-10-01T17:26:41.327Z] Starting enhanced test runner...
+    { coverage: false, filters: 'none', workers: 4 }
+🔍 [2025-10-01T17:26:41.342Z] Building 2 test files...
+    { workers: 4, target: 'node20' }
+✅ [2025-10-01T17:26:41.397Z] Test compilation completed
+🔍 [2025-10-01T17:26:41.398Z] Executing 2 test files...
+🔍 [2025-10-01T17:26:41.719Z] Test Summary
+    { total: 4, passed: 4, failed: 0, duration: '387ms', success: true }
+✅ [2025-10-01T17:26:41.720Z] All tests passed!
+    { total: 4, duration: '387ms' }

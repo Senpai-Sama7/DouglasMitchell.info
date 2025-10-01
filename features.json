@@ -1,38 +1,26 @@
 [
   {
     "id": "F1",
-    "feature": "Hero kicker proclaims AXIOM PROTOCOL ONLINE status.",
-    "command": "rg \"AXIOM PROTOCOL ONLINE\" content/site-data.ts",
-    "expected_signal": "Output shows the hero kicker string set to AXIOM PROTOCOL ONLINE."
+    "feature": "Static export build succeeds for GitHub Pages deployment.",
+    "command": "npm run build:static",
+    "expected_signal": "Command finishes with Next.js route summary showing all pages exported."
   },
   {
     "id": "F2",
-    "feature": "Project showcase lists the Ultimate AI Agent — Production-Ready Edition case study.",
-    "command": "rg \"Ultimate AI Agent — Production-Ready Edition\" content/site-data.ts",
-    "expected_signal": "Result reveals the Ultimate AI Agent project title inside the showcase configuration."
+    "feature": "Repository passes ESLint quality gate.",
+    "command": "npm run lint",
+    "expected_signal": "eslint . completes without reporting errors or warnings."
   },
   {
     "id": "F3",
-    "feature": "Lab streams include the Security Drills log feed.",
-    "command": "rg \"Security Drills\" content/site-data.ts",
-    "expected_signal": "Search output confirms the Security Drills lab stream entry."
+    "feature": "Custom unit test runner reports all tests passing.",
+    "command": "npm run test:unit",
+    "expected_signal": "Test Summary indicates zero failed tests and All tests passed message."
   },
   {
     "id": "F4",
-    "feature": "Topic showcase renders accessible tablist controls.",
-    "command": "rg \"role=\\\"tablist\\\"\" components/TopicShowcase.tsx",
-    "expected_signal": "Component source includes a div with role=\"tablist\" labelling the topic filters."
-  },
-  {
-    "id": "F5",
-    "feature": "Contact form primary action invites visitors to Initiate contact.",
-    "command": "rg \"Initiate contact\" app/page.tsx",
-    "expected_signal": "Output contains the Initiate contact button label within the contact form actions."
-  },
-  {
-    "id": "F6",
-    "feature": "Production build compiles via CI=1 npx --no-install next build.",
-    "command": "CI=1 npx --no-install next build",
-    "expected_signal": "Command completes without module resolution, type checking, or prerender errors."
+    "feature": "Bundle regression guard validates root main chunk size against baseline.",
+    "command": "npm run check:bundle",
+    "expected_signal": "Console table shows deltaPercent within configured threshold and no error is thrown."
   }
 ]
