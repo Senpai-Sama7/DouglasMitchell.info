@@ -14,6 +14,7 @@
     "test:unit:coverage": "COVERAGE=true node scripts/run-unit-tests.mjs",
     "test:e2e": "playwright test",
     "bench:metrics": "tsx scripts/bench-metrics.ts",
+    "check:bundle": "tsx scripts/check-bundle.ts",
     "analyze": "ANALYZE=true npm run build",
     "verify:adr": "node scripts/verify-adr.js",
     "ci:quality": "npm run lint && npm run build && npm run test:unit && npm run test:e2e && npm run bench:metrics && npm run check:bundle && npm run verify:adr",
