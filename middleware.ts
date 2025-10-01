@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { randomBytes } from 'crypto'
 
 export function middleware(request: NextRequest) {
-  // Generate cryptographically secure nonce for CSP
-  const nonce = randomBytes(16).toString('base64')
+  // Generate cryptographically secure nonce for CSP using Web Crypto API (Edge Runtime compatible)
+  const nonceArray = new Uint8Array(16)
+  crypto.getRandomValues(nonceArray)
+  const nonce = Buffer.from(nonceArray).toString('base64')
   
   const csp = `
     default-src 'self';
