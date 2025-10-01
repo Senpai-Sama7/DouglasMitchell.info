@@ -228,8 +228,10 @@ class TestRunner {
       }
     }
 
-    if (testsFromSummary && testCount === 0) {
+    if (testsFromSummary && testCount === -1) {
       testCount = passCount + failCount
+    } else if (testCount === -1) {
+      testCount = 0
     }
 
     this.results.total = testCount
