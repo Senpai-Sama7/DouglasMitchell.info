@@ -244,7 +244,11 @@ export const defaultBentoItems: BentoItem[] = [
     title: "Douglas Mitchell",
     size: "medium",
     gradient: "bg-gradient-to-br from-accent-emerald/30 to-accent-blue/30",
-    data: { role: "AI Developer", location: "Houston, TX" }
+    data: {
+      avatar: "https://github.com/Senpai-Sama7.png",
+      role: "AI Developer",
+      location: "Houston, TX"
+    }
   },
   {
     id: "4",

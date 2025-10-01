@@ -104,8 +104,10 @@
 }
 
 .hero-letter {
-  will-change: transform, opacity;
-  transform: translateZ(0);
+  /* Removed will-change and translateZ to fix text blur on some browsers */
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* High contrast mode support */
