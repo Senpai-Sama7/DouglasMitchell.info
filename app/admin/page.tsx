@@ -1,8 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { getLogger } from "@/lib/log";
+
+const logger = getLogger('admin-page');
 import { BentoGrid, defaultBentoItems, BentoItem } from "../../components/BentoGrid";
-import { VisualEditor } from "../../components/VisualEditor";
+import { LazyVisualEditor } from "../../components/LazyVisualEditor";
 import { Eye, Edit3, Save, Download, Upload } from "lucide-react";
 
 export default function AdminPage() {
@@ -29,7 +32,11 @@ export default function AdminPage() {
       try {
         setItems(JSON.parse(saved));
       } catch (error) {
-        console.error("Failed to load saved layout:", error);
+        logger.error({
+          event: 'admin.layout.load.failed',
+          message: 'Failed to load saved layout from localStorage',
+          error
+        });
       }
     }
   };
@@ -201,7 +208,7 @@ export default function AdminPage() {
       </div>
 
       {/* Visual Editor Panel */}
-      <VisualEditor
+      <LazyVisualEditor
         isOpen={isEditing}
         onClose={() => setIsEditing(false)}
         items={items}

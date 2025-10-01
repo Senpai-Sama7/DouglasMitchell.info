@@ -255,10 +255,16 @@ jobs:
           name: build-artifacts
           path: ./dist
 
-      - name: Runtime error testing
+      - name: Unit tests
         run: |
-          # Test for JavaScript runtime errors
-          npm run test:runtime || echo "Runtime tests not configured"
+          # Create tests directory if it doesn't exist
+          mkdir -p tests/unit
+          # Run tests if they exist, otherwise skip
+          if [ -d "tests/unit" ] && [ "$(ls -A tests/unit)" ]; then
+            npm run test:unit
+          else
+            echo "No unit tests found, skipping..."
+          fi
 
       - name: API endpoint validation
         run: |

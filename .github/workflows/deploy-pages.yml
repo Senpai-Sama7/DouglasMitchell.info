@@ -39,7 +39,7 @@ jobs:
           fi
 
       - name: Build application
-        run: npm run build
+        run: npm run build:static
         env:
           NEXT_PUBLIC_METRICS_API_KEY: ${{ secrets.METRICS_API_KEY }}
           NEXT_PUBLIC_SUBSCRIBE_API_KEY: ${{ secrets.SUBSCRIBE_API_KEY }}

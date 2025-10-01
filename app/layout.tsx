@@ -5,9 +5,20 @@ import { NavBar } from '@/components/NavBar'
 import { Footer } from '@/components/Footer'
 import { seo } from '@/content/site-data'
 import { Inter, Space_Grotesk } from 'next/font/google'
+import { reportWebVitals } from '@/lib/performance'
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
-const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-space-grotesk' })
+const inter = Inter({ 
+  subsets: ['latin'], 
+  variable: '--font-inter',
+  display: 'swap',
+  preload: true
+})
+const spaceGrotesk = Space_Grotesk({ 
+  subsets: ['latin'], 
+  variable: '--font-space-grotesk',
+  display: 'swap',
+  preload: true
+})
 
 export const metadata: Metadata = {
   title: seo.title,
@@ -31,6 +42,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="scroll-smooth">
+      <head>
+        {/* Resource hints for external domains */}
+        <link rel="preconnect" href="https://cdn.sanity.io" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://api.github.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://upstash.io" />
+      </head>
       <body className={`${inter.variable} ${spaceGrotesk.variable} site-body`}>
         <a href="#main-content" className="skip-to-content">
           Skip to main content

@@ -1,6 +1,9 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import { getLogger } from '@/lib/log'
+
+const logger = getLogger('page-timer')
 
 interface PageTimerProps {
   children: React.ReactNode
@@ -31,7 +34,13 @@ function dispatchMetric(metricName: string, value: number, pageName: string) {
     })
   } catch (error) {
     // eslint-disable-next-line no-console
-    console.warn('Telemetry dispatch failed', error)
+    if (process.env.NODE_ENV === 'development') {
+      logger.warn({
+        event: 'telemetry.dispatch.failed',
+        message: 'Telemetry dispatch failed',
+        error
+      })
+    }
   }
 }
 

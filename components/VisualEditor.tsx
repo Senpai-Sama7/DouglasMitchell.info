@@ -13,7 +13,7 @@ interface VisualEditorProps {
   editingId?: string;
 }
 
-export function VisualEditor({ isOpen, onClose, items, onUpdateItems, editingId }: VisualEditorProps) {
+export default function VisualEditor({ isOpen, onClose, items, onUpdateItems, editingId }: VisualEditorProps) {
   const [editingItem, setEditingItem] = useState<BentoItem | null>(
     editingId ? items.find(item => item.id === editingId) || null : null
   );

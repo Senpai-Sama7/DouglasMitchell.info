@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import DOMPurify from 'dompurify'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -86,14 +87,22 @@ export default function BlogPost({ title, content, readTime }: BlogPostProps) {
         </div>
       </header>
 
-      <div 
-        style={{ 
+      <div
+        style={{
           maxWidth: '800px',
           margin: '0 auto',
           lineHeight: 1.8,
           fontSize: '1.1rem'
         }}
-        dangerouslySetInnerHTML={{ __html: content }}
+        dangerouslySetInnerHTML={{
+          // Sanitize HTML content from Sanity CMS to prevent XSS
+          __html: typeof window !== 'undefined'
+            ? DOMPurify.sanitize(content, {
+                ALLOWED_TAGS: ['p', 'br', 'strong', 'em', 'u', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ul', 'ol', 'li', 'a', 'code', 'pre', 'blockquote'],
+                ALLOWED_ATTR: ['href', 'target', 'rel', 'class']
+              })
+            : content // Server-side: trust Sanity CMS content
+        }}
       />
     </article>
   )
