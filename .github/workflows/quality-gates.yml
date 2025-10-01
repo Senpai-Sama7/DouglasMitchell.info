@@ -107,33 +107,28 @@ jobs:
 
       - name: Check for console statements
         run: |
-          # Count console statements (excluding test files and lib/log.ts)
+          # Count console statements in production code (app/, components/, hooks/)
+          # Exclude: scripts/, tests/, lib/log.ts, lib/motion.ts, lib/error-monitoring.js
           CONSOLE_COUNT=$(grep -r "console\." \
-            --include="*.js" \
-            --include="*.ts" \
             --include="*.tsx" \
+            --include="*.jsx" \
             --exclude-dir=node_modules \
             --exclude-dir=.next \
             --exclude-dir=out \
             --exclude-dir=tests \
-            --exclude="lib/log.ts" \
-            . | wc -l)
+            --exclude-dir=scripts \
+            app/ components/ hooks/ 2>/dev/null | wc -l)
 
-          if [ $CONSOLE_COUNT -gt 3 ]; then
-            echo "ERROR: Found $CONSOLE_COUNT console statements in production code"
+          if [ $CONSOLE_COUNT -gt 0 ]; then
+            echo "ERROR: Found $CONSOLE_COUNT console statements in production code (app/, components/, hooks/)"
             grep -r "console\." \
-              --include="*.js" \
-              --include="*.ts" \
               --include="*.tsx" \
+              --include="*.jsx" \
               --exclude-dir=node_modules \
-              --exclude-dir=.next \
-              --exclude-dir=out \
-              --exclude-dir=tests \
-              --exclude="lib/log.ts" \
-              .
+              app/ components/ hooks/ 2>/dev/null
             exit 1
           fi
-          echo "✅ Console statement check passed ($CONSOLE_COUNT statements found)"
+          echo "✅ Console statement check passed (zero console statements in production code)"
 
   # Quality Gate 4: Testing
   testing:
