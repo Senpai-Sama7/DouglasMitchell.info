@@ -2089,72 +2089,75 @@ textarea {
   }
 }
 
-/* Glassmorphism Utility Classes */
-.bg-glass-50 {
-  background-color: rgba(255, 255, 255, 0.1);
-}
+/* Glassmorphism and Backdrop Blur - Using @layer utilities to ensure Tailwind includes them */
+@layer utilities {
+  /* Glassmorphism background utilities */
+  .bg-glass-50 {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
 
-.bg-glass-100 {
-  background-color: rgba(255, 255, 255, 0.2);
-}
+  .bg-glass-100 {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
 
-.bg-glass-200 {
-  background-color: rgba(255, 255, 255, 0.3);
-}
+  .bg-glass-200 {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
 
-.bg-glass-300 {
-  background-color: rgba(255, 255, 255, 0.4);
-}
+  .bg-glass-300 {
+    background-color: rgba(255, 255, 255, 0.4);
+  }
 
-/* Dark glass variants */
-.bg-dark-50 {
-  background-color: rgba(0, 0, 0, 0.1);
-}
+  /* Dark glass variants */
+  .bg-dark-50 {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
 
-.bg-dark-100 {
-  background-color: rgba(0, 0, 0, 0.2);
-}
+  .bg-dark-100 {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
 
-.bg-dark-200 {
-  background-color: rgba(0, 0, 0, 0.3);
-}
+  .bg-dark-200 {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
 
-.bg-dark-300 {
-  background-color: rgba(0, 0, 0, 0.4);
-}
+  .bg-dark-300 {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
 
-/* Backdrop blur utilities */
-.backdrop-blur-sm {
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-}
+  /* Backdrop blur utilities with vendor prefix */
+  .backdrop-blur-sm {
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+  }
 
-.backdrop-blur {
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
+  .backdrop-blur {
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
 
-.backdrop-blur-md {
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
+  .backdrop-blur-md {
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+  }
 
-.backdrop-blur-lg {
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-}
+  .backdrop-blur-lg {
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+  }
 
-.backdrop-blur-xl {
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-}
+  .backdrop-blur-xl {
+    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
+  }
 
-.backdrop-blur-2xl {
-  backdrop-filter: blur(40px);
-  -webkit-backdrop-filter: blur(40px);
-}
+  .backdrop-blur-2xl {
+    -webkit-backdrop-filter: blur(40px);
+    backdrop-filter: blur(40px);
+  }
 
-.backdrop-blur-3xl {
-  backdrop-filter: blur(64px);
-  -webkit-backdrop-filter: blur(64px);
+  .backdrop-blur-3xl {
+    -webkit-backdrop-filter: blur(64px);
+    backdrop-filter: blur(64px);
+  }
 }
