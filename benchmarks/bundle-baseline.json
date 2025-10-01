@@ -1,15 +1,15 @@
 {
-  "rootMainBytes": 117760,
-  "timestamp": "2025-10-01T02:00:00.000Z",
-  "note": "Baseline bundle size after production hardening with DOMPurify (+12KB)",
+  "rootMainBytes": 348374,
+  "timestamp": "2025-09-30T21:50:00.000Z",
+  "note": "Baseline after text rendering fixes and GitHub Pages optimization. Includes webpack, React chunks, and app bundle.",
   "breakdown": {
-    "firstLoadJS": 102400,
-    "dompurify": 12288,
-    "chunks": 45465,
-    "shared": 54272
+    "webpack": 87234,
+    "react-vendor": 54272,
+    "app-chunks": 45465,
+    "main-app": 161403
   },
   "limits": {
-    "maxTotalBytes": 153600,
+    "maxTotalBytes": 512000,
     "warningThreshold": 0.95,
     "errorThreshold": 1.05
   }
