@@ -1,0 +1,11 @@
+# Ignore build outputs
+out/
+.next/
+dist/
+build/
+
+# Ignore third-party
+node_modules/
+
+# Ignore minified files
+**/*.min.css
