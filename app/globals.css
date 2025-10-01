@@ -2088,3 +2088,37 @@ textarea {
     scroll-behavior: auto !important;
   }
 }
+
+/* Glassmorphism Utility Classes */
+.bg-glass-50 {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.bg-glass-100 {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.bg-glass-200 {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.bg-glass-300 {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Dark glass variants */
+.bg-dark-50 {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.bg-dark-100 {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.bg-dark-200 {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.bg-dark-300 {
+  background-color: rgba(0, 0, 0, 0.4);
+}

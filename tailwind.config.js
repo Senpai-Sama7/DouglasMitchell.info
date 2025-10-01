@@ -5,21 +5,32 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  safelist: [
+    // Ensure glassmorphism classes are always generated
+    'bg-glass-50',
+    'bg-glass-100',
+    'bg-glass-200',
+    'bg-glass-300',
+    'backdrop-blur-xl',
+    'backdrop-blur-sm',
+    'backdrop-blur-md',
+    'backdrop-blur-lg',
+  ],
   theme: {
     extend: {
       colors: {
-        // Modern glassmorphic palette
+        // Modern glassmorphic palette - using rgb format for Tailwind compatibility
         glass: {
-          50: 'rgba(255, 255, 255, 0.1)',
-          100: 'rgba(255, 255, 255, 0.2)',
-          200: 'rgba(255, 255, 255, 0.3)',
-          300: 'rgba(255, 255, 255, 0.4)',
+          50: 'rgb(255 255 255 / 0.1)',
+          100: 'rgb(255 255 255 / 0.2)',
+          200: 'rgb(255 255 255 / 0.3)',
+          300: 'rgb(255 255 255 / 0.4)',
         },
         dark: {
-          50: 'rgba(0, 0, 0, 0.1)',
-          100: 'rgba(0, 0, 0, 0.2)',
-          200: 'rgba(0, 0, 0, 0.3)',
-          300: 'rgba(0, 0, 0, 0.4)',
+          50: 'rgb(0 0 0 / 0.1)',
+          100: 'rgb(0 0 0 / 0.2)',
+          200: 'rgb(0 0 0 / 0.3)',
+          300: 'rgb(0 0 0 / 0.4)',
         },
         accent: {
           purple: '#8B5CF6',
