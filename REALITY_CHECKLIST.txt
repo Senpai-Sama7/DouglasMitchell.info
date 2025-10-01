@@ -1,7 +1,5 @@
 # Reality Checklist
-- [x] F1 — Hero kicker proclaims “AXIOM PROTOCOL ONLINE” status (VERIFIED)
-- [x] F2 — Ultimate AI Agent — Production-Ready Edition appears in project showcase (VERIFIED)
-- [x] F3 — Lab streams list the Security Drills feed (VERIFIED)
-- [x] F4 — Topic showcase exposes accessible tablist controls (VERIFIED)
-- [x] F5 — Contact form button invites visitors to “Initiate contact” (VERIFIED)
-- [x] F6 — Production build compiles via `CI=1 npx --no-install next build` (VERIFIED)
+- [x] F1 — Static export build yields Next.js route summary (VERIFIED)
+- [x] F2 — ESLint run reports no issues (VERIFIED)
+- [x] F3 — Custom unit test runner reports zero failed tests (VERIFIED)
+- [x] F4 — Bundle regression guard stays within baseline threshold (VERIFIED)

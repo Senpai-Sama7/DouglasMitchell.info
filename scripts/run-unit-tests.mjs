@@ -180,18 +180,62 @@ class TestRunner {
 
   parseTestResults(stdout, stderr) {
     const lines = stdout.split('\n')
-    let testCount = 0
+    let testsFromSummary = false
     let passCount = 0
     let failCount = 0
+    let testCount = -1
 
-    for (const line of lines) {
-      if (line.includes('✓') || line.includes('pass')) {
+    for (const rawLine of lines) {
+      const line = rawLine.trim()
+
+      const summaryMatch = line.match(/^#\s+(tests|pass|fail)\s+(\d+)/i)
+      if (summaryMatch) {
+        testsFromSummary = true
+        const [, key, value] = summaryMatch
+        const count = Number.parseInt(value, 10) || 0
+        switch (key.toLowerCase()) {
+          case 'tests':
+            testCount = count
+            break
+          case 'pass':
+            passCount = count
+            break
+          case 'fail':
+            failCount = count
+            break
+        }
+        continue
+      }
+
+      if (line.startsWith('ok ')) {
         passCount++
         testCount++
-      } else if (line.includes('✗') || line.includes('fail')) {
+        continue
+      }
+
+      if (line.startsWith('not ok')) {
         failCount++
         testCount++
+        continue
       }
+
+      if (line.startsWith('✓ ')) {
+        passCount++
+        testCount++
+        continue
+      }
+
+      if (line.startsWith('✗ ')) {
+        failCount++
+        testCount++
+        continue
+      }
+    }
+
+    if (testsFromSummary && testCount === -1) {
+      testCount = passCount + failCount
+    } else if (testCount === -1) {
+      testCount = 0
     }
 
     this.results.total = testCount

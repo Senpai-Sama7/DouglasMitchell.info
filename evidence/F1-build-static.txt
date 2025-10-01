@@ -1,0 +1,53 @@
+
+> ultimate-dynamic-portfolio@0.1.0 build:static
+> node scripts/exclude-api-routes.js clean && npm run typecheck && node scripts/exclude-api-routes.js move && NEXT_EXPORT=true NEXT_SKIP_TYPE_CHECK=1 NEXT_DISABLE_SWC_BINARY=1 next build && node scripts/exclude-api-routes.js restore
+
+✅ Cleaned .next
+✅ Cleaned out
+
+> ultimate-dynamic-portfolio@0.1.0 typecheck
+> tsc --noEmit
+
+Attention: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://nextjs.org/telemetry
+
+   ▲ Next.js 15.5.4
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 12.4s
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/12) ...
+   Generating static pages (3/12) 
+   Generating static pages (6/12) 
+   Generating static pages (9/12) 
+ ✓ Generating static pages (12/12)
+   Finalizing page optimization ...
+   Collecting build traces ...
+   Exporting (0/2) ...
+ ✓ Exporting (2/2)
+
+Route (app)                                 Size  First Load JS
+┌ ○ /                                    53.8 kB         201 kB
+├ ○ /_not-found                            991 B         103 kB
+├ ○ /admin                               5.32 kB         144 kB
+├ ○ /blog                                40.6 kB         183 kB
+├ ● /projects/[slug]                       165 B         105 kB
+├   ├ /projects/ultimate-ai-agent
+├   ├ /projects/multimedia-pipeline
+├   ├ /projects/cybersecurity-home-lab
+├   └ [+2 more paths]
+└ ○ /resume                                165 B         105 kB
++ First Load JS shared by all             102 kB
+  ├ chunks/255-bb8f17202d2aafcd.js       45.5 kB
+  ├ chunks/4bd1b696-21f374d1156f834a.js  54.2 kB
+  └ other shared chunks (total)          1.96 kB
+
+
+ƒ Middleware                             34.3 kB
+
+○  (Static)  prerendered as static content
+●  (SSG)     prerendered as static HTML (uses generateStaticParams)
+
