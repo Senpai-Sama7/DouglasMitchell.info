@@ -183,7 +183,7 @@ class TestRunner {
     let testsFromSummary = false
     let passCount = 0
     let failCount = 0
-    let testCount = 0
+    let testCount = -1
 
     for (const rawLine of lines) {
       const line = rawLine.trim()
