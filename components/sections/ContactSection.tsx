@@ -1,11 +1,25 @@
 'use client'
 
 import { memo, useId } from 'react'
+import { contactChannels } from '@/content/site-data'
 
 export const ContactSection = memo(function ContactSection() {
   const nameId = useId()
   const emailId = useId()
   const contextId = useId()
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    const formData = new FormData(e.currentTarget)
+    const name = formData.get('name')
+    const email = formData.get('email')
+    const context = formData.get('context')
+
+    const subject = encodeURIComponent('Contact from douglasmitchell.info')
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${context}`)
+
+    window.location.href = `mailto:${contactChannels.email}?subject=${subject}&body=${body}`
+  }
 
   return (
     <section id="contact" className="axiom-section axiom-section--contact">
@@ -17,7 +31,7 @@ export const ContactSection = memo(function ContactSection() {
             The portal routes straight to Douglas. Expect a response inside 48 hours with integration notes and validation pathways.
           </p>
         </header>
-        <form className="axiom-form" action="/api/subscribe" method="post" noValidate>
+        <form className="axiom-form" onSubmit={handleSubmit} noValidate>
           <div className="axiom-form__group">
             <input 
               id={nameId}

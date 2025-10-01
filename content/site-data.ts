@@ -296,11 +296,10 @@ export const watcherStatement =
   'Presence systems keep mastery and safety balanced. I map signals, validate assumptions, and make decisions with full nervous-system consent.'
 
 export const contactChannels = {
-  email: 'douglas@douglasmitchell.info',
-  consulting: 'mailto:douglas@douglasmitchell.info?subject=Consulting%20Inquiry',
+  email: 'DouglasMitchell@HoustonOilAirs.org',
+  consulting: 'mailto:DouglasMitchell@HoustonOilAirs.org?subject=Consulting%20Inquiry',
   github: 'https://github.com/Senpai-Sama7',
-  linkedin: 'https://www.linkedin.com/in/douglasmitchell-houston/',
-  twitter: 'https://twitter.com/DouglasMitchell',
+  linkedin: 'https://www.linkedin.com/in/douglas-mitchell-bb18b1383',
   location: 'Houston, TX'
 }
 
@@ -335,6 +334,15 @@ export const experience = [
       'Built systems to support environmental justice advocacy and community data rituals.',
       'Implemented secure access tiers and rapid-trust onboarding kits for cross-cluster coalitions.',
       'Facilitated policy, legal, and technical dialogues that accelerated resource routing.'
+    ]
+  },
+  {
+    organization: 'Operations Manager, Pappadeaux Seafood Kitchen',
+    dates: '2022 — 2024',
+    bullets: [
+      'Managed daily restaurant operations with 75+ staff across multiple shifts.',
+      'Optimized workflows and service protocols resulting in improved efficiency metrics.',
+      'Led training initiatives and quality assurance programs maintaining 4.5+ star ratings.'
     ]
   },
   {

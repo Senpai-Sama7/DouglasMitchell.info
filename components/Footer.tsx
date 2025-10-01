@@ -2,9 +2,8 @@ import Link from 'next/link'
 import { contactChannels, metrics } from '@/content/site-data'
 
 const socials = [
-  { label: 'GitHub', href: 'https://github.com/DouglasSMitchell' },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/douglascmitchell/' },
-  { label: 'X (Twitter)', href: 'https://twitter.com/DouglasCSM' }
+  { label: 'GitHub', href: contactChannels.github },
+  { label: 'LinkedIn', href: contactChannels.linkedin }
 ]
 
 export function Footer() {
