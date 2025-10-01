@@ -19,18 +19,18 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Modern glassmorphic palette - using rgb format for Tailwind compatibility
+        // Modern glassmorphic palette - using rgba format for broad compatibility
         glass: {
-          50: 'rgb(255 255 255 / 0.1)',
-          100: 'rgb(255 255 255 / 0.2)',
-          200: 'rgb(255 255 255 / 0.3)',
-          300: 'rgb(255 255 255 / 0.4)',
+          50: 'rgba(255, 255, 255, 0.1)',
+          100: 'rgba(255, 255, 255, 0.2)',
+          200: 'rgba(255, 255, 255, 0.3)',
+          300: 'rgba(255, 255, 255, 0.4)',
         },
         dark: {
-          50: 'rgb(0 0 0 / 0.1)',
-          100: 'rgb(0 0 0 / 0.2)',
-          200: 'rgb(0 0 0 / 0.3)',
-          300: 'rgb(0 0 0 / 0.4)',
+          50: 'rgba(0, 0, 0, 0.1)',
+          100: 'rgba(0, 0, 0, 0.2)',
+          200: 'rgba(0, 0, 0, 0.3)',
+          300: 'rgba(0, 0, 0, 0.4)',
         },
         accent: {
           purple: '#8B5CF6',
