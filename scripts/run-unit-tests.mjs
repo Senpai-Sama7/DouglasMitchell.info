@@ -193,12 +193,16 @@ class TestRunner {
         testsFromSummary = true
         const [, key, value] = summaryMatch
         const count = Number.parseInt(value, 10) || 0
-        if (key.toLowerCase() === 'tests') {
-          testCount = count
-        } else if (key.toLowerCase() === 'pass') {
-          passCount = count
-        } else if (key.toLowerCase() === 'fail') {
-          failCount = count
+        switch (key.toLowerCase()) {
+          case 'tests':
+            testCount = count
+            break
+          case 'pass':
+            passCount = count
+            break
+          case 'fail':
+            failCount = count
+            break
         }
         continue
       }
