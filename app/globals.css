@@ -297,6 +297,8 @@ textarea {
   width: var(--max-width);
   margin: 0 auto;
   padding: var(--space-sm) var(--space-xs);
+  position: relative;
+  z-index: 21;
 }
 
 .axiom-nav__brand {
@@ -373,7 +375,88 @@ textarea {
 
 .axiom-nav__actions {
   display: flex;
+  align-items: center;
   gap: var(--space-xs);
+}
+
+.axiom-nav__toggle {
+  display: none;
+  align-items: center;
+  gap: var(--axiom-spacing-3xs);
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-soft);
+  background: color-mix(in srgb, var(--surface-0) 88%, transparent);
+  color: color-mix(in srgb, var(--fg-soft) 74%, var(--accent) 26%);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.3s var(--transition), color 0.3s var(--transition), border-color 0.3s var(--transition),
+    filter 0.3s var(--transition);
+}
+
+.axiom-nav__toggle:hover,
+.axiom-nav__toggle:focus-visible {
+  color: var(--fg-strong);
+  border-color: var(--border-strong);
+  background: color-mix(in srgb, var(--surface-1) 88%, transparent);
+  filter: var(--text-glow);
+}
+
+.axiom-nav__toggle-icon {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.axiom-nav__toggle-icon span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+  transition: transform 0.3s var(--transition), opacity 0.3s var(--transition);
+}
+
+.axiom-nav__toggle-label {
+  letter-spacing: inherit;
+}
+
+.axiom-nav__toggle--active {
+  color: var(--fg-strong);
+  border-color: var(--border-strong);
+  background: color-mix(in srgb, var(--surface-1) 92%, transparent);
+}
+
+.axiom-nav__toggle--active .axiom-nav__toggle-icon span:nth-child(2) {
+  opacity: 0;
+}
+
+.axiom-nav__toggle--active .axiom-nav__toggle-icon span:first-child {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.axiom-nav__toggle--active .axiom-nav__toggle-icon span:last-child {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+.axiom-nav__backdrop {
+  position: fixed;
+  inset: 0;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: rgba(3, 16, 41, 0.32);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s var(--transition);
+  z-index: 18;
+}
+
+.axiom-nav__backdrop--visible {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .scroll-progress {
@@ -2028,9 +2111,50 @@ textarea {
     row-gap: var(--space-sm);
   }
 
+  .axiom-nav__actions {
+    justify-self: end;
+  }
+
+  .axiom-nav__toggle {
+    display: inline-flex;
+  }
+
+  .axiom-nav__links {
+    position: fixed;
+    top: calc(var(--space-xl) + max(env(safe-area-inset-top), 0px));
+    left: var(--space-sm);
+    right: var(--space-sm);
+    background: color-mix(in srgb, var(--surface-0) 94%, transparent);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md);
+    box-shadow: var(--shadow-md);
+    opacity: 0;
+    transform: translateY(-12px);
+    pointer-events: none;
+    visibility: hidden;
+    transition: opacity 0.3s var(--transition), transform 0.3s var(--transition);
+    max-height: calc(100vh - calc(var(--space-xl) + max(env(safe-area-inset-top), 0px)) - var(--space-md));
+    overflow-y: auto;
+    z-index: 22;
+  }
+
   .axiom-nav__links ul {
-    justify-content: flex-start;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-sm);
+  }
+
+  .axiom-nav__links--open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+    visibility: visible;
+  }
+
+  .axiom-nav__link {
+    font-size: 0.9rem;
+    letter-spacing: 0.22em;
   }
 
   .axiom-section {
