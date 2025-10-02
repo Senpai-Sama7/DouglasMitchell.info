@@ -47,6 +47,13 @@ logs
 *.log
 .tmp/
 
+# Legacy manual verification artefacts
+evidence/
+REALITY_CHECKLIST.txt
+features.json
+sha256sums.txt
+fixes/
+
 # Testing
 coverage/
 .nyc_output

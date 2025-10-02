@@ -23,7 +23,7 @@ Set the non-negotiable delivery standards for the DouglasMitchell.info codebase.
 - Prefer Transformers; justify any GNN/RNN/SSM usage with profiled improvements and ablation data.
 
 ## Compliance Tracking
-- Record verification evidence (test logs, benchmark outputs, observability checks) alongside each change request.
+- Treat CI pipelines as the canonical verification evidence; ensure required jobs are green and reference the run when requesting review.
 - Store ADRs under `docs/adr/`; update `docs/quality-gates.md` with lint/test/perf thresholds; maintain `docs/observability.md` for logging/metric contracts.
 - Reject merges lacking required artifacts or with unverifiable claims.
 

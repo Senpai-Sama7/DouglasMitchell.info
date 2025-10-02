@@ -1,5 +1,0 @@
-e49412c371b5acd163f211dccf390f72a080aac7532e7ef87824880acf1f5435  evidence/F1-build-static.txt
-ad0217d285dc87c892a6182c25a2894060a57772edb7c13317bbcf69062c41c9  evidence/F2-lint.txt
-e109b1f01488316da8ee8cab40ffa243e00f68d59c8eedb182d80bbe903c0528  evidence/F3-unit-tests.txt
-96d42f906e589baefee17d06eb754aad6dc18824a3afe67b3b4253e06c497b84  evidence/F4-bundle-check.txt
-6da0ca65852db75da9a1493d6412eec0dcf53bc6174b10a13dea7b78224ee203  evidence/npm-install-20250215.txt
