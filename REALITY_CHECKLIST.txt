@@ -1,5 +1,5 @@
 # Reality Checklist
-- [x] F1 — Static export build yields Next.js route summary (VERIFIED)
-- [x] F2 — ESLint run reports no issues (VERIFIED)
-- [x] F3 — Custom unit test runner reports zero failed tests (VERIFIED)
-- [x] F4 — Bundle regression guard stays within baseline threshold (VERIFIED)
+- [ ] F1 — Static export build yields Next.js route summary (UNVERIFIED)
+- [ ] F2 — ESLint run reports no issues (UNVERIFIED)
+- [ ] F3 — Custom unit test runner reports zero failed tests (UNVERIFIED)
+- [ ] F4 — Bundle regression guard stays within baseline threshold (UNVERIFIED)
