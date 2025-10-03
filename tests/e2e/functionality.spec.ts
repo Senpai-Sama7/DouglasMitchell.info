@@ -38,6 +38,34 @@ test.describe('Core functionality', () => {
     expect(restoredTheme).toBe(updatedTheme)
   })
 
+  test('mobile navigation toggle controls menu visibility', async ({ page }, testInfo) => {
+    if (!/Mobile/.test(testInfo.project.name)) {
+      test.skip()
+    }
+
+    await page.goto('/')
+    await page.waitForLoadState('networkidle')
+
+    const navLinks = page.locator('.axiom-nav__links')
+    const toggle = page.locator('.axiom-nav__toggle')
+
+    await expect(navLinks).toBeHidden()
+
+    await toggle.click()
+
+    await expect(navLinks).toBeVisible()
+
+    const overflowOpen = await page.evaluate(() => document.body.style.overflow)
+    expect(overflowOpen).toBe('hidden')
+
+    await toggle.click()
+
+    await expect(navLinks).toBeHidden()
+
+    const overflowClosed = await page.evaluate(() => document.body.style.overflow)
+    expect(overflowClosed === '' || overflowClosed === 'visible').toBe(true)
+  })
+
   test('project navigation renders slugged detail view', async ({ page }) => {
     await page.goto('/')
     await page.waitForLoadState('networkidle')
