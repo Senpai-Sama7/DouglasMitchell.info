@@ -1,0 +1,27 @@
+# curl -s -D - -H 'x-api-key: test-metrics-key' http://127.0.0.1:3101/api/metrics | head
+HTTP/1.1 200 OK
+Content-Security-Policy: default-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; font-src 'self' data:; img-src 'self' data: https://cdn.sanity.io; style-src 'self'; script-src 'self'; object-src 'none'; connect-src 'self' https://api.github.com https://*.sanity.io https://apicdn.sanity.io https://upstash.io https://*.upstash.io;
+Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+X-Frame-Options: DENY
+X-Content-Type-Options: nosniff
+Referrer-Policy: strict-origin-when-cross-origin
+Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+vary: x-api-key
+cache-control: public, s-maxage=30, stale-while-revalidate=90
+
+# curl -s -H 'x-api-key: test-metrics-key' http://127.0.0.1:3101/api/metrics | jq '.meta'
+{
+  "source": "fallback",
+  "fetchedAt": "2025-10-04T11:48:26.928Z",
+  "requestId": "d4d5cba1-7eb1-4f83-91cf-a0e831723911"
+}
+
+# curl -s -H 'x-api-key: test-metrics-key' http://127.0.0.1:3101/api/metrics | jq '.metrics[0]'
+{
+  "id": "uptime",
+  "label": "Operational uptime",
+  "value": 99.9,
+  "unit": "%",
+  "detail": "Monitored via automated regression rigs."
+}

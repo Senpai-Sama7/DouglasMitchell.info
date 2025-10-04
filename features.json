@@ -1,10 +1,34 @@
 {
   "features": [
-    "Dual deploy friendliness (static export + server rendering)",
-    "Sanity-backed content fetching",
-    "Neon metrics pipeline",
-    "Mux server-side SDK availability",
-    "Bundle size analysis opt-in",
-    "Unit test runner with esbuild and c8"
+    {
+      "id": "metrics_api_authorized",
+      "feature": "GET /api/metrics returns metrics data when a valid API key is provided",
+      "command": "METRICS_API_KEY=test-metrics-key NEXT_PUBLIC_METRICS_API_KEY=test-metrics-key curl -s -H 'x-api-key: test-metrics-key' http://127.0.0.1:3101/api/metrics",
+      "expected": "HTTP 200 with a JSON body exposing metrics[] and meta.requestId"
+    },
+    {
+      "id": "metrics_api_unauthorized",
+      "feature": "GET /api/metrics enforces API key authentication",
+      "command": "curl -s -o /dev/null -w '%{http_code}\\n' http://127.0.0.1:3101/api/metrics",
+      "expected": "401 status with JSON error.code API_KEY_REQUIRED"
+    },
+    {
+      "id": "telemetry_api_accepts",
+      "feature": "POST /api/telemetry/page records client telemetry metrics",
+      "command": "curl -s -X POST http://127.0.0.1:3101/api/telemetry/page -H 'content-type: application/json' -d '{\"metric\":\"render_duration_ms\",\"value\":123.45,\"page\":\"home\"}'",
+      "expected": "HTTP 202 with ok=true and meta.requestId"
+    },
+    {
+      "id": "telemetry_api_validation",
+      "feature": "POST /api/telemetry/page rejects invalid payloads",
+      "command": "curl -s -X POST http://127.0.0.1:3101/api/telemetry/page -H 'content-type: application/json' -d '{\"metric\":\"\",\"value\":10}'",
+      "expected": "HTTP 400 with error 'Metric name required'"
+    },
+    {
+      "id": "metrics_ui_surface",
+      "feature": "Homepage surfaces metrics cards when the metrics API succeeds",
+      "command": "METRICS_API_KEY=test-metrics-key NEXT_PUBLIC_METRICS_API_KEY=test-metrics-key npx playwright test tests/e2e/metrics.spec.ts --project=chromium --reporter=list",
+      "expected": "All 5 Playwright tests pass"
+    }
   ]
 }

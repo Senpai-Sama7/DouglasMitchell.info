@@ -1,0 +1,30 @@
+# METRICS_API_KEY=test-metrics-key NEXT_PUBLIC_METRICS_API_KEY=test-metrics-key npx playwright test tests/e2e/metrics.spec.ts --project=chromium --reporter=list
+Running 5 tests using 1 worker
+  ✓  1 [chromium] › tests/e2e/metrics.spec.ts:8:7 › Metrics API › returns fallback metrics without database (3.9s)
+  ✘  2 [chromium] › tests/e2e/metrics.spec.ts:36:7 › Metrics API › surface metrics on homepage (5ms)
+  ✓  3 [chromium] › tests/e2e/metrics.spec.ts:44:7 › Metrics API › metrics API failure fallback - authentication required (73ms)
+  ✓  4 [chromium] › tests/e2e/metrics.spec.ts:60:7 › Metrics API › metrics API force-dynamic behavior (71ms)
+  ✘  5 [chromium] › tests/e2e/metrics.spec.ts:91:7 › Metrics API › metrics API error handling - graceful degradation
+
+Failures caused by missing system dependencies for browsers:
+Error: browserType.launch:
+╔══════════════════════════════════════════════════════╗
+║ Host system is missing dependencies to run browsers. ║
+║ Please install them with the following command:      ║
+║                                                      ║
+║     npx playwright install-deps                      ║
+║                                                      ║
+║ Alternatively, use apt:                              ║
+║     apt-get install libatk1.0-0t64\                  ║
+║         libatk-bridge2.0-0t64\                       ║
+║         libatspi2.0-0t64\                            ║
+║         libxcomposite1\                              ║
+║         libxdamage1\                                 ║
+║         libxfixes3\                                  ║
+║         libxrandr2\                                  ║
+║         libgbm1\                                     ║
+║         libxkbcommon0\                               ║
+║         libasound2t64                                ║
+║                                                      ║
+║ <3 Playwright Team                                   ║
+╚══════════════════════════════════════════════════════╝

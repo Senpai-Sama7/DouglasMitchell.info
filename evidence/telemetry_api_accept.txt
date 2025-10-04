@@ -1,0 +1,8 @@
+# curl -s -X POST http://127.0.0.1:3101/api/telemetry/page -H 'content-type: application/json' -d '{"metric":"render_duration_ms","value":123.45,"page":"home"}' | jq
+{
+  "ok": true,
+  "meta": {
+    "requestId": "0fdbc027-f8b2-4431-8439-5fbc93df7f71",
+    "receivedAt": "2025-10-04T11:48:35.750Z"
+  }
+}

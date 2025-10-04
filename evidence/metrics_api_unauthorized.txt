@@ -1,0 +1,11 @@
+# curl -s -o /dev/null -w '%{http_code}\n' http://127.0.0.1:3101/api/metrics
+401
+
+# curl -s http://127.0.0.1:3101/api/metrics | jq
+{
+  "error": "Missing API key header",
+  "code": "API_KEY_REQUIRED",
+  "details": {
+    "header": "x-api-key"
+  }
+}

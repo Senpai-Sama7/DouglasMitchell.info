@@ -1,5 +1,5 @@
-- [x] npm ci completes on Node 20 — VERIFIED (chunk c97910)
-- [x] npm run build succeeds — VERIFIED (evidence/build.log)
-- [x] npm run lint succeeds — VERIFIED (evidence/lint.log)
-- [x] npm run test:unit -- --coverage succeeds — VERIFIED (evidence/unit-tests.log)
-- [x] Evidence logs and sha256sums generated — VERIFIED (evidence/summary.json, evidence/sha256sums.txt)
+- [x] VERIFIED — GET /api/metrics returns metrics when authorised (curl with API key). Evidence: chunks 8e677a, b0885e, 73d016
+- [x] VERIFIED — GET /api/metrics rejects requests without API key. Evidence: chunks 40c0f0, 99e48f
+- [x] VERIFIED — POST /api/telemetry/page accepts valid payloads. Evidence: chunk fca3a3
+- [x] VERIFIED — POST /api/telemetry/page rejects invalid payloads. Evidence: chunks d07e13, c70042
+- [ ] UNVERIFIED — Homepage metrics UI via Playwright (missing system deps for browsers). Evidence: chunk 522ea1
