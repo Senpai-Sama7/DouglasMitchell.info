@@ -1,1 +1,1 @@
-None
+- Metrics UI Playwright coverage blocked by missing system libraries (`npx playwright install-deps` output lists required packages). Unable to install within container scope. Verification pending once deps available.

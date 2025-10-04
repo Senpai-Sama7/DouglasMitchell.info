@@ -1,0 +1,7 @@
+# curl -s -X POST http://127.0.0.1:3101/api/telemetry/page -H 'content-type: application/json' -d '{"metric":"","value":10}' | jq
+{
+  "error": "Metric name required",
+  "meta": {
+    "requestId": "98d6783a-cc5c-46c6-911e-756c9a91108f"
+  }
+}
