@@ -1,0 +1,26 @@
+[
+  {
+    "id": "F001",
+    "feature": "Next.js production build",
+    "command": "npm run build",
+    "expected": "Build finishes with route size summary and no compilation errors.",
+    "evidence": "evidence/build.log",
+    "status": "VERIFIED"
+  },
+  {
+    "id": "F002",
+    "feature": "Unit tests for BentoGrid and LazyVisualEditor",
+    "command": "node scripts/run-unit-tests.mjs",
+    "expected": "Test summary reports all tests passed.",
+    "evidence": "evidence/unit-tests.log",
+    "status": "VERIFIED"
+  },
+  {
+    "id": "F003",
+    "feature": "ESLint static analysis",
+    "command": "npm run lint",
+    "expected": "No ESLint warnings or errors are reported.",
+    "evidence": "evidence/lint.log",
+    "status": "VERIFIED"
+  }
+]
