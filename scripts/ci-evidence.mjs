@@ -38,6 +38,7 @@ function sha256(buf) {
 
 const checksums = []
 
+let hasFailed = false
 for (const t of tasks) {
   console.log(`==> Running ${t.name}`)
   const res = await runTask(t)
@@ -56,7 +57,13 @@ for (const t of tasks) {
   checksums.push(`${sha256(Buffer.from(body))}  ${t.log}`)
   if (res.code !== 0) {
     console.error(`Task ${t.name} failed with code ${res.code}`)
+    hasFailed = true
   }
+}
+
+if (hasFailed) {
+  console.error('\nOne or more tasks failed. Exiting with error.')
+  process.exit(1)
 }
 
 await fs.writeFile(path.join(evidenceDir, 'sha256sums.txt'), checksums.join('\n') + '\n', 'utf8')
