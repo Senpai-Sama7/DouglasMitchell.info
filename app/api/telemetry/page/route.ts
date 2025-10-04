@@ -27,7 +27,7 @@ function recordClientMetric(metric: string, value: number, page: string) {
   // Metric names allow only lowercase letters, numbers, underscores, and hyphens.
   // Page names may include slashes to represent paths, so we allow slashes in addition to the above.
   const safeMetric = metric.trim().replace(/[^a-z0-9_\-]/gi, '_').toLowerCase()
-  const safePage = page.trim().replace(/[^a-z0-9_\/-]/gi, '_').toLowerCase() || 'unknown'
+  const safePage = page.trim().replace(/[^a-z0-9_-]/gi, '_').toLowerCase() || 'unknown'
   const metricName = `client_${safePage}_${safeMetric}`
 
   if (safeMetric.endsWith('_ms')) {
