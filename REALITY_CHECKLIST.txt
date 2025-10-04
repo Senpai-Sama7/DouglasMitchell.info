@@ -1,3 +1,5 @@
-- [x] F001 Next.js production build completes without errors — VERIFIED (evidence/build.log)
-- [x] F002 Unit tests for BentoGrid and LazyVisualEditor pass — VERIFIED (evidence/unit-tests.log)
-- [x] F003 ESLint static analysis reports no issues — VERIFIED (evidence/lint.log)
+- [x] npm ci completes on Node 20 — VERIFIED (chunk c97910)
+- [x] npm run build succeeds — VERIFIED (evidence/build.log)
+- [x] npm run lint succeeds — VERIFIED (evidence/lint.log)
+- [x] npm run test:unit -- --coverage succeeds — VERIFIED (evidence/unit-tests.log)
+- [x] Evidence logs and sha256sums generated — VERIFIED (evidence/summary.json, evidence/sha256sums.txt)
