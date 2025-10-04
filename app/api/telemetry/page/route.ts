@@ -33,7 +33,7 @@ function recordClientMetric(metric: string, value: number, page: string) {
   if (safeMetric.endsWith('_ms')) {
     observeMetric(metricName, value)
   } else {
-    incrementMetric(metricName, value || 1)
+    incrementMetric(metricName, value);
   }
 
   incrementMetric('client_telemetry_events_total')
