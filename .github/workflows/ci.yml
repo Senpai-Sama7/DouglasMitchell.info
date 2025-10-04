@@ -1,0 +1,31 @@
+name: Build Verification
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    env:
+      NEXT_TELEMETRY_DISABLED: 1
+      NODE_OPTIONS: --max_old_space_size=4096
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run ci:quality
+      - run: npm run ci:evidence
+      - name: Upload evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-evidence
+          path: |
+            evidence/**
+            FIX_LOG.md
+            VERIFICATION_MATRIX.md
+            REALITY_CHECKLIST.txt
+            features.json
