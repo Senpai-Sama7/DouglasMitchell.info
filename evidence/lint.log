@@ -1,0 +1,5 @@
+
+> bento-bento@1.0.0 lint
+> next lint --dir .
+
+✔ No ESLint warnings or errors
