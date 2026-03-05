@@ -25,6 +25,7 @@ import { ErrorBoundary } from '@/components/ErrorBoundary'
 import { HeroSection } from '@/components/sections/HeroSection'
 import { ProjectsSection } from '@/components/sections/ProjectsSection'
 import { ContactSection } from '@/components/sections/ContactSection'
+import { EntranceOverlay } from '@/components/EntranceOverlay'
 import { useScrollAnimations } from '@/hooks/useScrollAnimations'
 
 import type { ProjectMetric } from '@/lib/neon'
@@ -77,6 +78,8 @@ export default function Page() {
 
   return (
     <ErrorBoundary>
+      <EntranceOverlay />
+
       {/* Modern glassmorphic background */}
       <div className="fixed inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
         <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_50%_50%,rgba(120,119,198,0.3),transparent_50%)]"></div>
@@ -162,7 +165,7 @@ export default function Page() {
         <section className="py-16 px-4">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-white mb-4">Skills & Technologies</h2>
+              <h2 className="text-3xl font-bold text-white mb-4">Skills &amp; Technologies</h2>
               <p className="text-white/70 max-w-2xl mx-auto">
                 A comprehensive toolkit spanning AI/ML, full-stack development, and emerging technologies.
               </p>
